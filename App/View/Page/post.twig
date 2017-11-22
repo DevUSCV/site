@@ -1,0 +1,56 @@
+{% extends "Page/club.twig" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/uscv/site/assets/css/club.css">
+    <script src="/uscv/site/assets/js/club.js"></script>
+    <script src="/uscv/site/assets/js/post.js"></script>
+
+    <title>Article</title>
+{% endblock %}
+
+{% block post %}
+    <div class="container comments">
+        <div class="row">
+            <h1>Actualité</h1>
+            <div class="col s12 m8">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title post_title"></span>
+                        <p class="post_content"></p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Commentaires</span>
+                        <div class="post_comment collection"></div>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block end_script %}
+    <script>
+        $.getJSON(API_URL + "/blog/club/post/{{ post_id }}", (data) => {
+            document.querySelector(".post_title").innerHTML = data.title;
+            document.querySelector(".post_content").innerHTML = data.content;
+            let comment_div = document.querySelector("div.post_comment");
+            for(let comment of data.comment){
+                let item = document.createElement("div");
+                item.innerHTML = comment.content + "</br><small class='right'>" + comment.author_name + " date</small>";
+                comment_div.appendChild(item);
+            }
+        });
+    </script>
+{% endblock %}

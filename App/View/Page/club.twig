@@ -1,0 +1,85 @@
+{% extends "template.twig" %}
+
+{% block head %}
+    
+        <link rel="stylesheet" href="/uscv/site/assets/css/club.css">
+        <script src="/uscv/site/assets/js/club.js"></script>
+
+    <title>Le Club</title>
+{% endblock %}
+
+{% block content %}
+    <div class="row content">
+        {#       ----------------------------------------------------------------------- ACTUALITE#}
+        <div id="actualites" class="col s12">
+            
+            <div>              
+                <div class="row" id="actualite_content">
+                    {% block post %}{% endblock %}
+                </div>
+            </div>
+            
+        </div>
+        {#       ----------------------------------------------------------------------- EVENEMENTS#}
+        <div id="evenements" class="col s12">
+            <div>
+                Test 2
+            </div>
+        </div>
+        {#       ----------------------------------------------------------------------- PRATIQUES#}
+        <div id="pratiques" class="col s12">
+            <div>
+                Test 3
+            </div>
+        </div>
+        {#       ----------------------------------------------------------------------- ENTRAINEMENT#}
+        <div id="entrainements" class="col s12">
+            <div>
+                Test 4
+            </div>
+        </div>
+        {#       ----------------------------------------------------------------------- EQUIPE#}
+        <div id="equipe" class="col s12">
+            <div>
+                Test 5
+            </div>
+        </div>
+        {#       ----------------------------------------------------------------------- A PROPOS#}
+        <div id="apropos" class="col s12">
+            <div>
+                Test 1
+            </div>
+        </div>
+        <div class="col s12 black bottom_nav">
+            <ul class="tabs black center">
+                <li class="tab col s2">
+                    <a href="#actualites" onclick="actualite()">Actualités</a>
+                </li>
+                <li class="tab col s2">
+                    <a href="#evenements">Evenement</a>
+                </li>
+                <li class="tab col s2">
+                    <a href="#pratiques">Pratiques</a>
+                </li>
+                <li class="tab col s2">
+                    <a href="#entrainements">Entrainements</a>
+                </li>
+                <li class="tab col s2">
+                    <a href="#equipe">L'équipe</a>
+                </li>
+                <li class="tab col s2">
+                    <a href="#apropos">A Propos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block end_script %}
+    <script>
+        
+        
+        actualite();
+        
+    </script>
+{% endblock %}

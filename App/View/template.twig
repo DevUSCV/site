@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <!-------------------------------------------------------------------------- HEAD -->
+    <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="/uscv/site/assets/css/main.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>    
+    <script src="https://use.fontawesome.com/d96eeea1cb.js"></script>
+    <script src="/uscv/site/assets/js/main.js"></script>
+    
+    {% block head %}{% endblock %}
+
+</head>
+
+<body>
+    <!-------------------------------------------------------------------------- SIDE NAV -->
+    <ul id="slide-out" class="side-nav grey darken-3">
+        <li><div class="user-view white-text">
+                <div class="background">
+                    <img src="images/office.jpg">
+                </div>
+                <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+                <a href="#!name"><span class="white-text name">John Doe</span></a>
+                <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                <a href="#">Connexion <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+            </div></li>
+        <li><a href="{{ path_for('club') }}">Le Club</a></li>
+        <li><a href="#">Activités</a></li>
+        <li><a href="#">Réservation</a></li>
+        <li><a href="#">Locations</a></li>
+        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars" aria-hidden="true"></i></a>
+
+    <!-------------------------------------------------------------------------- NAV -->
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper grey darken-3">
+                <a href="#!" class="brand-logo center">Logo</a>
+                <ul class="right hide-on-small-only">
+                    <li><a href="{{ path_for('home') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- CONTENT BLOCK -->
+    <div class="page_content">
+    {% block content %}{% endblock %}
+    </div>
+
+<!------------------------------------------------------------------------------ FOOTER -->
+<footer class="page-footer grey darken-3">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2017 Copyright lechopier.vincent@gmail.com
+        </div>
+    </div>
+</footer>
+
+
+{% block end_script %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,55 @@
+div.content{
+    height: calc(100vh - 120px);
+    background-color: black;
+    overflow: hidden;
+}
+
+/*.slider li{
+    height: calc( 100vh - 65px )!important;
+}
+
+.slide img{
+    background-size: cover;
+    object-fit: cover;
+}
+
+.caption{
+    padding: 0 40px 20px 40px;
+    margin-top: 50vh;
+}*/
+
+body>div.page_content{
+    overflow-y: hidden;
+}
+video {
+  width: 100%    !important;
+  height: auto   !important;
+  min-height: 100%!important;
+  object-fit: cover;
+  object-position: center;
+}
+
+/*------------------------------------------------------------------------------ ONGLETS*/
+
+div.bottom_nav{
+    width: 100%;
+    position: absolute;
+    bottom: -20px;
+    z-index: 1000;
+}
+
+div.row.bottom_nav ul.tabs li a{
+    color: white!important;
+}
+
+div.row.bottom_nav ul.tabs li a:hover{
+    background-color: #3b96e2;
+}
+div.row.bottom_nav ul.tabs li.indicator{
+    display: none;
+}
+/*
+#actualite_content div{
+    height: auto;
+    overflow: hidden;
+}*/
