@@ -1,0 +1,46 @@
+{% extends "template.twig" %}
+
+{% block head %}
+
+    <link rel="stylesheet" href="/uscv/site/assets/css/location.css">
+    <script src="/uscv/site/assets/js/location.js"></script>
+    <title>Le Club</title>
+{% endblock %}
+
+{% block content %}
+    <div class="row content">
+        <div class="container">
+            <h1>Tarifs des Locations</h1>
+            <div class="row">
+                TODO !
+            </div> 
+        </div> 
+    </div>
+
+    <div class="row bottom_nav">
+        <div class="col s12 black">
+            <ul class="tabs black center">
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('club') }}">Le Club</a>
+                </li>
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('activite') }}">Activités</a>
+                </li>
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('reservation') }}">Reservation</a>
+                </li>
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('location') }}">Location</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block end_script %}
+    <script>
+
+
+
+    </script>
+{% endblock %}

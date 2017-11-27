@@ -1,0 +1,90 @@
+{% extends "template.twig" %}
+
+{% block head %}
+
+    <link rel="stylesheet" href="/uscv/site/assets/css/activite.css">
+    <script src="/uscv/site/assets/js/activite.js"></script>
+    <title>Le Club</title>
+{% endblock %}
+
+{% block content %}
+    <div class="row content">
+        <div class="container">
+            <h1>Les Activités</h1>
+            <div class="row">
+                <div class="col s12 l4">
+                    <div class="card" id="cours_part">
+                        <div class="card-image">
+                            <img class="" src="/uscv/site/assets/image/slider/slider2.jpg">
+                            <span class="card-title">Cours Particuliers</span>
+                        </div>
+                        <div class="card-content">
+                            <p></p>
+                        </div>
+                        <div class="card-action">
+                            <a onclick="tarif_cours()" class="btn blue">tarifs</a>
+                            <a href="{{ path_for('reservation') }}" class="btn green">Reservation</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 l4">
+                    <div class="card" id="stages">
+                        <div class="card-image">
+                            <img class="" src="/uscv/site/assets/image/slider/slider.jpg">
+                            <span class="card-title">Stages</span>
+                        </div>
+                        <div class="card-content">
+                            <p></p>
+                        </div>
+                        <div class="card-action">
+                            <a onclick="tarif_stage()" class="btn blue">tarifs</a>
+                            <a href="{{ path_for('reservation') }}" class="btn green">Reservation</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 l4">
+                    <div class="card" id="groupe">
+                        <div class="card-image">
+                            <img class="" src="/uscv/site/assets/image/slider/slider3.jpg">
+                            <span class="card-title">Groupes</span>
+                        </div>  
+                        <div class="card-content">
+                            <p></p>
+                        </div>
+                        <div class="card-action">
+                            <a onclick="tarif_groupe()" class="btn blue">tarifs</a>
+                            <a href="{{ path_for('reservation') }}" class="btn green">Reservation</a>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div> 
+    </div>
+
+    <div class="row bottom_nav">
+        <div class="col s12 black">
+            <ul class="tabs black center">
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('club') }}">Le Club</a>
+                </li>
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('activite') }}">Activités</a>
+                </li>
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('reservation') }}">Reservation</a>
+                </li>
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('location') }}">Location</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block end_script %}
+    <script>
+
+
+
+    </script>
+{% endblock %}

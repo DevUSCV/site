@@ -3,25 +3,87 @@ document.addEventListener("DOMContentLoaded", function (e) {
 });
 
 function actualite() {
+    document.title = SITE_NAME + " | Le Club";
     $.getJSON(API_URL + "/blog/club", (data) => {
-        let content = document.querySelector("#actualite_content");
-        content.innerHTML = "<div class='col s12 l4 center'><h1>Actualités</h1></div>";
+        let content = document.querySelector("#actualite_content"); 
+        content.innerHTML += "<h1 class=''>Actualités</h1>";
         if (data.post) {
             for (let post of data.post) {
-                let card = '<div class="col s12 l4">'
-                        + '<div class="card">'
+                let card = '<div class="col s12 m6">'
+                        + '<div class="card blog_post_excerpt">'
                         + '<div class="card-content ">'
-                        + '<span class="card-title">' + post.title + '</span>'
+                        + '<span class="card-title grey darken-3 white-text">' + post.title + '</span>'
                         + '<p>' + post.content + '</p>'
                         + '</div>'
                         + '<div class="card-action">'
-                        + '<a class="btn waves-effects blue" href="' + SITE_ROOT + '/post/' + post.blog_post_id + '">Lire</a>'
+                        + '<a class="btn waves-effects blue" href="' + SITE_ROOT + '/club/post/' + post.blog_post_id + '">Lire</a>'
                         + '<a class="right">' + post.comment_count + ' commentaire(s)</a>'
                         + '</div>'
 
                 content.innerHTML += card;
             }
         }
+    });
+}
+;
+
+function evenement() {
+    document.title = SITE_NAME + " | Les Evenements";
+    $.getJSON(API_URL + "/article/evenements", (data) => {
+        document.querySelector("#event_planning p").innerHTML = data.content;
+        document.querySelector("#event_pdf").data = SITE_ROOT + "/assets/file/avis-de-course.pdf?#zoom=FitH";
+    });
+}
+;
+
+function pratique() {
+    document.title = SITE_NAME + " | Les Pratiques";
+    $.getJSON(API_URL + "/article/pratiques_deriveur", (data) => {
+        document.querySelector("#pratique_deriveur span.card-title").innerHTML = data.title;
+        document.querySelector("#pratique_deriveur p").innerHTML = data.content;
+    });
+    $.getJSON(API_URL + "/article/pratique_vrc", (data) => {
+        document.querySelector("#pratique_vrc span.card-title").innerHTML = data.title;
+        document.querySelector("#pratique_vrc p").innerHTML = data.content;
+    });
+    $.getJSON(API_URL + "/article/pratique_croisiere", (data) => {
+        document.querySelector("#pratique_croisiere span.card-title").innerHTML = data.title;
+        document.querySelector("#pratique_croisiere p").innerHTML = data.content;
+    });
+}
+;
+
+function entrainement() {
+    document.title = SITE_NAME + " | Les Entrainements";
+    $.getJSON(API_URL + "/article/entrainements", (data) => {
+        document.querySelector("#entrainements span.card-title").innerHTML = data.title;
+        document.querySelector("#entrainements p").innerHTML = data.content;
+    });
+}
+;
+
+function equipe() {
+    document.title = SITE_NAME + " | L'Equipe";
+    $.getJSON(API_URL + "/article/moniteur1", (data) => {
+        document.querySelector("#team_1 span.card-title").innerHTML = data.title;
+        document.querySelector("#team_1 p").innerHTML = data.content;
+    });
+    $.getJSON(API_URL + "/article/moniteur2", (data) => {
+        document.querySelector("#team_2 span.card-title").innerHTML = data.title;
+        document.querySelector("#team_2 p").innerHTML = data.content;
+    });
+    $.getJSON(API_URL + "/article/moniteur3", (data) => {
+        document.querySelector("#team_other span.card-title").innerHTML = data.title;
+        document.querySelector("#team_other p").innerHTML = data.content;
+    });
+}
+;
+
+function apropos() {
+    document.title = SITE_NAME + " | A Propos";
+    $.getJSON(API_URL + "/article/apropos", (data) => {
+        document.querySelector("#apropos span.card-title").innerHTML = data.title;
+        document.querySelector("#apropos p").innerHTML = data.content;
     });
 }
 ;

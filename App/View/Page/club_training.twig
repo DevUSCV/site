@@ -1,0 +1,12 @@
+{% extends "Page/club.twig" %}
+
+{% block end_script %}
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function (e) {
+            $("ul.tabs").tabs();
+            $("ul.tabs").tabs("select_tab", "entrainements");
+        });
+
+    </script>
+{% endblock %}

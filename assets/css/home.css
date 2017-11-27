@@ -39,11 +39,15 @@ div.bottom_nav{
 }
 
 div.row.bottom_nav ul.tabs li a{
+    font-family: 'Caviar Dreams'!important;
     color: white!important;
 }
 
 div.row.bottom_nav ul.tabs li a:hover{
     background-color: #3b96e2;
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear
 }
 div.row.bottom_nav ul.tabs li.indicator{
     display: none;

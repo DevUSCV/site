@@ -1,85 +1,157 @@
 {% extends "template.twig" %}
 
 {% block head %}
-    
-        <link rel="stylesheet" href="/uscv/site/assets/css/club.css">
-        <script src="/uscv/site/assets/js/club.js"></script>
+
+    <link rel="stylesheet" href="/uscv/site/assets/css/club.css">
+    <script src="/uscv/site/assets/js/club.js"></script>
 
     <title>Le Club</title>
 {% endblock %}
 
 {% block content %}
+    <a href="{{ path_for('home') }}" class="back_home btn-floating btn-large waves-effect waves-light grey darken-3">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    </a>
     <div class="row content">
         {#       ----------------------------------------------------------------------- ACTUALITE#}
         <div id="actualites" class="col s12">
-            
-            <div>              
-                <div class="row" id="actualite_content">
-                    {% block post %}{% endblock %}
+            <div class="row container" id="actualite_content">
+            {% block post %}{% endblock %}
+        </div>
+
+    </div>
+    {#       ----------------------------------------------------------------------- EVENEMENTS#}
+    <div id="evenements" class="col s12">
+        <div class="row container" id="evenement_content">
+            <h2 class="header">Evenements</h2>
+            <div class="card grey darken-3 white-text"> 
+                <div class="card-tabs">
+                    <ul class="tabs tabs-fixed-width black">
+                        <li class="tab"><a class="active" href="#event_planning">Planning</a></li>
+                        <li class="tab"><a href="#event_file">Avis de cource</a></li>
+                    </ul>
                 </div>
+                <div class="card-content">
+                    <div id="event_planning"><p></p></div>
+                    <div id="event_file">
+                        <object id="event_pdf" data="" type="application/pdf">
+                        </object>
+                    </div>
+                </div>                                
             </div>
-            
-        </div>
-        {#       ----------------------------------------------------------------------- EVENEMENTS#}
-        <div id="evenements" class="col s12">
-            <div>
-                Test 2
-            </div>
-        </div>
-        {#       ----------------------------------------------------------------------- PRATIQUES#}
-        <div id="pratiques" class="col s12">
-            <div>
-                Test 3
-            </div>
-        </div>
-        {#       ----------------------------------------------------------------------- ENTRAINEMENT#}
-        <div id="entrainements" class="col s12">
-            <div>
-                Test 4
-            </div>
-        </div>
-        {#       ----------------------------------------------------------------------- EQUIPE#}
-        <div id="equipe" class="col s12">
-            <div>
-                Test 5
-            </div>
-        </div>
-        {#       ----------------------------------------------------------------------- A PROPOS#}
-        <div id="apropos" class="col s12">
-            <div>
-                Test 1
-            </div>
-        </div>
-        <div class="col s12 black bottom_nav">
-            <ul class="tabs black center">
-                <li class="tab col s2">
-                    <a href="#actualites" onclick="actualite()">Actualités</a>
-                </li>
-                <li class="tab col s2">
-                    <a href="#evenements">Evenement</a>
-                </li>
-                <li class="tab col s2">
-                    <a href="#pratiques">Pratiques</a>
-                </li>
-                <li class="tab col s2">
-                    <a href="#entrainements">Entrainements</a>
-                </li>
-                <li class="tab col s2">
-                    <a href="#equipe">L'équipe</a>
-                </li>
-                <li class="tab col s2">
-                    <a href="#apropos">A Propos</a>
-                </li>
-            </ul>
         </div>
     </div>
+    {#       ----------------------------------------------------------------------- PRATIQUES#}
+    <div id="pratiques" class="col s12">
+        <div class="row container" id="evenement_content">
+            <h2 class="header">Pratiques</h2>
+            <div class="card">
+                <div class="card-tabs">
+                    <ul class="tabs tabs-fixed-width black">
+                        <li class="tab"><a class='active' href="#pratique_deriveur">Dériveur</a></li>
+                        <li class="tab"><a href="#pratique_vrc">VRC</a></li>
+                        <li class="tab"><a href="#pratique_croisiere">Croisières</a></li>
+                    </ul>
+                </div>
+                <div class="card-content">
+                    <div id="pratique_deriveur"><span class="card-title"></span><p></p></div>
+                    <div id="pratique_vrc"><span class="card-title"></span><p></p></div>
+                    <div id="pratique_croisiere"><span class="card-title"></span><p></p></div>
+                </div>                                
+            </div>
+        </div>
+    </div>
+    {#       ----------------------------------------------------------------------- ENTRAINEMENT#}
+    <div id="entrainements" class="col s12">
+        <div class="row container">
+            <h2 class="header">Entrainements</h2>
+            <div class="col s12">
+                <div class="card ">
+                    <div class="card-content white-text">
+                        <span class="card-title"></span>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#       ----------------------------------------------------------------------- EQUIPE#}
+    <div id="equipe" class="col s12">
+        <div class="row container">
+            <h2 class="header">L'équipe</h2>
+            <div class="col s12 l4">
+                <div class="card ">
+                    <div class="card-content" id='team_1'>
+                        <span class="card-title"></span>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 l4">
+                <div class="card ">
+                    <div class="card-content" id='team_2'>
+                        <span class="card-title"></span>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 l4">
+                <div class="card ">
+                    <div class="card-content" id='team_other'>
+                        <span class="card-title"></span>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#       ----------------------------------------------------------------------- A PROPOS#}
+    <div id="apropos" class="col s12">
+        <div class="row container">
+            <h2 class="header">A propos ...</h2>
+            <div class="col s12">
+                <div class="card ">
+                    <div class="card-content white-text">
+                        <span class="card-title"></span>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s12 black bottom_nav">
+        <ul class="tabs black center">
+            <li class="tab col s2">
+                <a href="#actualites" onclick="actualite()">Actualités</a>
+            </li>
+            <li class="tab col s2">
+                <a href="#evenements" onclick="evenement()">Evenements</a>
+            </li>
+            <li class="tab col s2">
+                <a href="#pratiques" onclick="pratique()">Pratiques</a>
+            </li>
+            <li class="tab col s2">
+                <a href="#entrainements" onclick="entrainement()">Entrainements</a>
+            </li>
+            <li class="tab col s2">
+                <a href="#equipe" onclick="equipe()">L'équipe</a>
+            </li>
+            <li class="tab col s2">
+                <a href="#apropos" onclick="apropos()">A Propos</a>
+            </li>
+        </ul>
+    </div>
+</div>
 {% endblock %}
 
 {% block end_script %}
     <script>
-        
-        
-        actualite();
-        
+
+        document.addEventListener("DOMContentLoaded", function (e) {
+            $("ul.tabs").tabs();
+            $("ul.tabs").tabs("select_tab", "actualites");
+        });
+
     </script>
 {% endblock %}
