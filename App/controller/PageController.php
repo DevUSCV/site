@@ -72,4 +72,10 @@ class PageController {
         $this->container->view->render($response, "Page/location.twig");
         return $response;
     }
+    
+//   --------------------------------------------------------------------------- GALLERIE
+    public function gallery(Request $request, Response $response, $args){
+        $this->container->view->render($response, "Page/gallery.twig");
+        return $response;
+    }
 }

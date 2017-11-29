@@ -30,6 +30,8 @@ $app->get("/reservation", App\Controller\PageController::class . ":reservation")
 
 $app->get("/location", App\Controller\PageController::class . ":location")->setName("location");
 
+$app->get("/gallerie", App\Controller\PageController::class . ":gallery")->setName("gallery");
+
 
 // Run the Application
 $app->run();

@@ -1,0 +1,48 @@
+div.content{
+    height: calc(100vh - 112px);
+    width: 100vw;
+    background-color: black;
+    background-size: cover;
+    overflow-y: scroll;
+}
+
+.content{
+}
+
+figure{    
+    margin: 0 auto!important;    
+    //padding: 0!important;
+}
+
+figcaption{    
+    display: none;
+}
+
+/*------------------------------------------------------------------------------ ONGLETS*/
+
+div.bottom_nav{
+    width: 100%;
+    position: absolute;
+    bottom: -20px;
+    z-index: 1000;
+}
+
+div.row.bottom_nav ul.tabs li a{
+    font-family: 'Caviar Dreams'!important;
+    color: white!important;
+}
+
+div.row.bottom_nav ul.tabs li a:hover{
+    background-color: #3b96e2;
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear
+}
+div.row.bottom_nav ul.tabs li.indicator{
+    display: none;
+}
+/*
+#actualite_content div{
+    height: auto;
+    overflow: hidden;
+}*/

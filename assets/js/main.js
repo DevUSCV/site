@@ -30,10 +30,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
         endingTop: '10%', // Ending top style attribute
     });
 
-
-    document.querySelector('#windguru').addEventListener("load", function(e){
-        console.log(e.target.contentWindow);
-    });
 });
 
 
