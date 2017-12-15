@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 });
 
 function init(article_name) {
-    let form = document.querySelector("#article_editor");
+    var form = document.querySelector("#article_editor");
     $.getJSON(API_URL + "/article/" + article_name, (data) => {
         form.title.value = data.title;
         form.article_id.value = data.article_id;
@@ -29,12 +29,12 @@ function init(article_name) {
 }
 
 function save() {
-    let form = document.querySelector("#article_editor");
-    let article_id = parseInt(form.article_id.value);
-    let title = form.title.value;
-    let content = tinymce.get('content').getContent();
+    var form = document.querySelector("#article_editor");
+    var article_id = parseInt(form.article_id.value);
+    var title = form.title.value;
+    var content = tinymce.get('content').getContent();
 
-    let error = false;
+    var error = false;
     if (article_id === 0) {
         error = "Identifiant d'article inconnu.";
     } else if (title.length === 0) {

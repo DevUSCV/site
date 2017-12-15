@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             + "<ul class='tabs tabs-fixed-width grey darken-3'>";
 
 
-    for (let month of months) {
+    for (var month of months) {
         html += "<li class='tab col s1'>"
                 + "<a href='#" + month + "' class='waves-effect'>" + month + "</a>"
                 + "</li>"
@@ -29,12 +29,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
             + "</div>" // card-tabs;
 
     html += "<div class='card-content'>";
-    for (let month = 0; month < months.length; month++) {
+    for (var month = 0; month < months.length; month++) {
         html += "<div id='" + months[month] + "'>"
                 + " <table class='striped highlight centered calendar_table'>"
                 + "     <thead>"
                 + "         <tr class='grey darken-3 white-text'>";
-        for (let day = 0; day < days.length; day++) {
+        for (var day = 0; day < days.length; day++) {
             html += "               <th>" + days[day] + " </th>"
         }
 
@@ -42,8 +42,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 + "     </thead>"
                 + "     <tbody>"
                 + "     <tr>"
-        for (let day = 1; day <= month_days[month]; day++) {
-            let date = new Date(year, month, day);
+        for (var day = 1; day <= month_days[month]; day++) {
+            var date = new Date(year, month, day);
             if (date.getDate() === 1 && date.getDay() !== 1) {
                 html += "<td colspan='" + (date.getDay() + 6) % 7 + "'></td>"
             }
@@ -80,16 +80,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 
     $("td").click(function (e) {
-        let day = e.target.dataset.day;
-        let month = e.target.dataset.month;
-        let year = e.target.dataset.year;
-        let today = new Date();
+        var day = e.target.dataset.day;
+        var month = e.target.dataset.month;
+        var year = e.target.dataset.year;
+        var today = new Date();
         if (month >= today.getMonth() && day > today.getDate()) {
-            let html;
+            var html;
             $.getJSON(API_URL + "/reservation/" + year + "/" + (parseInt(month) + 1) + "/" + day, function (data) {
                 html = "<table class='striped highlight centered planning_table'>"
                         + "<tbody>";
-                for (let hour = 8; hour <= 18; hour = hour + 2) {
+                for (var hour = 8; hour <= 18; hour = hour + 2) {
                     html += "<tr>"
                             + "<td>" + hour + "h</td>"
                             + "<td>";

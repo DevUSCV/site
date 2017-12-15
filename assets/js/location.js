@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 });
 
 function get_location_tarif_table(data) {
-    let tableHtml = "<table class='centered responsive-table highlight'>"
+    var tableHtml = "<table class='centered responsive-table highlight'>"
             + " <thead class='grey darken-3 white-text'>"
             + "     <tr>"
             + "<th>Catégorie</th>"
@@ -23,7 +23,7 @@ function get_location_tarif_table(data) {
             + "</tr>"
             + " </thead>"
             + " <tbody>";
-    for (let price of data) {
+    for (var price of data) {
         tableHtml += "     <tr class='white' data-description='" + price.description + "' data-image='" + price.image_url + "' onclick='show_desc(this)'>"
                 + "         <td>" + price.name + "</td>"
                 + "         <td>" + (price.half_hour > 0 ? Math.round(price.half_hour) + "€" : "-") + "</td>"

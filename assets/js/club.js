@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
 function actualite() {
     document.title = SITE_NAME + " | Le Club";
     $.getJSON(API_URL + "/blog/club", (data) => {
-        let content = document.querySelector("#actualite_content"); 
+        var content = document.querySelector("#actualite_content"); 
         content.innerHTML = "<h1 class=''>Actualités</h1>";
         if (data.post) {
-            for (let post of data.post) {
-                let card = '<div class="col s12 m6">'
+            for (var post of data.post) {
+                var card = '<div class="col s12 m6">'
                         + '<div class="card blog_post_excerpt">'
                         + '<div class="card-content ">'
                         + '<span class="card-title grey darken-3 white-text">' + post.title + '</span>'

@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function (e) {
     document.querySelector("div.row.content").style.backgroundImage = "url(" + SITE_ROOT + "/assets/image/background.jpg)";
     $.getJSON(API_URL + "/photo", function (data) {
-        let gallery = "";
-        for (let photo of data) {
+        var gallery = "";
+        for (var photo of data) {
             gallery += " <figure class='col s12 m6 l3' itemprop='associatedMedia' itemscope itemtype='http://schema.org/ImageObject'>"
                     + "     <a href='" + API_URL + photo.url_large + "' itemprop='contentUrl' data-size='1024x768'>"
                     + "         <img class='responsive-img' src='" + API_URL + photo.url_small + "' itemprop='thumbnail' alt='Image description' />"

@@ -3,7 +3,7 @@ $(".login_tabs").tabs('select_tab', 'login');
 
 document.querySelector("#login_form button").addEventListener("click", function (e) {
     e.preventDefault();
-    let form = document.querySelector("#login_form");
+    var form = document.querySelector("#login_form");
     if (form.email.validity.valid
             && form.password.validity.valid) {
         $.post(API_URL + "/login",
