@@ -1,5 +1,5 @@
-const API_URL = "/uscv/api";
-const SITE_ROOT = "/uscv/site";
+const API_URL = "/api";
+const SITE_ROOT = "";
 const SITE_NAME = "U.S. Carmaux Voile";
 document.title = SITE_NAME;
 var SITE;
