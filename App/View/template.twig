@@ -1,43 +1,72 @@
 <!DOCTYPE html>
+
 <html>
-    <!-------------------------------------------------------------------------- HEAD -->
+    {# <!-------------------------------------------------------------------------- HEAD -->#}
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
         <link rel="stylesheet" href="/uscv/site/assets/css/main.css">
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>    
         <script src="https://use.fontawesome.com/d96eeea1cb.js"></script>
-        <script src="/uscv/site/assets/js/main.js"></script>
+        <script src="/uscv/site/assets/js/main.js"></script>     
 
     {% block head %}{% endblock %}
 
 </head>
 
 <body>
-    <!-------------------------------------------------------------------------- SIDE NAV -->
+    {#<!-------------------------------------------------------------------------- SIDE NAV -->#}
     <ul id="slide-out" class="side-nav grey darken-3">
-        <li><div class="user-view white-text">
+        <li>
 
-                <a href="#!user"><img class="circle" src="/uscv/site/assets/image/user/default.png"></a>
-                <a href="#!name"><span class="white-text name">John Doe</span></a>
-                <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-                <button class="btn wave-effects blue">Connexion <i class="fa fa-sign-in" aria-hidden="true"></i></button>
-                <button class="btn wave-effects red">Déconnexion <i class="fa fa-sign-out" aria-hidden="true"></i></button>
-            </div></li>
-        <li><a href="{{ path_for('club') }}">Le Club</a></li>
-        <li><a href="{{ path_for('activite') }}">Activités</a></li>
-        <li><a href="#">Réservation</a></li>
-        <li><a href="#">Locations</a></li>
+            {% if not user %}
+                <div class="user-view white-text">
+                    {#<a href="#!user"><img class="circle" src="/uscv/site/assets/image/user/default.png"></a>
+                    <a href="#!name"><span class="white-text name">John Doe</span></a>
+                    <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>#}
+                    <button class="btn wave-effects blue" onclick="connection()">Connexion <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                </div>
+            {% else %}
+                <div class="user-view white-text">
+                    <a href="#!user"><img class="circle" src="/uscv/site/assets/image/user/default.png"></a>
+                    <a href="#!name"><span class="white-text name">{{ user.getFirstname }} {{ user.getLastname }}</span></a>
+                    <a href="#!email"><span class="white-text email">{{ user.getEmail }}</span></a>
+                    <button class="btn wave-effects red" onclick="deconnection()">Déconnexion <i class="fa fa-sign-out" aria-hidden="true"></i></button>
+                </div>
+            {% endif %}
+
+        </li>
+        <li><a href="" id="site_phone2" class="center"></a></li>
+        <li>
+            <div class="center row">
+                <a class="tooltipped waves-effect waves-light col s4" data-position="bottom" data-delay="50" data-tooltip="Galerie" href="{{ path_for('gallery') }}"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+                <a class="tooltipped waves-effect waves-light col s4" data-position="bottom" data-delay="50" data-tooltip="Nous Contacter" onclick="show_contact();"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                <a class="tooltipped waves-effect waves-light col s4" data-position="bottom" data-delay="50" data-tooltip="Nous Trouver" onclick="show_map();"><i class="fa fa-map" aria-hidden="true"></i></a>
+            </div>
+            <hr>
+        </li>
+        
+        
+        <li class="smenu" ><a href="{{ path_for('club') }}">Le Club</a></li>
+        <li class="smenu" ><a href="{{ path_for('activite') }}">Activités</a></li>
+        <li class="smenu" ><a href="#">Réservation</a></li>
+        <li class="smenu" ><a href="#">Locations</a></li>
+
+        
+
     </ul>
     <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars" aria-hidden="true"></i></a>
 
-    <!-------------------------------------------------------------------------- NAV -->
+    {# <!-------------------------------------------------------------------------- NAV -->#}
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper grey darken-3">
                 <a href="{{ path_for('home') }}" class="brand-logo left tooltipped" data-position="bottom" data-delay="50" data-tooltip="Accueil">Logo</a>
                 <ul class="right hide-on-small-only">
-                    <li><a class="tooltipped waves-effect waves-light" data-position="bottom" data-delay="50" data-tooltip="Gallerie" href="{{ path_for('gallery') }}"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
+                    <li><a class="tooltipped waves-effect waves-light" data-position="bottom" data-delay="50" data-tooltip="Nous Appeler" href="" id="site_phone"></a></li>
+                    <li><a class="tooltipped waves-effect waves-light" data-position="bottom" data-delay="50" data-tooltip="Galerie" href="{{ path_for('gallery') }}"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
                     <li><a class="tooltipped waves-effect waves-light" data-position="bottom" data-delay="50" data-tooltip="Nous Contacter" onclick="show_contact();"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
                     <li><a class="tooltipped waves-effect waves-light" data-position="bottom" data-delay="50" data-tooltip="Nous Trouver" onclick="show_map();"><i class="fa fa-map" aria-hidden="true"></i></a></li>
                     <li><a class="tooltipped waves-effect waves-light facebook_link" target="_blank" data-position="bottom" data-delay="50" data-tooltip="Nous suivre sur Facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
@@ -51,7 +80,7 @@
     {% block content %}{% endblock %}
 </div>
 
-<!------------------------------------------------------------------------------ FOOTER -->
+{#<!------------------------------------------------------------------------------ FOOTER -->#}
 <footer class="page-footer grey darken-3">
     <div class="container">
         <div class="row">
@@ -60,7 +89,7 @@
                 <p class="grey-text text-lighten-4">Notre association exerce ses activités nautiques depuis 1961 sur le plan d ’eau de la Roucarié près de Monestiés, a quelques kilomètres d’Albi, d ans un cadre de verdure et de calme. C’est une réserve d’eau potable, ou une zone a été aménagée pour la baignade et où nous vous proposons de passer quelques journées de vos vacances. Notre Base Nautique tournée essentiellement vers la voile possède les labels de qualité décernés par la Fédération Française de Voile, et à ce titre nous vous proposons un enseignement performant avec des moniteurs diplômés d’état. Stages d’initiation ou de perfectionnement, leçons particulières, ou tout simplement locations, nous vous offrons la possibilité d’utiliser notre parc de matériel, divers et varié, en veillant à votre sécurité et à celle de vos enfants. Nos structures d’accueil vous permettent de venir pique-niquer au bord de l’eau et d’utiliser notre terrasse et barbecue. Le temps des vacances c’est également le temps des Loisirs avec L’U.S.C VOILE. C’est pourquoi, nous vous invitons à passer nous voir !!</p>
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Ils nous sponsirisent</h5>
+                <h5 class="white-text">Ils nous sponsorisent</h5>
                 <ul>
                     <li><a class="grey-text text-lighten-3" href="#!">Sponsor 1</a></li>
                     <li><a class="grey-text text-lighten-3" href="#!">Sponsor 2</a></li>
@@ -77,11 +106,8 @@
     </div>
 </footer>
 
-
-{% block end_script %}{% endblock %}
-
 <!-- Modal Structure -->
-<div id="modal" class="modal modal-fixed-footer">
+<div id="modal" class="modal">
     <div class="modal-content">
         <h4>Modal Header</h4>
         <div>
@@ -95,44 +121,46 @@
     <div class="modal-content">
         <h4>Nous Contacter</h4>
         <div>
-            <div class="row">
+            <div class="row">     
+                <h5>Par Mail</h5>
                 <form class="col s12" name="email_form">
+                    <div class="input-field col s6">
+                        <i class="fa fa-user-circle-o prefix" aria-hidden="true"></i>
+                        <input id="mail_full_name" type="text" class="validate" value="{{ user.getFirstname }} {{ user.getLastname }}">
+                        <label for="mail_full_name">Nom Complet</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="fa fa-reply prefix" aria-hidden="true"></i>
+                        <input id="mail_reply" type="email" class="validate" value="{{ user.getEmail }}">
+                        <label for="mail_reply">Email</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="mail_object" type="text" class="validate">
+                        <label for="mail_object">Objet</label>
+                    </div>
                     <div class="row">
-                        <div class="input-field col s6">
-                            <i class="fa fa-user-circle-o prefix" aria-hidden="true"></i>
-                            <input id="mail_full_name" type="text" class="validate">
-                            <label for="mail_full_name">Nom Complet</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="fa fa-reply prefix" aria-hidden="true"></i>
-                            <input id="mail_reply" type="email" class="validate">
-                            <label for="mail_reply">Email</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <input id="mail_object" type="text" class="validate">
-                            <label for="mail_object">Objet</label>
-                        </div>
                         <div class="row">
-                            <form class="col s12">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="fa fa-pencil prefix" aria-hidden="true"></i>
-                                        <textarea id="email_content" class="materialize-textarea"></textarea>
-                                        <label for="email_content">Message</label>
-                                    </div>
-                                </div>
-                            </form>
+                            <div class="input-field col s12">
+                                <i class="fa fa-pencil prefix" aria-hidden="true"></i>
+                                <textarea id="email_content" class="materialize-textarea"></textarea>
+                                <label for="email_content">Message</label>
+                            </div>
                         </div>
                     </div>
                 </form>
+                <h5>Par Courrier</h5>
+                <span class="site_address col s12"></span>
             </div>
         </div>
 
     </div>
     <div class="modal-footer">
-      <button class="modal-action modal-close waves-effect waves-green btn green"><i class="fa fa-paper-plane" aria-hidden="true"></i> Envoyer</button>  
+        <button class="modal-action modal-close waves-effect waves-green btn green"><i class="fa fa-paper-plane" aria-hidden="true"></i> Envoyer</button>  
     </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+{% block end_script %}{% endblock %}
 
 </body>
 </html>

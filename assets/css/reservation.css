@@ -1,8 +1,39 @@
 div.row.content{
     height: calc(100vh - 112px);
-    overflow: hidden;
+    overflow-y: scroll;
     background-size: cover;
     padding-top: 10px!important;
+}
+li.tab a{
+    color: white!important;
+}
+li.tab:hover{
+    background-color: #3b96e2;
+}
+
+div.calendar li.tab a.active{
+    background-color: #3b96e2!important;
+}
+
+table th{
+    padding: 2px 0!important;
+}
+
+table.calendar_table td {
+    font-family: 'Caviar Dreams'!important;
+    font-weight: bold;
+    font-size: 40px!important;
+    border: 1px solid lightgrey;
+    cursor: pointer;    
+}
+
+table.planning_table td{
+    padding: 5px 0;
+    width: 50%;
+}
+
+table td.today{
+    border: 2px solid black;
 }
 
 /*------------------------------------------------------------------------------ ONGLETS*/

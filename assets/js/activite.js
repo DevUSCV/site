@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
         document.querySelector("#groupe span.card-title").innerHTML = data.title;
         document.querySelector("#groupe p").innerHTML = data.content;
     });
+    var tl = new TimelineLite();
+    tl.staggerFrom($(".card"), 0.3, {alpha: 0, scale:0.1}, 0.1);
 
 });
 
@@ -25,7 +27,7 @@ function tarif_cours() {
             tableHTML += get_tarif_table(data, "2 Personnes");
             $.getJSON(API_URL + "/price/cours_particulier_3", function (data) {//    3 PERSONNE
                 tableHTML += get_tarif_table(data, "3 Personnes")
-                + "<a href='" + SITE_ROOT + "/reservation' class='btn green'>Reservation</a>";
+                        + "<a href='" + SITE_ROOT + "/reservation' class='btn green'>Reservation</a>";
                 document.querySelector("#modal div.modal-content div").innerHTML += tableHTML;
                 $('#modal').modal('open');
             });
@@ -44,7 +46,7 @@ function tarif_stage() {
                 tableHTML += get_tarif_table(data, data[0].support);
                 $.getJSON(API_URL + "/price/stage_catamaran", function (data) {//    CATAMARAN
                     tableHTML += get_tarif_table(data, data[0].support)
-                    + "<a href='" + SITE_ROOT + "/reservation' class='btn green'>Reservation</a>";
+                            + "<a href='" + SITE_ROOT + "/reservation' class='btn green'>Reservation</a>";
                     document.querySelector("#modal div.modal-content div").innerHTML = tableHTML;
                     $('#modal').modal('open');
                 });
@@ -61,15 +63,35 @@ function tarif_groupe() {
         let tableHTML = get_tarif_table(data, "Séances de 2h (Tarifs par stagiaire)") + "<span class='right'>Maximum 10 embarcations</span>";
         $.getJSON(API_URL + "/price/groupe_2", function (data) {//    FORFAITS CARAVELLE
             tableHTML += get_tarif_table(data, "Caravelle (6 enfants max.)")
-            + "<a href='" + SITE_ROOT + "/reservation' class='btn green'>Reservation</a>";
+                    + "<a href='" + SITE_ROOT + "/reservation' class='btn green'>Reservation</a>";
             document.querySelector("#modal div.modal-content div").innerHTML += tableHTML;
             $('#modal').modal('open');
         });
     });
 }
 
-function reservation() {
+function condition_cours() {
+    $.getJSON(API_URL + "/article/cours_particuliers_conditions", (data) => {
+        document.querySelector("#modal h4").innerHTML = data.title;
+        document.querySelector("#modal div.modal-content div").innerHTML = "<p>" + data.content + "</p>";
+        $('#modal').modal('open');
+    });
+}
 
+function condition_stages() {
+    $.getJSON(API_URL + "/article/stages_conditions", (data) => {
+        document.querySelector("#modal h4").innerHTML = data.title;
+        document.querySelector("#modal div.modal-content div").innerHTML = "<p>" + data.content + "</p>";
+        $('#modal').modal('open');
+    });
+}
+
+function condition_groupes() {
+    $.getJSON(API_URL + "/article/groupes_conditions", (data) => {
+        document.querySelector("#modal h4").innerHTML = data.title;
+        document.querySelector("#modal div.modal-content div").innerHTML = "<p>" + data.content + "</p>";
+        $('#modal').modal('open');
+    });
 }
 
 function get_tarif_table(data, title) {

@@ -1,0 +1,70 @@
+{% extends "template.twig" %}
+
+{% block head %}     
+    <link rel="stylesheet" href="/uscv/site/assets/css/blog_editor.css">
+    <script src="/uscv/site/assets/js/tinymce/tinymce.min.js"></script>  
+    <script src="/uscv/site/assets/js/admin.js"></script>  
+    <script src="/uscv/site/assets/js/form/blog_editor.js"></script>  
+    <title>Edition d'article</title>
+{% endblock %}
+
+{% block content %}
+    {% if user.getStatus == "admin" %}
+        <div class="row content">
+            <div class='container'>
+                <h2>Edition du billet "{{ blog_post_id }}"</h2>
+                <div class="card col s12">
+                    <div class="card-content">
+                        <form id="article_editor">
+                            <input type="hidden" name="blog_post_id" value={{ blog_post_id }}>
+                            <label for="title">Titre</label>
+                            <input type="text" name="title">
+                            <textarea name="content" id="content"></textarea><br>
+                            <div class="card-button right">
+                                <a class="btn waves-effect blue" onclick="save()"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+                            </div><br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <div class="row content">
+            <div class='container'>
+                <h2>Acces Non Authorisé</h2>
+            </div>
+        </div>
+    {% endif %}
+
+
+    <div class="row bottom_nav">
+        <div class="col s12 black">
+            <ul class="tabs black center">
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('club') }}">Le Club</a>
+                </li>
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('activite') }}">Activités</a>
+                </li>
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('reservation') }}">Reservation</a>
+                </li>
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('location') }}">Location</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block end_script %}
+    <script>
+        {% if user.getStatus == "admin" %}
+            init("{{article_name}}");
+        {% else %}
+            window.setTimeout(window.history.back(), 2000);
+        {% endif %}
+
+    </script>
+{% endblock %}

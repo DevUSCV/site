@@ -5,13 +5,8 @@ div.row.content{
     padding-top: 10px!important;
 }
 
-span.card-title{
-    width: 100%;
-    background-color: rgba(0,0,0,0.2);
-}
-
 div.card img{
-    height: 300px;
+    height: 100%;
     object-fit: cover;
 }
 

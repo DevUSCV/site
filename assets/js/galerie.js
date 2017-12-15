@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
         document.querySelector("div.gallery").innerHTML += gallery;
         // execute above function
         initPhotoSwipeFromDOM('.gallery');
+        var tl = new TimelineLite();
+        tl.staggerFrom($("figure"), 0.5, {alpha: 0}, 0.1);
     });
 });
 

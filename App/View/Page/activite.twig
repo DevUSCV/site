@@ -12,51 +12,75 @@
         <div class="container">
             <h1>Les Activités</h1>
             <div class="row">
-                <div class="col s12 l4">
-                    <div class="card" id="cours_part">
+                
+                <div class="col s12">
+                    <div class="card horizontal" id="cours_part">
                         <div class="card-image">
-                            <img class="" src="/uscv/site/assets/image/slider/slider2.jpg">
-                            <span class="card-title">Cours Particuliers</span>
+                            <img class="" src="/uscv/site/assets/image/slider/slider2.jpg">                            
                         </div>
-                        <div class="card-content">
-                            <p></p>
-                        </div>
-                        <div class="card-action">
-                            <a onclick="tarif_cours()" class="btn blue">tarifs</a>
-                            <a href="{{ path_for('reservation') }}" class="btn green">Reservation</a>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <span class="card-title">Cours Particuliers</span>
+                                <p></p>                               
+                            </div>
+                            <div class="card-action">
+                                <a onclick="tarif_cours()" class="btn blue">tarifs</a>
+                                <a onclick="condition_cours()" class="btn red">Conditions d'acces</a>
+                                {% if user.getStatus == "admin" %}
+                                    <a class="btn-floating blue right" href="{{ path_for('ArticleEditor', {'article_name': 'cours_particuliers'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col s12 l4">
-                    <div class="card" id="stages">
+
+
+
+                <div class="col s12">
+                    <div class="card horizontal" id="stages">
                         <div class="card-image">
-                            <img class="" src="/uscv/site/assets/image/slider/slider.jpg">
-                            <span class="card-title">Stages</span>
+                            <img class="" src="/uscv/site/assets/image/slider/slider.jpg">                            
                         </div>
-                        <div class="card-content">
-                            <p></p>
-                        </div>
-                        <div class="card-action">
-                            <a onclick="tarif_stage()" class="btn blue">tarifs</a>
-                            <a href="{{ path_for('reservation') }}" class="btn green">Reservation</a>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <span class="card-title">Stages</span>
+                                <p></p>
+                            </div>
+                            <div class="card-action">
+                                <a onclick="tarif_stage()" class="btn blue">tarifs</a>
+                                <a onclick="condition_stages()" class="btn red">Conditions d'acces</a>
+                                {% if user.getStatus == "admin" %}
+                                    <a class="btn-floating blue right" href="{{ path_for('ArticleEditor', {'article_name': 'stages'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col s12 l4">
-                    <div class="card" id="groupe">
+
+
+
+                <div class="col s12">
+                    <div class="card horizontal" id="groupe">
                         <div class="card-image">
-                            <img class="" src="/uscv/site/assets/image/slider/slider3.jpg">
-                            <span class="card-title">Groupes</span>
+                            <img class="" src="/uscv/site/assets/image/slider/slider3.jpg">                            
                         </div>  
-                        <div class="card-content">
-                            <p></p>
-                        </div>
-                        <div class="card-action">
-                            <a onclick="tarif_groupe()" class="btn blue">tarifs</a>
-                            <a href="{{ path_for('reservation') }}" class="btn green">Reservation</a>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <span class="card-title">Groupes</span>
+                                <p></p>
+                            </div>
+                            <div class="card-action">
+                                <a onclick="tarif_groupe()" class="btn blue">tarifs</a>
+                                <a onclick="condition_groupes()" class="btn red">Conditions d'acces</a>
+                                {% if user.getStatus == "admin" %}
+                                    <a class="btn-floating blue right" href="{{ path_for('ArticleEditor', {'article_name': 'groupes'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
             </div> 
         </div> 
     </div>
