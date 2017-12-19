@@ -1,0 +1,19 @@
+{
+    "name": "uscv/api",
+    "authors": [
+        {
+            "name": "Vincent Lechopier",
+            "email": "lechopier.vincent@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    },
+    "require": {
+        "slim/slim": "^3.9",
+        "doctrine/orm": "^2.5",
+        "slim/middleware": "^1.0"
+    }
+}
