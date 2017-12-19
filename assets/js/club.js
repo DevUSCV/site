@@ -5,25 +5,32 @@ document.addEventListener("DOMContentLoaded", function (e) {
 function actualite() {
     document.title = SITE_NAME + " | Le Club";
     $.getJSON(API_URL + "/blog/club", (data) => {
-        var content = document.querySelector("#actualite_content"); 
-        content.innerHTML = "<h1 class=''>Actualités</h1>";
+        var content = document.querySelector("#actualite_content");
+        content.innerHTML = "<h1 class=''>Actualités"
+                + ((STATUS === "admin" || STATUS === "modo") ? " <a class='btn-floating blue' href='blog/editor/new'><i class='fa fa-plus' aria-hidden='true'></i></a>" : "")
+                + "</h1>";
         if (data.post) {
             for (var post of data.post) {
-                var card = '<div class="col s12 m6">'
+                var card = '<div class="col s12" id="blog_post_' + post.blog_post_id + '">'
                         + '<div class="card blog_post_excerpt">'
                         + '<div class="card-content ">'
                         + '<span class="card-title grey darken-3 white-text">' + post.title + '</span>'
                         + '<p>' + post.content + '</p>'
                         + '</div>'
                         + '<div class="card-action">'
-                        + '<a class="btn waves-effects blue" href="' + SITE_ROOT + '/club/post/' + post.blog_post_id + '">Lire</a>'
+                        + '<a class="btn waves-effects blue" href="' + SITE_ROOT + '/club/post/' + post.blog_post_id + '"><i class="fa fa-eye" aria-hidden="true"></i> Lire</a>'
+
+                        + ((STATUS === "admin") ?
+                                " <div class='right'><a class='btn-floating blue' href='blog/editor/" + post.blog_post_id + "'><i class='fa fa-pencil' aria-hidden='true'></i></a> "
+                                + " <a class='btn-floating red' onclick='delete_post(" + post.blog_post_id + ")'><i class='fa fa-trash' aria-hidden='true'></i></a></div>"
+                                : " ")
                         + '<a class="right">' + post.comment_count + ' commentaire(s)</a>'
                         + '</div>'
 
                 content.innerHTML += card;
             }
             var tl = new TimelineLite();
-            tl.staggerFrom($(".blog_post_excerpt"), 0.3, {alpha: 0, scale:0.1}, 0.1);
+            tl.staggerFrom($(".blog_post_excerpt"), 0.3, {alpha: 0, scale: 0.1}, 0.1);
         }
     });
 }
@@ -32,17 +39,17 @@ function actualite() {
 function evenement() {
     document.title = SITE_NAME + " | Les Evenements";
     var tl = new TimelineLite();
-    tl.staggerFrom($(".card"), 0.3, {alpha: 0, scale:0.1}, 0);
+    tl.staggerFrom($(".card"), 0.3, {alpha: 0, scale: 0.1}, 0);
     $.getJSON(API_URL + "/article/evenements", (data) => {
         document.querySelector("#event_planning p").innerHTML = data.content;
-        document.querySelector("#event_pdf").data = SITE_ROOT + "/assets/file/avis-de-course.pdf?#zoom=FitH";        
+        document.querySelector("#event_pdf").data = SITE_ROOT + "/assets/file/avis-de-course.pdf?#zoom=FitH";
     });
 }
 ;
 
 function pratique() {
     var tl = new TimelineLite();
-    tl.staggerFrom($(".card"), 0.3, {alpha: 0, scale:0.1}, 0);
+    tl.staggerFrom($(".card"), 0.3, {alpha: 0, scale: 0.1}, 0);
     document.title = SITE_NAME + " | Les Pratiques";
     $.getJSON(API_URL + "/article/pratique_deriveur", (data) => {
         document.querySelector("#pratique_deriveur span.card-title").innerHTML = data.title;
@@ -62,7 +69,7 @@ function pratique() {
 function entrainement() {
     document.title = SITE_NAME + " | Les Entrainements";
     var tl2 = new TimelineLite();
-    tl2.staggerFrom($(".card"), 0.3, {alpha: 0, scale:0.1}, 0);
+    tl2.staggerFrom($(".card"), 0.3, {alpha: 0, scale: 0.1}, 0);
     $.getJSON(API_URL + "/article/entrainements", (data) => {
         document.querySelector("#entrainements span.card-title").innerHTML = data.title;
         document.querySelector("#entrainements p").innerHTML = data.content;
@@ -73,7 +80,7 @@ function entrainement() {
 function equipe() {
     document.title = SITE_NAME + " | L'Equipe";
     var tl = new TimelineLite();
-    tl.staggerFrom($(".card"), 0.3, {alpha: 0, scale:0.1}, 0);
+    tl.staggerFrom($(".card"), 0.3, {alpha: 0, scale: 0.1}, 0);
     $.getJSON(API_URL + "/article/moniteur1", (data) => {
         document.querySelector("#team_1 span.card-title").innerHTML = data.title;
         document.querySelector("#team_1 p").innerHTML = data.content;
@@ -92,7 +99,7 @@ function equipe() {
 function apropos() {
     document.title = SITE_NAME + " | A Propos";
     var tl = new TimelineLite();
-    tl.staggerFrom($(".card"), 0.3, {alpha: 0, scale:0.1}, 0);
+    tl.staggerFrom($(".card"), 0.3, {alpha: 0, scale: 0.1}, 0);
     $.getJSON(API_URL + "/article/apropos", (data) => {
         document.querySelector("#apropos span.card-title").innerHTML = data.title;
         document.querySelector("#apropos p").innerHTML = data.content;

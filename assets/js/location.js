@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 });
 
 function get_location_tarif_table(data) {
-    var tableHtml = "<table class='centered responsive-table highlight'>"
+    var tableHtml = "<table class='centered highlight'>"
             + " <thead class='grey darken-3 white-text'>"
             + "     <tr>"
             + "<th>Catégorie</th>"

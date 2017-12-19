@@ -19,7 +19,11 @@ require './App/container.php';
 $app->get("/", App\Controller\PageController::class . ":home")->setName("home");
 $app->get("/connection", App\Controller\PageController::class . ":formConnection")->setName("login");
 
-$app->get("/article/editor/{article_name}", App\Controller\PageController::class . ":formArticle")->setName("ArticleEditor");
+$app->get("/article/editor/{article_name}", App\Controller\PageController::class . ":articleEditor")->setName("ArticleEditor");
+$app->get("/blog/editor/{blog_post_id}", App\Controller\PageController::class . ":blogEditor")->setName("BlogEditor");
+
+// ----------------------------------------------------------------------------- PROFILE
+$app->get("/profil", App\Controller\PageController::class . ":profil")->setName("profil");
 
 // ----------------------------------------------------------------------------- LE CLUB
 $app->get("/club", App\Controller\PageController::class . ":club")->setName("club");

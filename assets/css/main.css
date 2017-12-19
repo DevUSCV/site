@@ -20,8 +20,12 @@ body{
 }
 
 h1, h2, h3, h4, h5, h6, span.card-title{
-	font-family: 'Caviar Dreams'!important;
-        font-weight: bold!important;
+	//font-family: 'Caviar Dreams'!important;
+        //font-weight: bold!important;
+}
+
+.card{
+    vertical-align: bottom!important;
 }
 
 /*------------------------------------------------------------------------------ BURGER BUTTON*/

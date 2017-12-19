@@ -12,7 +12,7 @@
     {% if user.getStatus == "admin" %}
         <div class="row content">
             <div class='container'>
-                <h2>Edition de "{{article_name}}"</h2>
+                <h2>Edition de "{{article_name}}" <a onclick="history.back();" class="btn-floating btn-large grey darken-3 right waves-effect"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a></h2>
                 <div class="card col s12">
                     <div class="card-content">
                         <form id="article_editor">

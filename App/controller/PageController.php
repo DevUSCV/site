@@ -21,6 +21,15 @@ class PageController {
         $this->container->view->render($response, "Page/home.twig", $param);
         return $response;
     }
+    
+//   --------------------------------------------------------------------------- PROFIL
+    public function profil(Request $request, Response $response, $args) {
+        $param = array(
+            "user" => $this->container["user"]
+        );
+        $this->container->view->render($response, "Page/profil.twig", $param);
+        return $response;
+    }
 
 //   --------------------------------------------------------------------------- LE CLUB 
     public function club(Request $request, Response $response, $args) {
@@ -152,13 +161,23 @@ class PageController {
         return $response;
     }
 
-    public function formArticle(Request $request, Response $response, $args) {
+    public function articleEditor(Request $request, Response $response, $args) {
         $param = array(
             "user" => $this->container["user"],
             "article_name" => $args["article_name"]
         );
 
         $this->container->view->render($response, "Form/ArticleEditor.twig", $param);
+        return $response;
+    }
+    
+    public function blogEditor(Request $request, Response $response, $args) {
+        $param = array(
+            "user" => $this->container["user"],
+            "blog_post_id" => intval($args["blog_post_id"])
+        );
+
+        $this->container->view->render($response, "Form/BlogEditor.twig", $param);
         return $response;
     }
 

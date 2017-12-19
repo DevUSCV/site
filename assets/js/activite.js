@@ -95,7 +95,7 @@ function condition_groupes() {
 }
 
 function get_tarif_table(data, title) {
-    var tableHtml = "<table class='centered responsive-table highlight bordered striped'>"
+    var tableHtml = "<table class='centered highlight bordered striped'>"
             + " <thead class='grey lighten-2'>"
             + "     <tr><th colspan='2'>" + title + "</th></tr>"
             + " </thead>"

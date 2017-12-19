@@ -1,0 +1,27 @@
+div.row.content{
+    height: calc(100vh - 112px);
+    overflow-y: scroll;
+    background-size: cover;
+    padding-top: 10px!important;
+}
+
+/*------------------------------------------------------------------------------ ONGLETS*/
+
+div.bottom_nav{
+    width: 100%;
+    position: absolute;
+    bottom: -20px;
+    z-index: 1000;
+}
+
+div.row ul.tabs li a{
+    font-family: 'Caviar Dreams'!important;
+    color: white!important;
+}
+
+div.row ul.tabs li a:hover{
+    background-color: #3b96e2;
+}
+div.row ul.tabs li.indicator{
+    background-color: #3b96e2;
+} 
