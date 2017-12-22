@@ -130,19 +130,18 @@ class PageController {
 //   ---------------------------------------------------------------------------
     public function formReservation(Request $request, Response $response, $args) {
         $year = intval($request->getParam("year"));
-        $month = intval($request->getParam("month"));
+        $month = intval($request->getParam("month"))+1;
         $day = intval($request->getParam("day"));
-        $hour = intval($request->getParam("hour"));
         if ($year == date("Y") && $month > 0 && $month <= 12 && $day > 0 && $day <= 31) {
-            $date = new \DateTime($year . "-" . $month . "-" . $day);
-            $date->setTime($hour, 0);
+            $date = new \DateTime($year . "/" . $month . "/" . $day);
+            var_dump($date);
 
             $param = array(
                 "user" => $this->container["user"],
-                "date" => $date->format("/Y/m/d/H")
+                "date" => $date->format("Y/m/d")
             );
 
-            $this->container->view->render($response, "Form/reservation.twig", $param);
+            $this->container->view->render($response, "Form/formReservation.twig", $param);
             return $response;
         } else {
             return $response->withStatus(400, "Invalid Date");
@@ -178,6 +177,15 @@ class PageController {
         );
 
         $this->container->view->render($response, "Form/BlogEditor.twig", $param);
+        return $response;
+    }
+    
+    public function validUser(Request $request, Response $response, $args) {
+        $param = array(
+            "user" => $this->container["user"],
+            "token" => $args["token"]
+        );
+        $this->container->view->render($response, "Page/valid_user.twig", $param);
         return $response;
     }
 

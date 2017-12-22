@@ -7,7 +7,7 @@ function actualite() {
     $.getJSON(API_URL + "/blog/club", (data) => {
         var content = document.querySelector("#actualite_content");
         content.innerHTML = "<h1 class=''>Actualités"
-                + ((STATUS === "admin" || STATUS === "modo") ? " <a class='btn-floating blue' href='blog/editor/new'><i class='fa fa-plus' aria-hidden='true'></i></a>" : "")
+                + (isModo() ? " <a class='btn-floating blue' href='blog/editor/new'><i class='fa fa-plus' aria-hidden='true'></i></a>" : "")
                 + "</h1>";
         if (data.post) {
             for (var post of data.post) {
@@ -20,7 +20,7 @@ function actualite() {
                         + '<div class="card-action">'
                         + '<a class="btn waves-effects blue" href="' + SITE_ROOT + '/club/post/' + post.blog_post_id + '"><i class="fa fa-eye" aria-hidden="true"></i> Lire</a>'
 
-                        + ((STATUS === "admin") ?
+                        + (isAdmin() ?
                                 " <div class='right'><a class='btn-floating blue' href='blog/editor/" + post.blog_post_id + "'><i class='fa fa-pencil' aria-hidden='true'></i></a> "
                                 + " <a class='btn-floating red' onclick='delete_post(" + post.blog_post_id + ")'><i class='fa fa-trash' aria-hidden='true'></i></a></div>"
                                 : " ")

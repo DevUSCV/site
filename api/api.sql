@@ -2,10 +2,10 @@
 -- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Nov 29, 2017 at 04:12 AM
--- Server version: 5.7.20-0ubuntu0.16.04.1
--- PHP Version: 7.0.22-0ubuntu0.16.04.1
+-- Client :  localhost
+-- Généré le :  Ven 22 Décembre 2017 à 16:14
+-- Version du serveur :  5.7.20-0ubuntu0.16.04.1
+-- Version de PHP :  7.0.22-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `api`
+-- Base de données :  `api`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `address`
+-- Structure de la table `address`
 --
 
 CREATE TABLE `address` (
@@ -34,7 +34,7 @@ CREATE TABLE `address` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `address`
+-- Contenu de la table `address`
 --
 
 INSERT INTO `address` (`address_id`, `line1`, `line2`, `city_id`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `address` (`address_id`, `line1`, `line2`, `city_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article`
+-- Structure de la table `article`
 --
 
 CREATE TABLE `article` (
@@ -59,27 +59,32 @@ CREATE TABLE `article` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `article`
+-- Contenu de la table `article`
 --
 
 INSERT INTO `article` (`article_id`, `name`, `title`, `content`, `author_name`, `last_editor_name`, `create_date`, `last_edit_date`) VALUES
-(1, 'evenements', 'Planning Evenements', 'Incerez le Planning\n\nOmitto iuris dictionem in libera civitate contra leges senatusque consulta; caedes relinquo; libidines praetereo, quarum acerbissimum extat indicium et ad insignem memoriam turpitudinis et paene ad iustum odium imperii nostri, quod constat nobilissimas virgines se in puteos abiecisse et morte voluntaria necessariam turpitudinem depulisse. Nec haec idcirco omitto, quod non gravissima sint, sed quia nunc sine teste dico.\n\nIllud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.', 'Vincent', 'Poivrot Patrick', '2017-11-15 14:58:39', '2017-11-15 16:44:16'),
-(2, 'pratiques_deriveur', 'Pratique du dériveur', 'Article a rediger pour dériveur\n\nOmitto iuris dictionem in libera civitate contra leges senatusque consulta; caedes relinquo; libidines praetereo, quarum acerbissimum extat indicium et ad insignem memoriam turpitudinis et paene ad iustum odium imperii nostri, quod constat nobilissimas virgines se in puteos abiecisse et morte voluntaria necessariam turpitudinem depulisse. Nec haec idcirco omitto, quod non gravissima sint, sed quia nunc sine teste dico.\n\nIllud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.', 'Poivrot', NULL, NULL, NULL),
-(3, 'pratique_vrc', 'Pratique de la VRC', 'Article a rediger pour la VRC\n\nOmitto iuris dictionem in libera civitate contra leges senatusque consulta; caedes relinquo; libidines praetereo, quarum acerbissimum extat indicium et ad insignem memoriam turpitudinis et paene ad iustum odium imperii nostri, quod constat nobilissimas virgines se in puteos abiecisse et morte voluntaria necessariam turpitudinem depulisse. Nec haec idcirco omitto, quod non gravissima sint, sed quia nunc sine teste dico.\n\nIllud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.', 'Poivrot', NULL, '2017-11-15 16:26:00', NULL),
-(4, 'pratique_croisiere', 'Pratique de la croisiere', 'Article a rediger pour les croisieres\n\nOmitto iuris dictionem in libera civitate contra leges senatusque consulta; caedes relinquo; libidines praetereo, quarum acerbissimum extat indicium et ad insignem memoriam turpitudinis et paene ad iustum odium imperii nostri, quod constat nobilissimas virgines se in puteos abiecisse et morte voluntaria necessariam turpitudinem depulisse. Nec haec idcirco omitto, quod non gravissima sint, sed quia nunc sine teste dico.\n\nIllud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.', 'Poivrot Patrick', NULL, '2017-11-15 16:27:50', NULL),
-(5, 'entrainements', 'Le club vous propose divers entrainements', 'A rediger\n\nOmitto iuris dictionem in libera civitate contra leges senatusque consulta; caedes relinquo; libidines praetereo, quarum acerbissimum extat indicium et ad insignem memoriam turpitudinis et paene ad iustum odium imperii nostri, quod constat nobilissimas virgines se in puteos abiecisse et morte voluntaria necessariam turpitudinem depulisse. Nec haec idcirco omitto, quod non gravissima sint, sed quia nunc sine teste dico.\n\nIllud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.', 'Poivrot Patrick', NULL, '2017-11-15 16:41:35', NULL),
-(6, 'moniteur1', 'Jeremy Thiroux', '<img style="float:left" src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-1/c0.0.160.160/p160x160/19225780_10213620225089285_740117216450843368_n.jpg?oh=93844f0c44cf00c4965283ae9b645f35&oe=5AA302A9"></img><br>\n\nOmitto iuris dictionem in libera civitate contra leges senatusque consulta; caedes relinquo; libidines praetereo, quarum acerbissimum extat indicium et ad insignem memoriam turpitudinis et paene ad iustum odium imperii nostri, quod constat nobilissimas virgines se in puteos abiecisse et morte voluntaria necessariam turpitudinem depulisse. Nec haec idcirco omitto, quod non gravissima sint, sed quia nunc sine teste dico.\n\nIllud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.', 'Poivrot Patrick', NULL, '2017-11-15 16:41:38', NULL),
-(7, 'moniteur2', 'Olivier Cazes', '<img src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-1/p160x160/12347960_1249985845027186_788814770178658612_n.jpg?oh=8ce6aceff26cc9723a5e8fd2d0b683e5&oe=5AA7EC6E"></img><br>\n\nOmitto iuris dictionem in libera civitate contra leges senatusque consulta; caedes relinquo; libidines praetereo, quarum acerbissimum extat indicium et ad insignem memoriam turpitudinis et paene ad iustum odium imperii nostri, quod constat nobilissimas virgines se in puteos abiecisse et morte voluntaria necessariam turpitudinem depulisse. Nec haec idcirco omitto, quod non gravissima sint, sed quia nunc sine teste dico.\n\nIllud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.', 'Poivrot Patrick', NULL, '2017-11-15 16:41:39', NULL),
-(8, 'moniteur3', 'Le reste de l\'équipe', 'tout ceux que j\'oublie !\n\nOmitto iuris dictionem in libera civitate contra leges senatusque consulta; caedes relinquo; libidines praetereo, quarum acerbissimum extat indicium et ad insignem memoriam turpitudinis et paene ad iustum odium imperii nostri, quod constat nobilissimas virgines se in puteos abiecisse et morte voluntaria necessariam turpitudinem depulisse. Nec haec idcirco omitto, quod non gravissima sint, sed quia nunc sine teste dico.\n\nIllud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.', 'Vincent\r\n', NULL, '2017-11-23 06:41:33', NULL),
+(1, 'evenements', 'Les regates a venir', 'Bient&ocirc;t', 'ADMIN', 'Alvernhe Thierry', '2017-11-15 14:58:39', '2017-12-22 09:55:58'),
+(2, 'pratique_deriveur', 'Pratique du dériveur', 'Article a rediger pour dériveur\n\nOmitto iuris dictionem in libera civitate contra leges senatusque consulta; caedes relinquo; libidines praetereo, quarum acerbissimum extat indicium et ad insignem memoriam turpitudinis et paene ad iustum odium imperii nostri, quod constat nobilissimas virgines se in puteos abiecisse et morte voluntaria necessariam turpitudinem depulisse. Nec haec idcirco omitto, quod non gravissima sint, sed quia nunc sine teste dico.\n\nIllud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.', 'ADMIN', NULL, NULL, NULL),
+(3, 'pratique_vrc', 'Pratique de la VRC', '<div style="color: #000000; background-color: rgba(0, 0, 0, 0); font-family: \'Arial Black\', Gadget, sans-serif;"><span style="font-family: \'Arial Black\', Gadget, sans-serif; color: #000000; background-color: rgba(0, 0, 0, 0);">Afin de permettre &agrave; tous ses membres de s\'initier &agrave; la VRC dite Voile Radio Command&eacute;e, <br />L\'USC Voile vient d\'acqu&eacute;rir une nouvelle flotte de 6 Dragon Force.</span><br /><br /><u>DESCRIPTION DU DRAGON FORCE:</u></div>\n<div style="color: #000000; background-color: rgba(0, 0, 0, 0); font-family: \'Arial Black\', Gadget, sans-serif;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://4.bp.blogspot.com/-i5SilQPz49Q/WQSOpExtrVI/AAAAAAAAS-U/m9kP43UYl9A-pbWfR6K6ywNG0Tbb7J5sQCLcB/s640/Fond%2Bd%2527%25C3%25A9cran.jpg" alt="VRC Dragon Force" width="328" height="218" /></div>\n<div style="color: #323d4f; font-family: \'Lucida Grande\', \'Trebuchet MS\', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 18.200000762939453px; background-color: #ececec;"><u>Dimensions : &nbsp;</u> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div>\n<div style="color: #323d4f; font-family: \'Lucida Grande\', \'Trebuchet MS\', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 18.200000762939453px; background-color: #ececec;">- Mat 910mm &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div>\n<div style="color: #323d4f; font-family: \'Lucida Grande\', \'Trebuchet MS\', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 18.200000762939453px; background-color: #ececec;">- Coque &nbsp;80 et quille/lest 350 soit 1334 mm. Longueur du bateau : 65cm&nbsp;&nbsp; &nbsp; &nbsp;</div>\n<div style="color: #323d4f; font-family: \'Lucida Grande\', \'Trebuchet MS\', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 18.200000762939453px; background-color: #ececec;"><u>Masses :&nbsp;</u></div>\n556 lest + 101 quille + 79 gr&eacute;ement + 484 coque &eacute;quip&eacute;e (&eacute;lectronique origine) + 40g<br />accus 700 mAh LIFE = 1250g', 'ADMIN', 'Alvernhe Thierry', '2017-11-15 16:26:00', '2017-12-22 10:01:15'),
+(4, 'pratique_croisiere', 'Pratique de la croisiere', 'Article a rediger pour les croisieres\n\nOmitto iuris dictionem in libera civitate contra leges senatusque consulta; caedes relinquo; libidines praetereo, quarum acerbissimum extat indicium et ad insignem memoriam turpitudinis et paene ad iustum odium imperii nostri, quod constat nobilissimas virgines se in puteos abiecisse et morte voluntaria necessariam turpitudinem depulisse. Nec haec idcirco omitto, quod non gravissima sint, sed quia nunc sine teste dico.\n\nIllud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.', 'ADMIN', NULL, '2017-11-15 16:27:50', NULL),
+(5, 'entrainements', 'Le club vous propose divers entrainements', 'A rediger\n\nOmitto iuris dictionem in libera civitate contra leges senatusque consulta; caedes relinquo; libidines praetereo, quarum acerbissimum extat indicium et ad insignem memoriam turpitudinis et paene ad iustum odium imperii nostri, quod constat nobilissimas virgines se in puteos abiecisse et morte voluntaria necessariam turpitudinem depulisse. Nec haec idcirco omitto, quod non gravissima sint, sed quia nunc sine teste dico.\n\nIllud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.', 'ADMIN', NULL, '2017-11-15 16:41:35', NULL),
+(6, 'moniteur1', 'Jeremy Thiroux', '<div><img style="float: left;" src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-1/c0.0.160.160/p160x160/19225780_10213620225089285_740117216450843368_n.jpg?oh=93844f0c44cf00c4965283ae9b645f35&amp;oe=5AA302A9" />\n<div style="font-family: \'Arial Black\', Gadget, sans-serif; font-size: 18px;">&nbsp; THIROUX J&eacute;r&eacute;my</div>\n<div style="font-family: \'Arial Black\', Gadget, sans-serif; font-size: 18px;">&nbsp; Moniteur CQPAMV</div>\n<div style="font-family: \'Arial Black\', Gadget, sans-serif; font-size: 18px;">&nbsp; en formation BPJEPS</div>\n</div>', 'ADMIN', 'Alvernhe Thierry', '2017-11-15 16:41:38', '2017-12-22 10:44:29'),
+(7, 'moniteur2', 'Olivier Cazes', '<div><img style="float: left;" src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-1/p160x160/12347960_1249985845027186_788814770178658612_n.jpg?oh=8ce6aceff26cc9723a5e8fd2d0b683e5&amp;oe=5AA7EC6E" /></div>\n<div style="font-size: 13px;"><br />&nbsp; Cazes</div>\n<div style="font-size: 13px;">&nbsp; Olivier</div>\n<div style="font-size: 13px;">&nbsp; 17, rue de Erables</div>\n<div style="font-size: 13px;">&nbsp; 81400 Rosieres</div>\n<div style="font-size: 13px;">&nbsp; cazesolivier@free.fr</div>\n<div style="font-size: 13px;">&nbsp; 06.70.52.20.97</div>', 'ADMIN', 'Alvernhe Thierry', '2017-11-15 16:41:39', '2017-12-22 10:44:58'),
+(8, 'moniteur3', 'COMITE D\'ADMINISTRATION 2017-2020', '<table style="border-collapse: collapse; width: 100%;" border="1">\n<tbody>\n<tr>\n<td style="width: 33.3333%;">\n<div style="font-size: 16px; font-weight: bold;">Pr&eacute;sident</div>\n<div style="font-size: 13px;">Alvernhe Thierry</div>\n<div style="font-size: 13px;">1, rue Jean Cocteau</div>\n<div style="font-size: 13px;">81400 Carmaux</div>\n<div style="font-size: 13px;">thierryalvernhe@sfr.fr</div>\n<div style="font-size: 13px;">06.85.67.64.61</div>\n</td>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Secr&eacute;taire</div>\n<div style="font-size: 13px;">Swiatek David</div>\n<div style="font-size: 13px;">2, rue de Janailhac</div>\n<div style="font-size: 13px;">87570 Rilhac Rancon</div>\n<div style="font-size: 13px;">david.swiatek@free.fr</div>\n<div style="font-size: 13px;">06.86.43.67.56</div>\n</td>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Tr&eacute;sorier</div>\n<div style="font-size: 13px;">Fabre Christian</div>\n<div style="font-size: 13px;">18, rue Emile Roux</div>\n<div style="font-size: 13px;">81160 St Juery</div>\n<div style="font-size: 13px;">cri.fabre@wanadoo.fr</div>\n<div style="font-size: 13px;">06.81.26.92.08</div>\n</td>\n</tr>\n<tr>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Responsable Licences</div>\n<div style="font-size: 13px;">Rossignol Yannick</div>\n<div style="font-size: 13px;">20bis, rue Francisco Goya</div>\n<div style="font-size: 13px;">81000 Albi</div>\n<div style="font-size: 13px;">y.r@free.fr</div>\n<div style="font-size: 13px;">06.23.09.58.53</div>\n</td>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Secr&eacute;taire adjoint</div>\n<div style="font-size: 13px;">Deslandes Fran&ccedil;ois-Xavier</div>\n<div style="font-size: 13px;">39, rue Mozart</div>\n<div style="font-size: 13px;">81000 Albi</div>\n<div style="font-size: 13px;">fxdeslandes@gmail.com</div>\n<div style="font-size: 13px;">06.82.66.75.83</div>\n</td>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Tr&eacute;sorier adjoint</div>\n<div style="font-size: 13px;">Uribelarrea Alain</div>\n<div style="font-size: 13px;">3bis, rue des Bons Enfants</div>\n<div style="font-size: 13px;">81400 Carmaux</div>\n<div style="font-size: 13px;">alain.uribelarrea@orange.fr</div>\n<div style="font-size: 13px;">06.43.57.62.36</div>\n</td>\n</tr>\n<tr>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Responsable Formation</div>\n<div style="font-size: 13px;">Chelle Philippe</div>\n<div style="font-size: 13px;">30, rte de Carbonne</div>\n<div style="font-size: 13px;">31390 Carbonne</div>\n<div style="font-size: 13px;">phchelle@laposte.net</div>\n<div style="font-size: 13px;">07.83.41.07.18</div>\n</td>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Membre</div>\n<div style="font-size: 13px;">Capelle Fr&eacute;deric</div>\n<div style="font-size: 13px;">59, ch. E. Mancel &ndash; villa 25</div>\n<div style="font-size: 13px;">81000 Albi</div>\n<div style="font-size: 13px;">frederic.capelle@hotmail.fr</div>\n<div style="font-size: 13px;">06.09.90.88.08</div>\n</td>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Membre</div>\n<div style="font-size: 13px;">Cazes Olivier</div>\n<div style="font-size: 13px;">17, rue de Erables</div>\n<div style="font-size: 13px;">81400 Rosieres</div>\n<div style="font-size: 13px;">cazesolivier@free.fr</div>\n<div style="font-size: 13px;">06.70.52.20.97</div>\n</td>\n</tr>\n<tr>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Membre</div>\n<div style="font-size: 13px;">Rossignol Erick</div>\n<div style="font-size: 13px;">41, rue Henri Bonis</div>\n<div style="font-size: 13px;">31100 Toulouse</div>\n<div style="font-size: 13px;">d9d6@free.fr</div>\n<div style="font-size: 13px;">06.38.91.05.48</div>\n</td>\n<td style="width: 33.3333%;">&nbsp;</td>\n<td style="width: 33.3333%;">&nbsp;</td>\n</tr>\n</tbody>\n</table>', 'ADMIN\n', 'Alvernhe Thierry', '2017-11-23 06:41:33', '2017-12-22 10:43:34'),
 (9, 'apropos', 'Union Sportive Carmaux Voile', 'Notre association exerce ses activités nautiques depuis 1961 sur le plan d ’eau de la Roucarié près de Monestiés, a quelques kilomètres d’Albi, d ans un cadre de verdure et de calme.<br>\nC’est une réserve d’eau potable, ou une zone a été aménagée pour la baignade  et où nous vous proposons de passer quelques journées de vos vacances.<br>\nNotre Base Nautique tournée essentiellement vers la voile possède les labels  de qualité décernés par la Fédération Française de Voile, et à ce titre nous  vous proposons un enseignement performant avec des moniteurs  diplômés d’état.<br>\nStages d’initiation ou de perfectionnement, leçons particulières, ou  tout simplement locations, nous vous offrons la possibilité d’utiliser notre  parc de matériel, divers et varié, en veillant à votre sécurité et à celle de  vos enfants.<br>\nNos structures d’accueil vous permettent de venir pique-niquer au bord de  l’eau et d’utiliser notre terrasse et barbecue.<br>\nLe temps des vacances c’est également le temps des Loisirs avec  L’U.S.C VOILE.<br>\nC’est pourquoi, nous vous invitons à passer nous voir !!', NULL, NULL, '2017-11-23 06:57:24', NULL),
-(10, 'cours_particuliers', 'Les Cours Particuliers', 'Ces cours permettent aux débutants ou aux initiés d\'apprendre à se perfectionner dans l\'activité voile, sur le support de leur choix, tout en étant accompagné individuellement par un Moniteur qualifié.\r\n\r\nLes cours sont individuels et personnalisés, et sont limités à 3 personnes maximum pour une efficacité optimisée.\r\n\r\nLa souscription du Passeport voile est obligatoire pour les non  licenciés FFV', 'Vincent', NULL, '2017-11-23 15:40:14', NULL),
-(11, 'stages', 'Les Stages', 'Ces stages d\'initiation et/ou perfectionnement ont pour objectif d\'apprendre ou de se perfectionner dans l\'activité voile.\r\n\r\nIls s\'appuient sur des cours théoriques et pratiques encadré par un Moniteur qualifié.\r\n\r\nLes séances ont un suivi pédagogique avec une progression logique en fonction du niveau des élèves.\r\n\r\nAttention: la souscription du Passeport Voile est obligatoire pour les non licenciés FFV.', 'Vincent', NULL, '2017-11-23 15:40:14', NULL),
-(12, 'groupes', 'Les activitées de groupe', 'Nous accueillons les centres aérer, les écoles, les familles, ou les sociétés et organisont des activitée de groupes variés et conviviales. ', 'Vincent', NULL, '2017-11-23 15:40:55', NULL);
+(10, 'cours_particuliers', 'Les Cours Particuliers', 'Ces cours permettent aux d&eacute;butants ou aux initi&eacute;s d\'apprendre &agrave; se perfectionner dans l\'activit&eacute; voile, sur le support de leur choix, tout en &eacute;tant accompagn&eacute; individuellement par un Moniteur qualifi&eacute;.<br /> Les cours sont individuels et personnalis&eacute;s, et sont limit&eacute;s &agrave; 3 personnes maximum pour une efficacit&eacute; optimis&eacute;e.<br /> La souscription du Passeport voile est obligatoire pour les non licenci&eacute;s FFV.', 'ADMIN', 'ADMIN', '2017-11-23 15:40:14', '2017-12-14 17:16:11'),
+(11, 'stages', 'Les Stages', 'Ces stages d\'initiation et/ou perfectionnement ont pour objectif d\'apprendre ou de se perfectionner dans l\'activit&eacute; voile.<br /> Ils s\'appuient sur des cours th&eacute;oriques et pratiques encadr&eacute; par un Moniteur qualifi&eacute;.<br /> Les s&eacute;ances ont un suivi p&eacute;dagogique avec une progression logique en fonction du niveau des &eacute;l&egrave;ves. Attention: la souscription du Passeport Voile est obligatoire pour les non licenci&eacute;s FFV.', 'ADMIN', 'ADMIN', '2017-11-23 15:40:14', '2017-12-14 17:15:41'),
+(12, 'groupes', 'Les activitées de groupe', 'Nous accueillons les centres a&eacute;rer, les &eacute;coles, les familles, ou les soci&eacute;t&eacute;s et organisont des activit&eacute;e de groupes vari&eacute;s et conviviales.<br />test', 'ADMIN', 'ADMIN', '2017-11-23 15:40:55', '2017-12-14 17:13:52'),
+(13, 'cours_particuliers_conditions', 'Conditions d\'acces aux cours particuliers', 'Ces cours permettent aux débutants ou aux initiés d\'apprendre à se perfectionner dans l\'activité voile, sur le support de leur choix, tout en étant accompagné individuellement par un Moniteur qualifié.\r\n\r\nLes cours sont individuels et personnalisés, et sont limités à 3 personnes maximum pour une efficacité optimisée.\r\n\r\nLa souscription du Passeport voile est obligatoire pour les non  licenciés FFV', 'ADMIN', NULL, '2017-11-23 15:40:14', NULL),
+(14, 'stages_conditions', 'Conditions d\'acces aux stages', 'Ces stages d\'initiation et/ou perfectionnement ont pour objectif d\'apprendre ou de se perfectionner dans l\'activité voile.\r\n\r\nIls s\'appuient sur des cours théoriques et pratiques encadré par un Moniteur qualifié.\r\n\r\nLes séances ont un suivi pédagogique avec une progression logique en fonction du niveau des élèves.\r\n\r\nAttention: la souscription du Passeport Voile est obligatoire pour les non licenciés FFV.', 'ADMIN', NULL, '2017-11-23 15:40:14', NULL),
+(15, 'groupes_conditions', 'Conditions d\'acces aux activitées de groupe', 'Nous accueillons les centres aérer, les écoles, les familles, ou les sociétés et organisont des activitée de groupes variés et conviviales. ', 'ADMIN', NULL, '2017-11-23 15:40:55', NULL),
+(16, 'reservation', 'Les Reservations', 'Toute reservation doit etre effectuer au minimum 48h avant la date choisit.<br />Pensez a pr&eacute;ciser la plage horaire souhait&eacute;, l\'age des participants ou tout autre d&eacute;tail vous parainnant pertinant dans la section message.', 'ADMIN', 'Alvernhe Thierry', '2017-11-15 14:58:39', '2017-12-22 11:13:24'),
+(17, 'footer', 'Pied de page', 'L\'U.S;CARMAUX VOILE exerce son activité sur le barrage de la Roucarié , sur la commune de Monestiés, depuis 1961.  Le plan d\'eau de 64 hectares permet la pratique de la voile sous toutes ses formes . Planches à Voile, Dériveurs doubles ou solitaires, micro, mais aussi la Voile Radio-commandée.\n\nLe Palmarès du Club est éloquent, avec des compétiteurs qui ont participé à des Championnat du Monde , d\'Europe ou maintes régates internationales, et des titres honorables obtenus en 470, LASER, et Voile Radio-commandée.\n\nC\'est particulièrement dans cette dernière catégorie qu\'excelle les coureurs de l\'USC Voile en plaçant régulièrement le club depuis plusieurs années dans les 3 premières places du classement national des clubs.\n\nMais l\'USC Voile c\'est aussi une ecole de Voile , où sont organisés des cours et des stages d\'initiation, de perfectionnement, de compétition, et de formation de moniteurs de Voile. Plusieurs Educateurs et Moniteurs diplomés travaillent au sein du club pour apporter un enseignement de qualité.\n\nC\'est aussi , une large ouverture vers la voile Loisir , avec les planches à voile et les catamarrans qui peuvent être loués sur place. \nLa Base Nautique qui offre des structures adaptées à l\'activité Voile , est ouverte du mois de Mars à fin Novembre .\nDes compétitions sont organisées chaque années sur le plan d\'eau de la Roucarié.\n\nLe Camping géré par l\'USC VOILE permet d\'accueillir les particuliers, familles et groupes durant toute la période estivale.', 'ADMIN', 'ADMIN', '2017-11-15 14:58:39', '2017-11-15 16:44:16');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article_comment`
+-- Structure de la table `article_comment`
 --
 
 CREATE TABLE `article_comment` (
@@ -91,7 +96,7 @@ CREATE TABLE `article_comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `article_comment`
+-- Contenu de la table `article_comment`
 --
 
 INSERT INTO `article_comment` (`article_comment_id`, `article_id`, `content`, `author_name`, `create_date`) VALUES
@@ -100,7 +105,7 @@ INSERT INTO `article_comment` (`article_comment_id`, `article_id`, `content`, `a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blog`
+-- Structure de la table `blog`
 --
 
 CREATE TABLE `blog` (
@@ -109,7 +114,7 @@ CREATE TABLE `blog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `blog`
+-- Contenu de la table `blog`
 --
 
 INSERT INTO `blog` (`blog_id`, `name`) VALUES
@@ -118,7 +123,7 @@ INSERT INTO `blog` (`blog_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blog_post`
+-- Structure de la table `blog_post`
 --
 
 CREATE TABLE `blog_post` (
@@ -129,28 +134,26 @@ CREATE TABLE `blog_post` (
   `author_name` varchar(255) DEFAULT NULL,
   `last_editor_name` varchar(255) DEFAULT NULL,
   `create_date` datetime DEFAULT CURRENT_TIMESTAMP,
-  `last_edit_date` datetime DEFAULT NULL
+  `last_edit_date` datetime DEFAULT NULL,
+  `commentable` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `blog_post`
+-- Contenu de la table `blog_post`
 --
 
-INSERT INTO `blog_post` (`blog_post_id`, `blog_id`, `title`, `content`, `author_name`, `last_editor_name`, `create_date`, `last_edit_date`) VALUES
-(1, 1, 'Nouveaute au club !', 'Le Club de voile vient d\'investir dans l\'achat de 3 nouveaux catamarans Hobie Cat Twixxy.\n\nCette nouvelle acquisition permet à présent de constituer une flotte de 6 Catamarans de 15 pieds!', 'Alvernhe Thierry', NULL, '2016-12-18 15:18:42', NULL),
-(2, 1, 'jours d\'ouverture ETE 2016', 'Le Club de voile sera ouvert tous les jours des mois de Juillet et Aout 10h à19h\n\nVous pouvez contacter le Moniteur de la Base nautique : Jeremy  au 07.68.37.47.64\nVous pouvez prendre rendez vous pour des cours particuliers , locations et avoir des renseignements sur les stages à venir.', 'Alvernhe Thierry', NULL, '2017-11-21 04:12:25', NULL),
-(3, 1, 'Mon premier article', 'Notre association exerce ses activités nautiques depuis 1961 sur le plan d ’eau de la Roucarié près de Monestiés, a quelques kilomètres d’Albi, d ans un cadre de verdure et de calme. C’est une réserve d’eau potable, ou une zone a été aménagée pour la baignade et où nous vous proposons de passer quelques journées de vos vacances. Notre Base Nautique tournée essentiellement vers la voile possède les labels de qualité décernés par la Fédération Française de Voile, et à ce titre nous vous proposons un enseignement performant avec des moniteurs diplômés d’état. Stages d’initiation ou de perfectionnement, leçons particulières, ou tout simplement locations, nous vous offrons la possibilité d’utiliser notre parc de matériel, divers et varié, en veillant à votre sécurité et à celle de vos enfants. Nos structures d’accueil vous permettent de venir pique-niquer au bord de l’eau et d’utiliser notre terrasse et barbecue. Le temps des vacances c’est également le temps des Loisirs avec L’U.S.C VOILE. C’est pourquoi, nous vous invitons à passer nous voir !!', 'Alvernhe Thierry', NULL, '2017-11-21 04:12:25', NULL),
-(4, 1, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\r\n\r\nAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.', 'Alvernhe Thierry', NULL, '2017-11-21 04:12:59', NULL),
-(5, 1, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\r\n\r\nAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.', 'Alvernhe Thierry', NULL, '2017-11-21 04:12:59', NULL),
-(6, 1, 'Lirem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\r\n\r\nAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.', 'Alvernhe Thierry', NULL, '2017-11-21 04:13:07', NULL),
-(7, 1, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\r\n\r\nAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.', 'Alvernhe Thierry', NULL, '2017-11-21 04:13:07', NULL),
-(8, 1, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\r\n\r\nAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.', 'Alvernhe Thierry', NULL, '2017-11-21 04:13:10', NULL),
-(9, 1, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\r\n\r\nAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.', 'Alvernhe Thierry', NULL, '2017-11-21 04:13:10', NULL);
+INSERT INTO `blog_post` (`blog_post_id`, `blog_id`, `title`, `content`, `author_name`, `last_editor_name`, `create_date`, `last_edit_date`, `commentable`) VALUES
+(12, 1, 'ENTRAÎNEMENTS D\'HIVER 2017 !', 'LES ENTRAINEMENTS d\'Hiver 2016/2017 SONT PROGRAMMES!<br /><br />INFOS:<br /><br />-&gt; 21 et 22 Janvier 2017 &agrave; VALRAS<br />-&gt; 25 et 26 F&eacute;vrier 2017 &agrave; MARSEILLAN<br />-&gt; 11 et 12 Mars 2017 &agrave; CARNON<br /><br /><br />ENCADREMENT : Philippe Chelle <br /><br />CAT&Eacute;GORIE :&nbsp; OPTIMIST /LASER 4.7 / Radial / Standard / EUROPES', 'Alvernhe Thierry', NULL, '2017-12-22 09:45:25', NULL, 1),
+(13, 1, 'NOUVEAUTES AU CLUB', 'Le Club de voile vient d\'investir dans l\'achat de 3 nouveaux catamarans Hobie Cat Twixxy.<br /><br />Cette nouvelle acquisition permet &agrave; pr&eacute;sent de constituer une flotte de 6 Catamarans de 15 pieds!', 'Alvernhe Thierry', NULL, '2017-12-22 09:46:16', NULL, 1),
+(14, 1, 'NOUVELLE SAISON 2017 !', '-&gt; A partir du 1 AVRIL<br /><br />cours particuliers- locations- stages <br /><br />Entrainements hebdomadaires<br />Tous les Samedis apr&egrave;s-midi, de MARS &agrave; NOVEMBRE , de 13H30 &agrave; 17H30 venez nous retrouver pour participer aux entra&icirc;nements de voile !<br /><br />LIEU: Base de l\'USC Voile<br /><br />ENCADREMENT : JEREMY /&nbsp; OLIVIER / CHARLIE /&nbsp; <br />Sous la tutelle de THIERRY - BEES1<br /><br />CAT&Eacute;GORIE : Optimist / Laser / et autres d&eacute;riveurs.', 'Alvernhe Thierry', NULL, '2017-12-22 09:47:18', NULL, 1),
+(15, 1, 'Jours d\'ouverture SAISON 2017', 'Reprise de l\'&eacute;cole de sport tous les samedis &agrave; partir du mois de Mars 2017<br /><br />Ouverture TOUS LES JOURS &agrave; partir du mois d\'AVRIL<br />(sauf les mardis et jeudis: jours de repos pour le moniteur )<br />Contacter la Base Nautique&nbsp; 05.63.36.71.14<br />A partir du mois d\'avril 2017<br /><br />Vous pourez contacter le Moniteur de la Base nautique : Jeremy&nbsp; au 07.68.37.47.64<br /><br />Vous pouvez prendre rendez vous pour des COURS PARTICULIERS, LOCATIONS&nbsp; et avoir des renseignements sur les stages &agrave; venir et fonctionnement de la Base Na', 'Alvernhe Thierry', NULL, '2017-12-22 09:47:55', NULL, 1),
+(16, 1, 'ACTIVITES NAUTIQUES - PROCHAINEMENT OUVERTURE DE L\'ECOLE DE VOILE ITINERANTE', '<h3><span class="bicolor">LA VOILE BIENTOT A VALENCE D\'ALBIGEOIS</span></h3>\nDans le cadre des activit&eacute;s VOILE SCOLAIRE, l\'USC Voile qui re&ccedil;oit depuis 1981 les &eacute;coles de Carmaux , va cr&eacute;er son &eacute;cole de voile ITIN&Eacute;RANTE.<br /><br />Ainsi en JUIN prochain pendant 2 semaines , L\'USC Voile organisera des s&eacute;ances de Voile sur le plan d\'eau de GINESTOUS &agrave; VALENCE D\'ALBIGEOIS.<br /><br />Les &eacute;coles primaires mais &eacute;galement des classes du coll&egrave;ge&nbsp; vont b&eacute;n&eacute;ficier de cette activit&eacute; qui a pu etre mise en place avec des responsables de l\'Education Nationale et Mme Le Maire de la commune de VALENCE D\'ALBIGEOIS.<br /><br />Une action qui devrait se d&eacute;velopper sur d\'autres communes qui poss&egrave;dent un petit plan d\'eau qu\'elles souhaitent mettre en valeur!que', 'Alvernhe Thierry', NULL, '2017-12-22 09:50:36', NULL, 1),
+(17, 1, 'PROCHAINEMENT A L\'USC', 'OUVERTURE D\'UNE SECTION CROISI&Egrave;RE.<br /><br />Sorties en mer organis&eacute;es par l\'USC Voile &agrave; bord de voiliers de Course Croisiere.<br />Modalit&eacute;s pour participer &agrave; l\'activit&eacute; croisi&egrave;re :<br />Initiation en MICRO&nbsp; Neptune 5.50&nbsp; sur La roucari&eacute; avec Jeremy, <br />Sortie en Mer , avec Thierry Sur FIRST 35.7 , sur 1 ou plusieurs jours selon un programme d&eacute;fini &agrave; l\'avance.<br /><br />PROCHAINE SORTIE EN MER /<br />DU 25 AU 28 MAI 2017&nbsp; - STAGE organis&eacute; avec Thierry (BEES)<br />apports th&eacute;oriques et pratiques - sorties &agrave; la journ&eacute;e depuis le Cap d\'Agde avec retour au port le soir.<br />Nuit&eacute;es dans le bateau -&nbsp; Nombre de places limit&eacute; &agrave; 5 personnes + skipper. Pre voir :<br />- v&ecirc;tement de rechange , pull-over, cir&eacute; v&ecirc;tements de pluie ou veste de quart.<br />chaussures tennis ou bottes, lunettes soleil, gants, cr&egrave;me solaire, sac de couchage, <br />- participation financi&egrave;re pour les frais du bateau<br />- constitution d\'une caisse de bord pour les frais de nourriture , frais et taxes de port <br />contacter Thierry au 06.85.67.64.61', 'Alvernhe Thierry', NULL, '2017-12-22 09:51:21', NULL, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blog_post_comment`
+-- Structure de la table `blog_post_comment`
 --
 
 CREATE TABLE `blog_post_comment` (
@@ -161,17 +164,10 @@ CREATE TABLE `blog_post_comment` (
   `create_date` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `blog_post_comment`
---
-
-INSERT INTO `blog_post_comment` (`article_comment_id`, `blog_post_id`, `content`, `author_name`, `create_date`) VALUES
-(1, 1, 'Mon premier com', 'Vincent', '2017-11-16 15:35:46');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `city`
+-- Structure de la table `city`
 --
 
 CREATE TABLE `city` (
@@ -181,7 +177,7 @@ CREATE TABLE `city` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `city`
+-- Contenu de la table `city`
 --
 
 INSERT INTO `city` (`city_id`, `name`, `zipcode`) VALUES
@@ -39414,7 +39410,7 @@ INSERT INTO `city` (`city_id`, `name`, `zipcode`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `license`
+-- Structure de la table `license`
 --
 
 CREATE TABLE `license` (
@@ -39426,7 +39422,44 @@ CREATE TABLE `license` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `photo`
+-- Structure de la table `location_price`
+--
+
+CREATE TABLE `location_price` (
+  `location_price_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `image_url` varchar(500) NOT NULL,
+  `half_hour` int(11) DEFAULT NULL,
+  `hour` int(11) DEFAULT NULL,
+  `two_hour` int(11) DEFAULT NULL,
+  `half_day` int(11) DEFAULT NULL,
+  `day` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `location_price`
+--
+
+INSERT INTO `location_price` (`location_price_id`, `name`, `description`, `image_url`, `half_hour`, `hour`, `two_hour`, `half_day`, `day`) VALUES
+(1, 'Optimist', 'Pour les enfants de 7 a 14 ans sanchant nager.', '/uploads/location/optimist.jpg', NULL, NULL, 12, 20, 30),
+(2, 'Laser', 'Pour les ados et adultes de 60 a 100kg. Bateau tres sportif et phisique pour des gens initiés. Existe en versions et tailles de gréments : 4. 7/ Radial/Standard', '/uploads/location/laser.jpg', NULL, 15, 25, 35, 45),
+(3, 'Dériveur Double', 'Bateau a deux places pour les ados et adultes avec deux voiles plus spinaker et trapeze pour les initiés.', '/uploads/location/deriveur2.jpg', NULL, 20, 30, 45, 60),
+(4, 'Catamaran - NC16', 'Bateau double coque a deux ou trois voiles pour ados ou adultes - Utilisation facile pour les débutants - existe en deux versions de 15 ou 16 pieds pour les plus confirmés.', '/uploads/location/catamaran.jpg', NULL, 30, 45, 70, 90),
+(5, 'Planche a voile', 'Plus de 30 Planches a disposition avec une variété de gréments de differentes tailles selon le gabarit et la maitrise de l\'utilisateur.', '/uploads/location/planche a voile.jpg', NULL, 10, 17, 25, 40),
+(6, 'Caravelle (sans moniteur)', 'BATEAU COLLECTIF  POUR 6 A 8 ENFANTS  OU 4 ADULTES -\r\nBATEAU D INITIATION . TRES STABLE ET SUR.', '/uploads/location/caravelle.jpg', NULL, 30, 45, 70, 90),
+(7, 'Micro Croiseur (avec skipper)', 'le MICRO NEPTUNE est un DERIVEUR LESTE HABITABLE DE 5.50 METRES.\r\nIL PERMET L\'Initiation à la croisiere . Il n\'est pas loué mais utilisé uniquement avec un moniteur \r\ncompetent. On peut prendre deux a trois personnes. Il dispose d\'une grand voile , d\'un Genois , et d\'un Spinnaker.\r\n', '/uploads/location/micro.jpg', NULL, 60, 90, 140, NULL),
+(8, 'Paddle', 'L USC Voile possede une dizaine de STAND UP PADDLE tous equipé avec une longe de securite et des pagaies reglables afin de s adapter à la morphologie de chacun. Gilets de sauvetage fourni et port obligatoire', '/uploads/location/paddle.jpg', NULL, 10, 15, 20, 40),
+(9, 'Pedalo', 'pour DEUX ADULTES + 1 ENFANT\r\nLE GILETS DE SAUVETAGE EST FOURNI ET SON PORT OBLIGATOIRE\r\nLOCATION A L\'HEURE, 1/2 journee ou journée', '/uploads/location/pedalo.jpg', 7, 10, 16, 25, 40),
+(10, 'Canoë 3 personnes', 'existe en monoplace et 2/3 places \r\nInsubmerssibles , gilet de sauvetage fourni et port obligatoire \r\nlocation à l\'heure , 1/2 journée  , journée', '/uploads/location/kayak.jpg', NULL, 13, 20, 27, 50),
+(11, 'Hobby Twixxy 15', 'Bateau double coque a deux ou trois voiles pour ados ou adultes - Utilisation facile pour les débutants - existe en deux versions de 15 ou 16 pieds pour les plus confirmés.', '/uploads/location/catamaran.jpg', NULL, 25, 40, 60, 80),
+(12, 'Ski-Surf', 'Description de ski surf', '/uploads/location/catamaran.jpg', 7, 10, 15, 20, 30),
+(13, 'Canoë 2 personnes', 'existe en monoplace et 2/3 places \r\nInsubmerssibles , gilet de sauvetage fourni et port obligatoire \r\nlocation à l\'heure , 1/2 journée  , journée', '/uploads/location/kayak.jpg', NULL, 10, 17, 25, 40);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `photo`
 --
 
 CREATE TABLE `photo` (
@@ -39438,7 +39471,7 @@ CREATE TABLE `photo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `photo`
+-- Contenu de la table `photo`
 --
 
 INSERT INTO `photo` (`photo_id`, `url_large`, `url_small`, `title`, `description`) VALUES
@@ -39459,7 +39492,7 @@ INSERT INTO `photo` (`photo_id`, `url_large`, `url_small`, `title`, `description
 -- --------------------------------------------------------
 
 --
--- Table structure for table `price`
+-- Structure de la table `price`
 --
 
 CREATE TABLE `price` (
@@ -39472,7 +39505,7 @@ CREATE TABLE `price` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `price`
+-- Contenu de la table `price`
 --
 
 INSERT INTO `price` (`price_id`, `category`, `name`, `support`, `duration`, `price`) VALUES
@@ -39499,7 +39532,78 @@ INSERT INTO `price` (`price_id`, `category`, `name`, `support`, `duration`, `pri
 -- --------------------------------------------------------
 
 --
--- Table structure for table `site`
+-- Structure de la table `reservation`
+--
+
+CREATE TABLE `reservation` (
+  `reservation_id` int(10) UNSIGNED NOT NULL,
+  `reservation_day_id` int(10) UNSIGNED DEFAULT NULL,
+  `time` time DEFAULT NULL,
+  `create_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `status` varchar(255) DEFAULT '0',
+  `full_name` varchar(255) DEFAULT NULL,
+  `email` varchar(500) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `message` varchar(500) DEFAULT NULL,
+  `activity` varchar(50) DEFAULT NULL,
+  `support` varchar(50) DEFAULT NULL,
+  `people` int(10) DEFAULT NULL,
+  `detail` varchar(255) DEFAULT NULL,
+  `token` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `reservation`
+--
+
+INSERT INTO `reservation` (`reservation_id`, `reservation_day_id`, `time`, `create_date`, `status`, `full_name`, `email`, `phone`, `message`, `activity`, `support`, `people`, `detail`, `token`) VALUES
+(1, 1, '14:00:00', '2017-12-06 00:00:00', 'valid', 'Vincent Lechopier', 'lechopier.vincent@gmail.com', '0123456789', 'Joyeux Noel', 'Stage', 'Catamaran', NULL, NULL, ''),
+(2, 1, '12:00:00', '2017-12-06 00:00:00', 'confirm', 'Vincent Lechopier', 'lechopier.vincent@gmail.com', '0123456789', 'Joyeux Noel', 'Stage', 'Catamaran', NULL, NULL, ''),
+(4, 21, NULL, '2017-12-22 15:10:39', NULL, 'Thierry Alvernhe', 'admin@uscv.fr', '0123456789', NULL, 'cours particuliers', 'dériveur', 1, '', '63c78ab80acb3379a99205e77a976a7fffdf8a951f8dcdbbbee0e94e2bd0a44f135b8649e8b59498d14c1bafb402a6a7e3c6b4b4f0a54af908fb51620d07e25392b032b9552e2746dace7aa8244e268b1e879fc8de566311124e52bdd338c07902fd908e2d7559e6e059df42e5840a83b2bf222a606650cff81561d23d0af54e');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reservation_day`
+--
+
+CREATE TABLE `reservation_day` (
+  `reservation_day_id` int(10) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `reservation_day`
+--
+
+INSERT INTO `reservation_day` (`reservation_day_id`, `date`, `status`) VALUES
+(1, '2017-12-24', 1),
+(2, '2017-12-25', 1),
+(3, '2017-12-12', 1),
+(4, '2017-12-13', 1),
+(5, '2017-12-14', 1),
+(6, '2017-12-16', 1),
+(7, '2017-12-08', 1),
+(8, '2017-12-20', 1),
+(9, '2017-12-27', 1),
+(10, '2017-12-23', 1),
+(11, '2017-12-31', 1),
+(12, '2017-12-29', 1),
+(13, '2017-12-22', 1),
+(14, '2017-12-09', 1),
+(15, '2017-12-21', 1),
+(16, '2017-12-15', 1),
+(17, '2017-12-17', 1),
+(18, '2017-12-10', 1),
+(19, '2017-12-28', 1),
+(20, '2017-12-30', 1),
+(21, '2017-12-01', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `site`
 --
 
 CREATE TABLE `site` (
@@ -39512,7 +39616,7 @@ CREATE TABLE `site` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `site`
+-- Contenu de la table `site`
 --
 
 INSERT INTO `site` (`site_id`, `name`, `address`, `phone`, `google_map_url`, `facebook_url`) VALUES
@@ -39521,7 +39625,31 @@ INSERT INTO `site` (`site_id`, `name`, `address`, `phone`, `google_map_url`, `fa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slide`
+-- Structure de la table `site_info`
+--
+
+CREATE TABLE `site_info` (
+  `site_info_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `value` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `site_info`
+--
+
+INSERT INTO `site_info` (`site_info_id`, `name`, `value`) VALUES
+(1, 'name', 'U.S. Carmaux Voile'),
+(2, 'address_contact', 'Riou del Bosc<br>Canitrot<br>81640 Monesties'),
+(3, 'contact_mail', 'uscvoile@laposte.net'),
+(4, 'phone', '0563367114'),
+(5, 'url_facebook', 'https://www.facebook.com/USCVOILE/'),
+(6, 'url_google_map', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45883.9837921038!2d2.128583694625159!3d44.04724036771073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12adbffa754ce53f%3A0x6fc9f90aa45bd1b7!2sU.S.+Carmaux+Voile!5e0!3m2!1sfr!2sfr!4v1511187872935');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `slide`
 --
 
 CREATE TABLE `slide` (
@@ -39533,7 +39661,7 @@ CREATE TABLE `slide` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `slide`
+-- Contenu de la table `slide`
 --
 
 INSERT INTO `slide` (`slide_id`, `img_url`, `title`, `content`, `position`) VALUES
@@ -39545,7 +39673,7 @@ INSERT INTO `slide` (`slide_id`, `img_url`, `title`, `content`, `position`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Structure de la table `user`
 --
 
 CREATE TABLE `user` (
@@ -39559,102 +39687,129 @@ CREATE TABLE `user` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `subscribe_date` datetime DEFAULT CURRENT_TIMESTAMP,
-  `status` varchar(10) DEFAULT NULL
+  `status` varchar(10) DEFAULT NULL,
+  `token` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Contenu de la table `user`
 --
 
-INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `birth_date`, `address_id`, `license_id`, `phone`, `email`, `password`, `subscribe_date`, `status`) VALUES
-(12, 'Patrick', 'Poivrot', '2017-11-01 00:00:00', 6, NULL, NULL, 'patou@email.com', '$2y$10$/mFwL7T/Pu/aM1GksXsUCexY9rY3U1OrK34de54hWp9Sez/jpslly', '2017-11-15 14:01:24', NULL),
-(14, 'Toby', 'potter', NULL, 9, NULL, '0123456789', 'patoujoy@email.com', '$2y$10$SoMNxhe4993divaUOyFzwO6llyHsl0BfoutZWCDYWLB8PdBaE/GEW', '2017-11-15 14:01:24', NULL),
-(15, 'Vincent', 'Lechopier', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(16, 'Vincent', 'Lechopier', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `birth_date`, `address_id`, `license_id`, `phone`, `email`, `password`, `subscribe_date`, `status`, `token`) VALUES
+(12, 'Jeremy', 'Thiroux', '2017-11-01 00:00:00', 6, NULL, NULL, 'patou@email.com', '$2y$10$/mFwL7T/Pu/aM1GksXsUCexY9rY3U1OrK34de54hWp9Sez/jpslly', '2017-11-15 14:01:24', 'modo', ''),
+(4567418, 'Thierry', 'Alvernhe', NULL, NULL, NULL, NULL, 'admin@uscv.fr', '$2y$10$pp.Nfspv5OLekEm930JQy.TmF/UGAdfRoWl2EjofAVfNxUuEGazb.', NULL, 'admin', NULL),
+(4567419, 'Vincent', 'Lechopier', NULL, NULL, NULL, NULL, 'vicentedelasvega@gmail.com', '$2y$10$TbH7iSilOT4F9MXQ6rBCi.0cNdW9lz4dVSH9C7zzRK9uY4ow2LNGG', '2017-12-22 15:52:14', 'active', NULL);
 
 --
--- Indexes for dumped tables
+-- Index pour les tables exportées
 --
 
 --
--- Indexes for table `address`
+-- Index pour la table `address`
 --
 ALTER TABLE `address`
   ADD PRIMARY KEY (`address_id`),
   ADD KEY `city_id` (`city_id`);
 
 --
--- Indexes for table `article`
+-- Index pour la table `article`
 --
 ALTER TABLE `article`
   ADD PRIMARY KEY (`article_id`);
 
 --
--- Indexes for table `article_comment`
+-- Index pour la table `article_comment`
 --
 ALTER TABLE `article_comment`
   ADD PRIMARY KEY (`article_comment_id`),
   ADD KEY `article_id` (`article_id`);
 
 --
--- Indexes for table `blog`
+-- Index pour la table `blog`
 --
 ALTER TABLE `blog`
   ADD PRIMARY KEY (`blog_id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Indexes for table `blog_post`
+-- Index pour la table `blog_post`
 --
 ALTER TABLE `blog_post`
   ADD PRIMARY KEY (`blog_post_id`),
   ADD KEY `blog_id` (`blog_id`);
 
 --
--- Indexes for table `blog_post_comment`
+-- Index pour la table `blog_post_comment`
 --
 ALTER TABLE `blog_post_comment`
   ADD PRIMARY KEY (`article_comment_id`),
   ADD KEY `article_id` (`blog_post_id`);
 
 --
--- Indexes for table `city`
+-- Index pour la table `city`
 --
 ALTER TABLE `city`
   ADD PRIMARY KEY (`city_id`);
 
 --
--- Indexes for table `license`
+-- Index pour la table `license`
 --
 ALTER TABLE `license`
   ADD PRIMARY KEY (`license_id`);
 
 --
--- Indexes for table `photo`
+-- Index pour la table `location_price`
+--
+ALTER TABLE `location_price`
+  ADD PRIMARY KEY (`location_price_id`);
+
+--
+-- Index pour la table `photo`
 --
 ALTER TABLE `photo`
   ADD PRIMARY KEY (`photo_id`);
 
 --
--- Indexes for table `price`
+-- Index pour la table `price`
 --
 ALTER TABLE `price`
   ADD PRIMARY KEY (`price_id`);
 
 --
--- Indexes for table `site`
+-- Index pour la table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD PRIMARY KEY (`reservation_id`),
+  ADD KEY `reservation_day_id` (`reservation_day_id`);
+
+--
+-- Index pour la table `reservation_day`
+--
+ALTER TABLE `reservation_day`
+  ADD PRIMARY KEY (`reservation_day_id`),
+  ADD UNIQUE KEY `date` (`date`);
+
+--
+-- Index pour la table `site`
 --
 ALTER TABLE `site`
   ADD PRIMARY KEY (`site_id`);
 
 --
--- Indexes for table `slide`
+-- Index pour la table `site_info`
+--
+ALTER TABLE `site_info`
+  ADD PRIMARY KEY (`site_info_id`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
+-- Index pour la table `slide`
 --
 ALTER TABLE `slide`
   ADD PRIMARY KEY (`slide_id`);
 
 --
--- Indexes for table `user`
+-- Index pour la table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`),
@@ -39663,107 +39818,133 @@ ALTER TABLE `user`
   ADD KEY `license_id` (`license_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables exportées
 --
 
 --
--- AUTO_INCREMENT for table `address`
+-- AUTO_INCREMENT pour la table `address`
 --
 ALTER TABLE `address`
   MODIFY `address_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT for table `article`
+-- AUTO_INCREMENT pour la table `article`
 --
 ALTER TABLE `article`
-  MODIFY `article_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `article_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
--- AUTO_INCREMENT for table `article_comment`
+-- AUTO_INCREMENT pour la table `article_comment`
 --
 ALTER TABLE `article_comment`
   MODIFY `article_comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `blog`
+-- AUTO_INCREMENT pour la table `blog`
 --
 ALTER TABLE `blog`
   MODIFY `blog_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `blog_post`
+-- AUTO_INCREMENT pour la table `blog_post`
 --
 ALTER TABLE `blog_post`
-  MODIFY `blog_post_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `blog_post_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
--- AUTO_INCREMENT for table `blog_post_comment`
+-- AUTO_INCREMENT pour la table `blog_post_comment`
 --
 ALTER TABLE `blog_post_comment`
-  MODIFY `article_comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `article_comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT for table `city`
+-- AUTO_INCREMENT pour la table `city`
 --
 ALTER TABLE `city`
   MODIFY `city_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39203;
 --
--- AUTO_INCREMENT for table `license`
+-- AUTO_INCREMENT pour la table `license`
 --
 ALTER TABLE `license`
   MODIFY `license_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `photo`
+-- AUTO_INCREMENT pour la table `location_price`
+--
+ALTER TABLE `location_price`
+  MODIFY `location_price_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT pour la table `photo`
 --
 ALTER TABLE `photo`
   MODIFY `photo_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
--- AUTO_INCREMENT for table `price`
+-- AUTO_INCREMENT pour la table `price`
 --
 ALTER TABLE `price`
   MODIFY `price_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
--- AUTO_INCREMENT for table `site`
+-- AUTO_INCREMENT pour la table `reservation`
+--
+ALTER TABLE `reservation`
+  MODIFY `reservation_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT pour la table `reservation_day`
+--
+ALTER TABLE `reservation_day`
+  MODIFY `reservation_day_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT pour la table `site`
 --
 ALTER TABLE `site`
   MODIFY `site_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `slide`
+-- AUTO_INCREMENT pour la table `site_info`
+--
+ALTER TABLE `site_info`
+  MODIFY `site_info_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT pour la table `slide`
 --
 ALTER TABLE `slide`
   MODIFY `slide_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4567420;
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables exportées
 --
 
 --
--- Constraints for table `address`
+-- Contraintes pour la table `address`
 --
 ALTER TABLE `address`
   ADD CONSTRAINT `fk_city` FOREIGN KEY (`city_id`) REFERENCES `city` (`city_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `article_comment`
+-- Contraintes pour la table `article_comment`
 --
 ALTER TABLE `article_comment`
-  ADD CONSTRAINT `fk_article` FOREIGN KEY (`article_id`) REFERENCES `article` (`article_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_article` FOREIGN KEY (`article_id`) REFERENCES `article` (`article_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `blog_post`
+-- Contraintes pour la table `blog_post`
 --
 ALTER TABLE `blog_post`
   ADD CONSTRAINT `fk_blog` FOREIGN KEY (`blog_id`) REFERENCES `blog` (`blog_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `blog_post_comment`
+-- Contraintes pour la table `blog_post_comment`
 --
 ALTER TABLE `blog_post_comment`
-  ADD CONSTRAINT `fk_blog_post` FOREIGN KEY (`blog_post_id`) REFERENCES `blog_post` (`blog_post_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_blog_post` FOREIGN KEY (`blog_post_id`) REFERENCES `blog_post` (`blog_post_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `user`
+-- Contraintes pour la table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD CONSTRAINT `fk_reservation_day` FOREIGN KEY (`reservation_day_id`) REFERENCES `reservation_day` (`reservation_day_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `fk_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_license` FOREIGN KEY (`license_id`) REFERENCES `license` (`license_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

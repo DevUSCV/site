@@ -42,29 +42,5 @@
 
 {% block end_script %}
     <script>
-        {#        document.addEventListener("DOMContentLoaded", function (e) {
-                    $.getJSON(API_URL + "/slide", (data) => {
-                        if(data.length > 0){
-                            for(let slide of data){
-                                let li = document.createElement("li");
-                                let img = document.createElement("img");
-                                let div = document.createElement("div");
-                                let h3 = document.createElement("h3");
-                                let h5 = document.createElement("h5");
-                                img.src = slide.img_url;
-                                div.className = "caption " + slide.position + " left-align";
-                                h3.innerHTML = slide.title;
-                                h5.innerHTML = slide.content;
-                                li.appendChild(img);
-                                li.appendChild(div);
-                                div.appendChild(h3);
-                                div.appendChild(h5);
-                                document.querySelector("ul.slides").appendChild(li);                        
-                            }
-                            $('.slider').slider({height: 1});
-                        }
-                    });
-                    
-                })#}
     </script>
 {% endblock %}

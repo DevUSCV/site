@@ -12,40 +12,72 @@
         </div>
 
         <div id="login" class="row">
-            
-            
+
+
             <form id="login_form" class="col s12">
                 <div class="col s10 offset-s1 m6 offset-m3">             
                     <div class="col s12">
                         <div class="input-field inline">
                             <i class="fa fa-user-circle prefix" aria-hidden="true"></i>
-                            <input id="email" type="email" name="email" class="validate" placeholder="" pattern="^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$" />
+                            <input id="email" type="email" name="email" class="validate" placeholder="" pattern="^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$" required="" onkeyup="check_login_form()" onchange="check_login_form()" />
                             <label for="email" data-error="Email invalide" data-success="Ok">Addresse Email</label>
                         </div>
-                    </div>
-                    <div class="col s12">
                         <div class="input-field ">
                             <i class="fa fa-shield prefix" aria-hidden="true"></i>
-                            <input id="password" type="password" name="password" class="validate" placeholder="" minlength=6 />
+                            <input id="password" type="password" name="password" class="validate" placeholder="" required="" minlength=6 onkeyup="check_login_form()" />
                             <label for="password">Mot de Passe</label>
                         </div>
                     </div>
                 </div>
                 <div class="center col s12">
-                    <button class="btn blue waves-effect">Connexion</button>
+                    <br>
+                    <button class="btn blue waves-effect disabled"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</button>
                 </div>
                 <div class="center login_message red white-text col s6 offset-s3 ">
                     <h6>Identifiants Incorrectes</h6>
                 </div>
             </form>
         </div>
-        
+
 
         <div id="register" class="col s12">
-            TODO
+            <form id="register_form" class="container">
+                <div class="row">
+                    <div class="input-field col s12 m6 offset-m3">
+                        <i class="fa fa-user-circle prefix" aria-hidden="true"></i>
+                        <input id="lastname" type="text" name="lastname" class="validate" required onkeyup="check_register_form()" />
+                        <label for="lastname">Nom</label>
+                    </div>
+                    <div class="input-field col s12 m6 offset-m3">
+                        <i class="fa fa-user-circle-o prefix" aria-hidden="true"></i>
+                        <input id="firstname" type="text" name="firstname" class="validate" required="" required onkeyup="check_register_form()" />
+                        <label for="firstname">Prénom</label>
+                    </div>
+
+                    <div class="input-field col s12 m6 offset-m3">
+                        <i class="fa fa-envelope prefix" aria-hidden="true"></i>
+                        <input id="email" type="email" name="email" class="validate" required="" pattern="^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$" required onkeyup="check_register_form()" />
+                        <label for="email" data-error="Email invalide" data-success="Ok">Addresse Email</label>
+                    </div>
+                    <div class="input-field col s12 m6 offset-m3">
+                        <i class="fa fa-shield prefix" aria-hidden="true"></i>
+                        <input id="password" type="password" name="password" class="validate" required="" minlength=6 onkeyup="check_register_form()" />
+                        <label for="password">Mot de Passe</label>
+                    </div>
+                    <div class="input-field col s12 m6 offset-m3">
+                        <i class="fa fa-shield prefix" aria-hidden="true"></i>
+                        <input id="password_confirm" type="password" name="password_confirm" class="validate" placeholder="" required onkeyup="check_register_form()" />
+                        <label for="password_confirm">Confirmez le mot de Passe</label>
+                    </div>                    
+                </div>
+            </form>
+            <div class="center col s12">
+                <br>
+                <button id="register_button" class="g-recaptcha modal-action waves-effect waves-green btn green disabled modal-close" data-sitekey="6LeuxD0UAAAAAOAdqybck-aqFPOKN2EjWiI0S4PY" data-callback="register" data-badge="bottomleft"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscription</button>
+                <br>
+            </div>
         </div>
 
     </div>
 </div>
-
 

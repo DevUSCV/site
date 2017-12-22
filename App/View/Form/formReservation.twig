@@ -1,0 +1,73 @@
+<form id="form_reservation" class="col s12">
+    <div class="row">
+        <input type="hidden" id="date" value="{{ date }}">
+        <div class="col s6">
+            <div class="input-field col s12">
+                <i class="fa fa-id-card-o prefix" aria-hidden="true"></i>
+                <input id="full_name" type="text" class="validate" value="{{ user.getFirstname }} {{ user.getLastname }}" required minlength="5" maxlength="255" onkeyup="check_reservation_form()">
+                <label for="full_name" data-error="Invalide" data-success="valide">Nom Complet</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="fa fa-envelope prefix" aria-hidden="true"></i>
+                <input id="email" type="email" class="validate" value="{{ user.getEmail }}" required pattern="^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$" onkeyup="check_reservation_form()">
+                <label for="email" data-error="Invalide" data-success="valide">Addresse Mail</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="fa fa-phone prefix" aria-hidden="true"></i>
+                <input id="phone" type="tel" class="validate" value="{{ user.getPhone }}" required onkeyup="check_reservation_form()" minlength="10">
+                <label for="phone" data-error="Invalide" data-success="valide">Téléphone</label>
+            </div>                         
+        </div>
+
+        <div class="col s6">
+            <div class="input-field col s12">
+                <i class="fa fa-graduation-cap prefix" aria-hidden="true"></i>
+                <select name="activity" required onchange="check_reservation_form()">
+                    <option value="" disabled selected>Choisissez une activité</option>
+                    <option value="cours particuliers">Cour Particulier</option>
+                    <option value="stage">Stage</option>
+                    <option value="groupe">Groupe</option>
+                </select>
+                <label data-error="Invalide" data-success="valide">Activité</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="fa fa-ship prefix" aria-hidden="true"></i>
+                <select name="support" required onchange="check_reservation_form()">
+                    <option value="" disabled selected>Choisissez un support</option>
+                    <option value="catamaran">Catamaran</option>
+                    <option value="dériveur">Dériveur</option>
+                    <option value="micro croiseur">Micro Croiseur</option>
+                    <option value="paddle">Paddle</option>
+                    <option value="planche a voile">Planche a Voile</option>
+                    <option value="caravelle">Caravelle</option>
+                    <option value="canoe">Canöé</option>
+                    <option value="multiple">Multiple</option>
+                </select>
+                <label data-error="Invalide" data-success="valide">Support</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="fa fa-users prefix" aria-hidden="true"></i>
+                <input id="people" type="number" class="validate" min="1" max="20" required onchange="check_reservation_form()">
+                <label for="people" data-error="20 Max." data-success="valide">Nombre de participants</label>
+            </div>
+        </div>
+
+        <div class="col s8 offset-s2">
+            <div class="input-field col s12">
+                <i class="fa fa-pencil prefix" aria-hidden="true"></i>
+                <textarea id="detail" class="materialize-textarea"></textarea>
+                <label for="detail" data-error="Invalide" data-success="valide">Détails</label>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<div class="center">
+    <button id="reservation_button" class="g-recaptcha modal-action waves-effect waves-green btn green disabled modal-close"
+            data-sitekey="6LeuxD0UAAAAAOAdqybck-aqFPOKN2EjWiI0S4PY"
+            data-badge="bottomleft"
+            data-callback="reservate">
+        <i class="fa fa-check" aria-hidden="true"></i> Reserver
+    </button>
+</div>

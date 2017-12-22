@@ -45,3 +45,7 @@ function confirm_delete_post_comment(blog_post_comment_id) {
         }
     }); 
 }
+
+function view_reservation(reservation_id){
+    alert(reservation_id);
+}

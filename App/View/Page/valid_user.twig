@@ -1,0 +1,24 @@
+{% extends "Page/home.twig" %}
+
+
+{% block end_script %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            $.get(API_URL + "/user/valid/{{ token }}", function (data) {
+                document.querySelector("#modal h4").innerHTML = "<i class='fa fa-check' aria-hidden='true'></i> Votre compte est maintenant actif.";
+                document.querySelector("#modal div.modal-content div").innerHTML = 'Vous pouvez maintenant vous connecter.';
+                $('#modal').modal('open');
+                window.setTimeout(function () {
+                    window.location = "../";
+                }, 5000);
+            }).fail(function (jqXHR, textStatus) {
+                document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Une erreur est survenue.";
+                document.querySelector("#modal div.modal-content div").innerHTML = jqXHR.statusText;
+                $('#modal').modal('open');
+                window.setTimeout(function () {
+                    window.location = "../";
+                }, 5000);
+            });
+        });
+    </script>
+{% endblock %}

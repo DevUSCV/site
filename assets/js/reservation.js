@@ -10,8 +10,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     var html = "";
 
     var year = new Date().getFullYear();
-    if (year % 4 === 0 && year !== 1900)
-    {
+    if (year % 4 === 0 && year !== 1900) {
         month_days[1] = 29;
     }
 
@@ -28,9 +27,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
     html += "</ul>"
             + "</div>" // card-tabs;
 
-    html += "<div class='card-content'>";
+    html += "<div class='card-content col s8 white z-depth-2'>";
     for (var month = 0; month < months.length; month++) {
-        html += "<div id='" + months[month] + "'>"
+        html += "<div class='' id='" + months[month] + "'>"
                 + " <table class='striped highlight centered calendar_table'>"
                 + "     <thead>"
                 + "         <tr class='grey darken-3 white-text'>";
@@ -58,8 +57,18 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 + " </table>"
                 + "</div>";
     }
-    html += "</div>"; // card
+    html += "</div>"
+            + "<div class='card-content col s4 white z-depth-2' id='reservation_article'>"
+            + "<span class='card-title'></span>"
+            + "<p></p>"
+            + (isAdmin() ? "<a href='/article/editor/reservation' class='btn-floating blue'><i class='fa fa-pencil' aria-hidden='true'></i></a>" : "")
+            + "</div>"; // card
     document.querySelector("div.container div.row").innerHTML = html;
+
+    $.getJSON(API_URL + "/article/reservation", (data) => {
+        document.querySelector("#reservation_article span").innerHTML = data.title;
+        document.querySelector("#reservation_article p").innerHTML = data.content;
+    });
 
     $("ul.tabs").tabs();
     $("ul.tabs").tabs("select_tab", months[new Date().getMonth()]);
@@ -72,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
         tl.to(e.target, 0.15, {scale: 2});
     });
 
-
     $("td").mouseleave(function (e) {
         var tl = new TimelineLite();
         tl.to(e.target, 0.15, {scale: 1});
@@ -84,42 +92,98 @@ document.addEventListener("DOMContentLoaded", function (e) {
         var month = e.target.dataset.month;
         var year = e.target.dataset.year;
         var today = new Date();
-        if (month >= today.getMonth() && day > today.getDate()) {
-            var html;
-            $.getJSON(API_URL + "/reservation/" + year + "/" + (parseInt(month) + 1) + "/" + day, function (data) {
-                html = "<table class='striped highlight centered planning_table'>"
-                        + "<tbody>";
-                for (var hour = 8; hour <= 18; hour = hour + 2) {
-                    html += "<tr>"
-                            + "<td>" + hour + "h</td>"
-                            + "<td>";
-                    if (data.reservation[parseInt(hour)]) {
-                        html += "PRIS";
-                    } else {
-                        html += "<button class='btn green waves-effect' onclick='reserver(" + year + "," + month + "," + day + "," + hour + ")'>RESERVER</button>";
-                    }
-                    html += "</td>"
-                            + "</tr>";
-                }
-                html += "</table>"
-
+        if (month >= today.getMonth() && day >= today.getDate()) {
+            if (!isModo() && day == today.getDate()) {
+                return;
+            }
+            $.get(SITE_ROOT + "/reservation/formulaire", {year: year, month: month, day: day}, function (data) {
                 document.querySelector("#modal h4").innerHTML = "Reservation pour le " + day + " " + months[month] + " " + year;
-                document.querySelector("#modal div.modal-content div").innerHTML = html;
+                document.querySelector("#modal div.modal-content div").innerHTML = "<div id='reservation_planning'></div>" + data;
                 $('#modal').modal('open');
+                if (isModo()) {
+                    $.getJSON(API_URL + "/reservation/" + year + "/" + (parseInt(month) + 1) + "/" + day, function (data) {
+                        var html = "<table class='bordered centered planning_table'>"
+                                + "<thead>"
+                                + "<tr class='grey darken-3 white-text'>"
+                                + "<th>Heure</th>"
+                                + "<th>Activité</th>"
+                                + "<th>Support</th>"
+                                + "<th>Confirmé</th>"
+                                + "</tr>"
+                                + "</thead>"
+                                + "<tbody>";
+                        if (data.reservation.length > 0) {
+                            for (var reservation of data.reservation) {
+                                html += "<tr onclick='view_reservation(" + reservation.reservation_id + ")'>"
+                                        + "<td>" + reservation.time + "h</td>"
+                                        + "<td>" + reservation.activity + "</td>"
+                                        + "<td>" + reservation.support + "</td>"
+                                        + (reservation.status == "confirm" ?
+                                                "<td class='green white-text'><i class='fa fa-check' aria-hidden='true'></i></td>" : "")
+                                        + (reservation.status == "valid" ?
+                                                "<td class='red white-text'><i class='fa fa-times' aria-hidden='true'></i></td>" : "")
+                                        + "</tr>";
+                            }
+                        } else {
+                            html += "<tr><td colspan='4'><b>Aucune reservation a cette date</b></td></tr>"
+                        }
+                        html += "</table><br><h4>Nouvelle Reservation</h4>"
+                        document.querySelector("#reservation_planning").innerHTML = html;
+                    });
+                }
+                $('select').material_select();
+                $.getScript('https://www.google.com/recaptcha/api.js');
             });
-
-
         }
-    })
+    }
+    )
 });
 
-function reserver(year, month, day, hour) {
-    $.get(SITE_ROOT + "/reservation/formulaire" , {year: year, month: month, day: day, hour: hour, rand: Math.round(Math.random()*100000)}, function(data){
-        document.querySelector("#modal h4").innerHTML = "Reservation pour le " + day + " " + months[month] + " " + year + " à " + hour + "h";
-        document.querySelector("#modal div.modal-content div").innerHTML = data;
-    });
+function reservate(grecaptcha) {
+    var form = document.querySelector("#form_reservation");
+    if (check_reservation_form()) {
+        var data = {
+            grecaptcha: grecaptcha,
+            date: form.date.value,
+            full_name: form.full_name.value,
+            email: form.email.value,
+            phone: form.phone.value,
+            activity: form.activity.value,
+            support: form.support.value,
+            people: form.people.value,
+            detail: form.detail.value
+        };
+        $.post(API_URL + "/reservation",
+                data,
+                function (data) {
+                    document.querySelector("#modal h4").innerHTML = "<i class='fa fa-check' aria-hidden='true'></i> Reservation enregistrée.";
+                    document.querySelector("#modal div.modal-content div").innerHTML = '<h3>Un email vous as été envoyé.</h3>Veuillez valider votre réservation.';
+                    $('#modal').modal('open');
+                })
+                .fail(function (jqXHR, textStatus) {
+                    document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Une erreur est survenue.";
+                    document.querySelector("#modal div.modal-content div").innerHTML = jqXHR.statusText;
+                    $('#modal').modal('open');
+                });
+    }
+    window.grecaptcha.reset();
+}
 
-
-
-    
+function check_reservation_form() {
+    var form = document.querySelector("#form_reservation");
+    var valid = (
+            form.full_name.validity.valid &&
+            form.email.validity.valid &&
+            form.phone.validity.valid &&
+            form.activity.validity.valid &&
+            form.support.validity.valid &&
+            form.people.validity.valid &&
+            form.detail.validity.valid
+            );
+    if (valid) {
+        $("#reservation_button").removeClass("disabled");
+    } else {
+        $("#reservation_button").addClass("disabled");
+    }
+    return valid;
 }

@@ -6,4 +6,5 @@ $app->post("/article/{article_id}/comment", App\Ressources\ArticleCommentResourc
 // GET
 $app->get("/article/{article_id}/comment", App\Ressources\ArticleCommentResource::class . ":getArticleCommentsByArticleId");
 // DELETE
-$app->delete("/article/{article_id}/comment/{article_comment_id}", App\Ressources\ArticleCommentResource::class . ":deleteArticleComment");
+$app->delete("/article/{article_id}/comment/{article_comment_id}", App\Ressources\ArticleCommentResource::class . ":deleteArticleComment")
+        ->add(new App\Middleware\Security\Modo());

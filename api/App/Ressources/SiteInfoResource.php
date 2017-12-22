@@ -19,17 +19,21 @@ class SiteInfoResource extends AbstractResource {
     // ------------------------------------------------------------------------- GET SITE INFO
     // -------------------------------------------------------------------------
     public function getSiteInfo(Request $request, Response $response, $args) {
-            $data = $this->getEntityManager()->getRepository(SiteInfo::class)->findAll();
+        $ignore = array("contact_mail");
+        $data = $this->getEntityManager()->getRepository(SiteInfo::class)->findAll();
         if ($data === null) {
             return $response->withStatus(404, "No Site Found");
         } else {
             $siteinfo = array();
-            foreach ($data as $info){
-            $siteinfo[$info->getName()] = $info->getValue();
+            foreach ($data as $info) {
+                if (!in_array($info->getName(), $ignore)) {
+                    $siteinfo[$info->getName()] = $info->getValue();
+                }
             }
             return $response->write(json_encode($siteinfo));
         }
 
         return $response;
     }
+
 }

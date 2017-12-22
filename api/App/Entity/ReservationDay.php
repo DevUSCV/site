@@ -34,6 +34,7 @@ class ReservationDay implements JsonSerializable {
     /**
      * One Reservation_day has Many Reservation.
      * @OneToMany(targetEntity="Reservation", mappedBy="date")
+     * * @OrderBy({"time" = "ASC"})
      */
     private $reservation;
 
@@ -42,7 +43,7 @@ class ReservationDay implements JsonSerializable {
     }
 
     function getDate() {
-        return $this->date->format("Y-m-d");
+        return $this->date->format("Y/m/d");
     }
 
     function getStatus() {
@@ -70,15 +71,11 @@ class ReservationDay implements JsonSerializable {
     }
 
     public function jsonSerialize() {
-        $reservationTab = array();
-        foreach ($this->reservation as $reservation) {
-            $reservationTab[$reservation->getTime()] = true;
-        }
         return array(
-            'reservationçday_id' => $this->reservation_day_id,
+            'reservation_day_id' => $this->reservation_day_id,
             'date' => $this->date->format("Y-m-d"),
             'status' => $this->status,
-            "reservation" => $reservationTab
+            "reservation" => $this->reservation->toArray()
         );
     }
 

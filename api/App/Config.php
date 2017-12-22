@@ -10,4 +10,8 @@ class Config {
         'dbname'   => 'api',
         'charset' => 'utf8'
     );
+    
+    const SITE_NAME = "US Carmaux Voile";
+    const DOMAIN = "uscvoile.fr";
+    const GRECAPTCHA_SECRET_KEY = "6LeuxD0UAAAAAN3SXUjRwWzaMGi9vpovC20wXbIc";
 }

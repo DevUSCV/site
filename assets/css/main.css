@@ -3,15 +3,15 @@
 }
 
 @font-face {
-  font-family: 'Caviar Dreams';
-  src: url('../font/CaviarDreams.eot');
-  src: url('../font/CaviarDreams.woff2') format('woff2'),
-       url('../font/CaviarDreams.woff') format('woff'),
-       url('../font/CaviarDreams.ttf') format('truetype'),
-       url('../font/CaviarDreams.svg#CaviarDreams') format('svg'),
-       url('../font/CaviarDreams.eot?#iefix') format('embedded-opentype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Caviar Dreams';
+    src: url('../font/CaviarDreams.eot');
+    src: url('../font/CaviarDreams.woff2') format('woff2'),
+        url('../font/CaviarDreams.woff') format('woff'),
+        url('../font/CaviarDreams.ttf') format('truetype'),
+        url('../font/CaviarDreams.svg#CaviarDreams') format('svg'),
+        url('../font/CaviarDreams.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 body{
@@ -20,12 +20,16 @@ body{
 }
 
 h1, h2, h3, h4, h5, h6, span.card-title{
-	//font-family: 'Caviar Dreams'!important;
-        //font-weight: bold!important;
+    //font-family: 'Caviar Dreams'!important;
+    //font-weight: bold!important;
 }
 
 .card{
     vertical-align: bottom!important;
+}
+
+.grecaptcha-badge{
+    overflow: hidden;
 }
 
 /*------------------------------------------------------------------------------ BURGER BUTTON*/
@@ -68,7 +72,7 @@ a.brand-logo{
 }
 
 #slide-out{
-    z-index: 2000;
+    z-index: 1001;
 }
 ul.side-nav li a{
     font-family: 'Caviar Dreams';
@@ -102,4 +106,8 @@ div.card p{
 .login_message{
     margin-top: 20px;
     display: none;
+}
+
+.modal-footer div{
+    //display: none;
 }

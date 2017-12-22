@@ -56,8 +56,11 @@ require './Routes/PhotoRoute.php';
 require './Routes/LocationPriceRoute.php';
 // ----------------------------------------------------------------------------- RESERVATION DAY
 require './Routes/ReservationDayRoute.php';
+// ----------------------------------------------------------------------------- RESERVATION
+require './Routes/ReservationRoute.php';
 
-$app->get("/contact", App\Ressources\EmailRessource::class . ":contact");
+$app->post("/contact", App\Ressources\EmailRessource::class . ":contact")
+        ->add(new App\Middleware\Security\Captcha());
 
 
 

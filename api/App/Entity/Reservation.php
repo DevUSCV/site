@@ -68,24 +68,41 @@ class Reservation implements JsonSerializable {
      * @var string
      * @Column(type="string", length=50)
      */
-    protected $type;
+    protected $activity;
     
     /**
      * @var string
      * @Column(type="string", length=50)
      */
-    protected $category;
+    protected $support;
+    
+    /**
+     * @var string
+     * @Column(type="string", length=500)
+     */
+    protected $detail;
+    
+    /**
+     * @var string
+     * @Column(type="string", length=500)
+     */
+    protected $token;
+    
+    /**
+     * @Column(type="integer")
+     */
+    protected $people;
     
     function getReservation_id() {
         return $this->reservation_id;
     }
 
     function getDate() {
-        return $this->date;
+        return $this->date->getDate();
     }
 
     function getTime() {
-        return $this->time->format("H");
+        return $this->time;
     }
 
     function getCreate_date() {
@@ -112,12 +129,24 @@ class Reservation implements JsonSerializable {
         return $this->message;
     }
 
-    function getType() {
-        return $this->type;
+    function getActivity() {
+        return $this->activity;
     }
 
-    function getCategory() {
-        return $this->category;
+    function getSupport() {
+        return $this->support;
+    }
+
+    function getDetail() {
+        return $this->detail;
+    }
+
+    function getToken() {
+        return $this->token;
+    }
+
+    function getPeople() {
+        return $this->people;
     }
 
     function setReservation_id($reservation_id) {
@@ -156,27 +185,40 @@ class Reservation implements JsonSerializable {
         $this->message = $message;
     }
 
-    function setType($type) {
-        $this->type = $type;
+    function setActivity($activity) {
+        $this->activity = $activity;
     }
 
-    function setCategory($category) {
-        $this->category = $category;
+    function setSupport($support) {
+        $this->support = $support;
     }
 
-        
+    function setDetail($detail) {
+        $this->detail = $detail;
+    }
+
+    function setToken($token) {
+        $this->token = $token;
+    }
+
+    function setPeople($people) {
+        $this->people = $people;
+    }
+
+                
     public function jsonSerialize() {
         return array(
             'reservation_id' => $this->reservation_id,
             'date' => $this->date->getDate(),
-            'time' => $this->time->format("H"),
+            'time' => ($this->time ? $this->time->format("H") : null),
             'create_date' => $this->create_date,
             'status' => $this->status,
             'full_name' => $this->full_name,            
             'email' => $this->email,
             'phone' => $this->phone,
-            'type' => $this->type,
-            'category' => $this->category,
+            'activity' => $this->activity,
+            'support' => $this->support,
+            'detail' => $this->detail,
         );
     }
 

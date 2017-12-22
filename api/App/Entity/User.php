@@ -74,6 +74,12 @@ class User implements JsonSerializable {
      * @Column(type="string", length=255)
      */
     protected $status;
+    
+    /**
+     * @var string
+     * @Column(type="string", length=500)
+     */
+    protected $token;
 
     function getUser_id() {
         return $this->user_id;
@@ -163,7 +169,23 @@ class User implements JsonSerializable {
         $this->status = $status;
     }
 
-    
+    function getSubscribe_date() {
+        return $this->subscribe_date;
+    }
+
+    function getToken() {
+        return $this->token;
+    }
+
+    function setSubscribe_date($subscribe_date) {
+        $this->subscribe_date = $subscribe_date;
+    }
+
+    function setToken($token) {
+        $this->token = $token;
+    }
+
+        
     
     public function jsonSerialize() {
         return array(

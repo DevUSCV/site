@@ -10,11 +10,19 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>    
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>    
         <script src="https://use.fontawesome.com/d96eeea1cb.js"></script>
-        <script>const STATUS = "{{ user.getStatus }}"</script>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+        <script>
+            function isAdmin() {
+                return {% if user.getStatus == "admin" %}true{% else %}false{% endif %};
+            }
+            function isModo() {
+                return {% if user.getStatus == "modo" or user.getStatus == "admin" %}true{% else %}false{% endif %};
+            }
+        </script>
         <script src="/assets/js/main.js"></script>  
 
 
-        {% if user.getStatus %}
+        {% if user.getStatus == "modo" or user.getStatus == "admin" %}
             <script src="/assets/js/admin.js"></script>  
         {% endif %}
     {% block head %}{% endblock %}
@@ -124,41 +132,49 @@
     <div class="modal-content">
         <h4>Nous Contacter</h4>
         <div>
-            <div class="row">     
+            <div class="row">
+                <h5>Par Courrier</h5>
+                <span class="site_address col s12"></span>     
                 <h5>Par Mail</h5>
-                <form class="col s12" name="email_form">
+                <form class="col s12" id="contact_form">
                     <div class="input-field col s6">
                         <i class="fa fa-user-circle-o prefix" aria-hidden="true"></i>
-                        <input id="mail_full_name" type="text" class="validate" value="{{ user.getFirstname }} {{ user.getLastname }}">
-                        <label for="mail_full_name">Nom Complet</label>
+                        <input name="contact_full_name" type="text" class="validate" value="{{ user.getFirstname }} {{ user.getLastname }}" required minlength="5" maxlength="255" onkeyup="contact_form_check()">
+                        <label for="contact_full_name">Nom Complet</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="fa fa-reply prefix" aria-hidden="true"></i>
-                        <input id="mail_reply" type="email" class="validate" value="{{ user.getEmail }}">
-                        <label for="mail_reply">Email</label>
+                        <input id="contact_reply" type="email" class="validate" value="{{ user.getEmail }}" required pattern="^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$" onkeyup="contact_form_check()">
+                        <label for="contact_reply">Email</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="mail_object" type="text" class="validate">
-                        <label for="mail_object">Objet</label>
+                        <input name="contact_object" type="text" class="validate" required minlength="5" maxlength="255" onkeyup="contact_form_check()">
+                        <label for="contact_object">Objet</label>
                     </div>
                     <div class="row">
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="fa fa-pencil prefix" aria-hidden="true"></i>
-                                <textarea id="email_content" class="materialize-textarea"></textarea>
-                                <label for="email_content">Message</label>
+                                <textarea name="contact_content" class="materialize-textarea"  required minlength="5" maxlength="2000" onkeyup="contact_form_check()"></textarea>
+                                <label for="contact_content">Message</label>
                             </div>
                         </div>
                     </div>
                 </form>
-                <h5>Par Courrier</h5>
-                <span class="site_address col s12"></span>
+
             </div>
         </div>
 
     </div>
-    <div class="modal-footer">
-        <button class="modal-action modal-close waves-effect waves-green btn green"><i class="fa fa-paper-plane" aria-hidden="true"></i> Envoyer</button>  
+    <div class="modal-footer col s12">
+        <button
+            id="contact_form_submit"
+            class="g-recaptcha modal-action waves-effect waves-green btn green disabled modal-close"
+            data-sitekey="6LeuxD0UAAAAAOAdqybck-aqFPOKN2EjWiI0S4PY"
+            data-badge="bottomleft"
+            data-callback="sendmail">
+            <i class="fa fa-paper-plane" aria-hidden="true"></i> Envoyer
+        </button>
     </div>
 </div>
 

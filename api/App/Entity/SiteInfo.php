@@ -49,7 +49,6 @@ class SiteInfo implements JsonSerializable {
 
         
     public function jsonSerialize() {
-        //var_dump($this->address_text);
         return array(
             'name' => $this->name,
             'value' => $this->address,

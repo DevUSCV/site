@@ -73,7 +73,8 @@ function tarif_groupe() {
 function condition_cours() {
     $.getJSON(API_URL + "/article/cours_particuliers_conditions", (data) => {
         document.querySelector("#modal h4").innerHTML = data.title;
-        document.querySelector("#modal div.modal-content div").innerHTML = "<p>" + data.content + "</p>";
+        document.querySelector("#modal div.modal-content div").innerHTML = "<p>" + data.content + "</p>"
+        + (isAdmin() ? "<a href='/article/editor/cours_particuliers_conditions' class='btn-floating blue'><i class='fa fa-pencil' aria-hidden='true'></i></a>" : "");
         $('#modal').modal('open');
     });
 }
@@ -81,7 +82,8 @@ function condition_cours() {
 function condition_stages() {
     $.getJSON(API_URL + "/article/stages_conditions", (data) => {
         document.querySelector("#modal h4").innerHTML = data.title;
-        document.querySelector("#modal div.modal-content div").innerHTML = "<p>" + data.content + "</p>";
+        document.querySelector("#modal div.modal-content div").innerHTML = "<p>" + data.content + "</p>"
+        + (isAdmin() ? "<a href='/article/editor/stages_conditions' class='btn-floating blue'><i class='fa fa-pencil' aria-hidden='true'></i></a>" : "");
         $('#modal').modal('open');
     });
 }
@@ -89,7 +91,8 @@ function condition_stages() {
 function condition_groupes() {
     $.getJSON(API_URL + "/article/groupes_conditions", (data) => {
         document.querySelector("#modal h4").innerHTML = data.title;
-        document.querySelector("#modal div.modal-content div").innerHTML = "<p>" + data.content + "</p>";
+        document.querySelector("#modal div.modal-content div").innerHTML = "<p>" + data.content + "</p>"
+        + (isAdmin() ? "<a href='/article/editor/groupes_conditions' class='btn-floating blue'><i class='fa fa-pencil' aria-hidden='true'></i></a>" : "");
         $('#modal').modal('open');
     });
 }

@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
         opacity: .5, // Opacity of modal background
         inDuration: 300, // Transition in duration
         outDuration: 200, // Transition out duration
-        //startingTop: '4%', // Starting top style attribute
-        //endingTop: '10%', // Ending top style attribute
+        startingTop: '4%', // Starting top style attribute
+        endingTop: '10%', // Ending top style attribute
     });
 });
 function show_contact() {
@@ -55,9 +55,47 @@ function connection() {
 function deconnection() {
 
     $.get(API_URL + "/logout", function (data) {
-        window.location = window.location;
-    })
+        window.location.reload();
+    });
+}
 
+function contact_form_check() {
+    var form = document.querySelector("#contact_form")
+    var valid = (
+            form.contact_full_name.validity.valid &&
+            form.contact_reply.validity.valid &&
+            form.contact_object.validity.valid &&
+            form.contact_content.validity.valid
+            )
+    if (valid) {
+        $("#contact_form_submit").removeClass("disabled");
+    } else {
+        $("#contact_form_submit").addClass("disabled");
+    }
+    console.log(valid);
+    return valid;
+}
 
-
+function sendmail(grecaptcha) {
+    var form = document.querySelector("#contact_form")
+    $.post(API_URL + "/contact",
+            {
+                grecaptcha: grecaptcha,
+                full_name: form.contact_full_name.value,
+                reply: form.contact_reply.value,
+                object: form.contact_object.value,
+                content: form.contact_content.value
+            },
+            function (data) {
+                form.reset();
+                document.querySelector("#modal h4").innerHTML = "<i class='fa fa-envelope' aria-hidden='true'></i> Votre message a été envoyé avec succès.";
+                document.querySelector("#modal div.modal-content div").innerHTML = 'Il sera traité dans les meilleurs délais.';
+                $('#modal').modal('open');
+            })
+            .fail(function (jqXHR, textStatus) {
+                document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Une erreur est survenue.";
+                document.querySelector("#modal div.modal-content div").innerHTML = jqXHR.statusText;
+                $('#modal').modal('open');
+            });
+    window.grecaptcha.reset();
 }

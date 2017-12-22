@@ -9,8 +9,8 @@
 {% endblock %}
 
 {% block content %}
-    <a href="{{ path_for('home') }}" class="back_home btn-floating btn-large waves-effect waves-light black">
-        <i class="fa fa-home" aria-hidden="true"></i>
+    <a href="{{ path_for('home') }}" class="back_home btn-floating btn-large waves-effect waves-light blue">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
     </a>
     <div class="row content">
         {#       ----------------------------------------------------------------------- ACTUALITE#}
@@ -24,7 +24,7 @@
     <div id="evenements" class="col s12">
         <div class="row container" id="evenement_content">
             <h2 class="header">Evenements</h2>
-            <div class="card grey darken-3 white-text"> 
+            <div class="card"> 
                 <div class="card-tabs">
                     <ul class="tabs tabs-fixed-width black">
                         <li class="tab"><a class="active" href="#event_planning">Planning</a></li>
@@ -35,12 +35,25 @@
                     <div id="event_planning">
                         <p></p>
                         {% if user.getStatus == "admin" %}
-                        <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'evenements'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-                        {% endif %}
+                            <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'evenements'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                                {% endif %}
                     </div>
                     <div id="event_file">
                         <object id="event_pdf" data="" type="application/pdf">
                         </object>
+                        {% if user.getStatus == "admin" %}
+                            <form id="form_avis_de_course">
+                                <div class="file-field input-field">
+                                    <div class="btn blue">
+                                        <span><i class="fa fa-cloud-upload" aria-hidden="true"></i> Avis de course</span>
+                                        <input type="file">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        {% endif %}
                     </div>
                 </div>                                
             </div>
@@ -63,22 +76,22 @@
                         <span class="card-title"></span>
                         <p></p>
                         {% if user.getStatus == "admin" %}
-                        <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'pratique_deriveur'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-                        {% endif %}
+                            <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'pratique_deriveur'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                                {% endif %}
                     </div>
                     <div id="pratique_vrc">
                         <span class="card-title"></span>
                         <p></p>
                         {% if user.getStatus == "admin" %}
-                        <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'pratique_vrc'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-                        {% endif %}
+                            <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'pratique_vrc'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                                {% endif %}
                     </div>
                     <div id="pratique_croisiere">
                         <span class="card-title"></span>
                         <p></p>
                         {% if user.getStatus == "admin" %}
-                        <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'pratique_croisiere'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-                        {% endif %}
+                            <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'pratique_croisiere'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                                {% endif %}
                     </div>
                 </div>                                
             </div>
@@ -94,8 +107,8 @@
                         <span class="card-title"></span>
                         <p></p>
                         {% if user.getStatus == "admin" %}
-                        <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'entrainements'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-                        {% endif %}
+                            <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'entrainements'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                                {% endif %}
                     </div>
                 </div>
             </div>
@@ -105,38 +118,38 @@
     <div id="equipe" class="col s12">
         <div class="row container">
             <h2 class="header">L'équipe</h2>
-            <div class="col s12 l4">
+            <div class="col s12">
                 <div class="card ">
                     <div class="card-content" id='team_1'>
                         <span class="card-title"></span>
                         <p></p>
                     </div> 
                     {% if user.getStatus == "admin" %}
-                    <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'moniteur1'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-                    {% endif %}
+                        <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'moniteur1'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                            {% endif %}
                 </div>
             </div>
-            <div class="col s12 l4">
+            <div class="col s12">
                 <div class="card ">
                     <div class="card-content" id='team_2'>
                         <span class="card-title"></span>
                         <p></p>
                     </div>
                     {% if user.getStatus == "admin" %}
-                    <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'moniteur2'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-                    {% endif %}
+                        <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'moniteur2'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                            {% endif %}
 
                 </div>
             </div>
-            <div class="col s12 l4">
+            <div class="col s12">
                 <div class="card ">
                     <div class="card-content" id='team_other'>
                         <span class="card-title"></span>
                         <p></p>
                     </div>
                     {% if user.getStatus == "admin" %}
-                    <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'moniteur3'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-                    {% endif %}
+                        <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'moniteur3'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                            {% endif %}
 
                 </div>
             </div>
@@ -152,8 +165,8 @@
                         <span class="card-title"></span>
                         <p></p>
                         {% if user.getStatus == "admin" %}
-                        <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'apropos'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-                        {% endif %}
+                            <div class="card-action"><a class="btn-floating blue" href="{{ path_for('ArticleEditor', {'article_name': 'apropos'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                                {% endif %}
                     </div>
                 </div>
             </div>

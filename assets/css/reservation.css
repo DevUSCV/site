@@ -29,7 +29,7 @@ table.calendar_table td {
 
 table.planning_table td{
     padding: 5px 0;
-    width: 50%;
+    cursor: pointer;
 }
 
 table td.today{
