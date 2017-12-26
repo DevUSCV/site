@@ -132,7 +132,7 @@ class UserResource extends AbstractResource {
         $email = $request->getParam("email");
         $password = $request->getParam("password");
         $user = $this->checkLogin($email, $password);
-        if ($user) {
+        if ($user instanceof User && $user->getStatus() !== null) {
             $response->write(true);
             $_SESSION["user"] = $user;
         } else {

@@ -64,7 +64,7 @@ class EmailRessource {
         $object = "Votre demande de reservation du " . (new \DateTime($reservation->getDate()))->format("d/m/Y") . "  est maintenant validée";
         $object_admin = "Demande de reservation pour le " . (new \DateTime($reservation->getDate()))->format("d/m/Y") . "  est maintenant validée";
         $content_head = "<h1>" . $object . "</h1><h3>Un moniteur la confirmera sous peut</h3>";
-        $content_head_admin = "<h1>" . $object . "</h1><h3>Un moniteur la confirmera sous peut</h3>";
+        $content_head_admin = "<h1>" . $object_admin . "</h1><h3>Un moniteur la confirmera sous peut</h3>";
         $content = "date: " . (new \DateTime($reservation->getDate()))->format("d/m/Y") . "<br>"
                 . "Nom complet: " . $reservation->getFull_name() . "<br>"
                 . "Téléphone: " . $reservation->getPhone() . "<br>"

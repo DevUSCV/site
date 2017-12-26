@@ -17,18 +17,103 @@
                 <div class="card"> 
                     <div class="card-tabs">
                         <ul class="tabs tabs-fixed-width black">
-                            <li class="tab"><a class="active" href="#profil_tab">Moi</a></li>
+                            <li class="tab"><a class="active" href="#profil_tab">Mon Profil</a></li>
                             <li class="tab"><a href="#license_tab">Mes Licenses</a></li>
+                            <li class="tab"><a href="#reservation_tab">Mes Reservations</a></li>
                         </ul>
                     </div>
-                    <div class="card-content">
+                    <div class="card-content row">
+
+
                         <div id="profil_tab">
                             <span class="card-title">
-                                test
+                                Mon Profil                                
                             </span>
+                            <div class="card-content">
+                                <form id="profil_form" class="container">
+                                    <div class="col s6">
+                                        <div class="input-field col s12">
+                                            <i class="fa fa-user-circle prefix" aria-hidden="true"></i>
+                                            <input id="lastname" type="text" name="lastname" class="validate" required value='{{ user.getLastname }}'/>
+                                            <label for="lastname">Nom</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <i class="fa fa-user-circle-o prefix" aria-hidden="true"></i>
+                                            <input id="firstname" type="text" name="firstname" class="validate" required="" required value='{{ user.getFirstname }}'/>
+                                            <label for="firstname">Prénom</label>
+                                        </div>       
+                                    </div>
+                                    <div class="col s6">
+                                        <div class="input-field col s12">
+                                            <i class="fa fa-phone prefix" aria-hidden="true"></i>
+                                            <input id="phone" type="tel" name="lastname" class="validate" required value='{{ user.getPhone }}'/>
+                                            <label for="phone">Téléphone</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <i class="fa fa-envelope prefix" aria-hidden="true"></i>
+                                            <input id="email" type="email" name="email" class="validate" disabled pattern="^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$" required value='{{ user.getEmail }}'/>
+                                            <label for="email" data-error="Email invalide" data-success="Ok">Addresse Email</label>
+                                        </div> 
+                                    </div>
+                                    <div class="col s12">
+                                        <div class="input-field col s6">
+                                            <i class="fa fa-calendar prefix" aria-hidden="true"></i>
+                                            <input id="subscribe_date" type="text" name="subscribe_date" disabled value='{{ user.getSubscribe_date }}'/>
+                                            <label for="subscribe_date" >Date d'inscription</label>
+                                        </div> 
+                                        <div class="input-field col s6">
+                                            <i class="fa fa-birthday-cake prefix" aria-hidden="true"></i>
+                                            <input id="birth_date" type="text" name="birth_date" class="datepicker" required value='{{ user.getBirth_date }}'/>
+                                            <label for="birth_date">Date de naissance</label>
+                                        </div>                                    
+                                    </div>
+                                    <div class="col s12">
+                                        <div class="input-field col s6">
+                                            <i class="fa fa-lock prefix" aria-hidden="true"></i>
+                                            <input id="status" type="text" name="status" class="datepicker" disabled value='{{ user.getStatus }}'/>
+                                            <label for="status">Status</label>
+                                        </div>                       
+                                    </div>
+                                </form>                                
+                            </div>
+                            <div class="card-action center">
+                                <button class="btn blue disabled">Enregistrer les moddifications</button>
+                            </div>
                         </div>
-                        <div id="license_tab">
-                            MES LICENSES
+
+
+
+                        <div id="license_tab">                            
+                            <span class="card-title">
+                                Mes Licences
+                            </span>
+                            <div class="card-content">
+                                Bientot
+                            </div>
+                        </div>
+
+
+
+                        <div id="reservation_tab">                            
+                            <span class="card-title">
+                                Mes Reservations
+                            </span>
+                            <div class="card-content">
+                                <table id="my_reservation" class="centered bordered">
+                                    <thead>
+                                        <tr class="grey darken-3 white-text">
+                                            <th>Heure</th>
+                                            <th>Activitée</th>
+                                            <th>Support</th>
+                                            <th>Participants</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="card-action center">
+                                <a href="{{ path_for('reservation') }}" class="btn blue">Nouvelle Réservation</a>
+                            </div>
                         </div>
                     </div>                                
                 </div>
@@ -68,7 +153,23 @@
 {% block end_script %}
     <script>
         {% if user %}
-            document.addEventListener("DOMContentLoaded", init("{{ user.getEmail }}"));
+            document.addEventListener("DOMContentLoaded", function () {
+
+                $('.datepicker').pickadate({
+                    monthsFull: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+                    monthsShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    weekdaysFull: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                    weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Dim'],
+                    selectMonths: true,
+                    max: true,
+                    selectYears: 110,
+                    today: null,
+                    clear: null,
+                    close: 'Ok',
+                    closeOnSelect: false
+                });
+
+            });
         {% endif %}
     </script>
 

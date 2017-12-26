@@ -1,0 +1,57 @@
+{% extends "template.twig" %}
+
+{% block head %}     
+    <link rel="stylesheet" href="/assets/css/blog_editor.css">
+    <script src="/assets/js/tinymce/tinymce.min.js"></script>  
+    <script src="/assets/js/admin.js"></script>  
+    <script src="/assets/js/form/blog_editor.js"></script>  
+    <title>Edition d'article</title>
+{% endblock %}
+
+{% block content %}
+    {% if (user.getStatus == "admin" or user.getStatus == "modo") %}
+        <div class="row content">
+            <div class='container'>
+                RESERVATION EDITOR {{reservation_id}}
+            </div>
+        </div>
+
+    {% else %}
+        <div class="row content">
+            <div class='container'>
+                <h2>Acces Non Authorisé</h2>
+            </div>
+        </div>
+    {% endif %}
+
+
+    <div class="row bottom_nav">
+        <div class="col s12 black">
+            <ul class="tabs black center">
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('club') }}">Le Club</a>
+                </li>
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('activite') }}">Activités</a>
+                </li>
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('reservation') }}">Reservation</a>
+                </li>
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('location') }}">Location</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block end_script %}
+    <script>
+        {% if (user.getStatus == "admin" or user.getStatus == "modo") %}
+            //init(parseInt("{{reservation_id}}"));
+        {% else %}
+            //window.setTimeout(window.history.back(), 2000);
+        {% endif %}
+
+    </script>
+{% endblock %}

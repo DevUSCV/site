@@ -33,7 +33,7 @@ class User {
     }
 
     function getBirth_date() {
-        return $this->birth_date;
+        return $this->birth_date ? $this->birth_date->format("d/m/Y") : null;
     }
 
     function getLicense() {
@@ -88,16 +88,16 @@ class User {
         $this->password = $password;
     }
     
-    function getSubscribe_date_date() {
-        return $this->subscribe_date_date;
+    function getSubscribe_date() {
+        return $this->subscribe_date ? $this->subscribe_date->format("d/m/Y") : null;
     }
 
     function getStatus() {
         return $this->status;
     }
 
-    function setSubscribe_date_date($subscribe_date_date) {
-        $this->subscribe_date_date = $subscribe_date_date;
+    function setSubscribe_date($subscribe_date) {
+        $this->subscribe_date = $subscribe_date;
     }
 
     function setStatus($status) {

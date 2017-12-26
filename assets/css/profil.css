@@ -5,6 +5,14 @@ div.row.content{
     padding-top: 10px!important;
 }
 
+table th{
+    padding: 2px 0!important;
+}
+
+table tr{
+    padding: 5px 0;
+}
+
 /*------------------------------------------------------------------------------ ONGLETS*/
 
 div.bottom_nav{

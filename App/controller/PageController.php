@@ -183,6 +183,18 @@ class PageController {
         return $response;
     }
     
+//   --------------------------------------------------------------------------- RESERVATION EDITOR
+//   ---------------------------------------------------------------------------
+    public function reservationEditor(Request $request, Response $response, $args) {
+        $param = array(
+            "user" => $this->container["user"],
+            "reservation_id" => intval($args["reservation_id"])
+        );
+
+        $this->container->view->render($response, "Form/ReservationEditor.twig", $param);
+        return $response;
+    }
+    
 //   --------------------------------------------------------------------------- VALID USER
 //   ---------------------------------------------------------------------------
     public function validUser(Request $request, Response $response, $args) {

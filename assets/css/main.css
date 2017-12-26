@@ -32,6 +32,9 @@ h1, h2, h3, h4, h5, h6, span.card-title{
     overflow: hidden;
 }
 
+.picker__date-display{
+    background-color: #3b96e2;
+}
 /*------------------------------------------------------------------------------ BURGER BUTTON*/
 .button-collapse{
     position: fixed;
