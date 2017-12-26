@@ -126,7 +126,7 @@ class PageController {
         return $response;
     }
 
-//   --------------------------------------------------------------------------- FORMULAIRES
+//   --------------------------------------------------------------------------- FORMULAIRES RESERVATION
 //   ---------------------------------------------------------------------------
     public function formReservation(Request $request, Response $response, $args) {
         $year = intval($request->getParam("year"));
@@ -134,8 +134,6 @@ class PageController {
         $day = intval($request->getParam("day"));
         if ($year == date("Y") && $month > 0 && $month <= 12 && $day > 0 && $day <= 31) {
             $date = new \DateTime($year . "/" . $month . "/" . $day);
-            var_dump($date);
-
             $param = array(
                 "user" => $this->container["user"],
                 "date" => $date->format("Y/m/d")
@@ -148,6 +146,8 @@ class PageController {
         }
     }
 
+//   --------------------------------------------------------------------------- FORMULAIRES CONNECTION
+//   ---------------------------------------------------------------------------
     public function formConnection(Request $request, Response $response, $args) {
         if ($this->container["user"]) {
             return $response->write("Already Connected");
@@ -155,11 +155,12 @@ class PageController {
         $param = array(
             "user" => $this->container["user"],
         );
-
         $this->container->view->render($response, "Form/formConnection.twig", $param);
         return $response;
     }
 
+//   --------------------------------------------------------------------------- ARTICLE EDITOR
+//   ---------------------------------------------------------------------------
     public function articleEditor(Request $request, Response $response, $args) {
         $param = array(
             "user" => $this->container["user"],
@@ -170,6 +171,8 @@ class PageController {
         return $response;
     }
     
+//   --------------------------------------------------------------------------- BLOG EDITOR
+//   ---------------------------------------------------------------------------
     public function blogEditor(Request $request, Response $response, $args) {
         $param = array(
             "user" => $this->container["user"],
@@ -180,12 +183,25 @@ class PageController {
         return $response;
     }
     
+//   --------------------------------------------------------------------------- VALID USER
+//   ---------------------------------------------------------------------------
     public function validUser(Request $request, Response $response, $args) {
         $param = array(
             "user" => $this->container["user"],
             "token" => $args["token"]
         );
         $this->container->view->render($response, "Page/valid_user.twig", $param);
+        return $response;
+    }
+    
+//   --------------------------------------------------------------------------- VALID RESERVATION
+//   ---------------------------------------------------------------------------
+    public function validReservation(Request $request, Response $response, $args) {
+        $param = array(
+            "user" => $this->container["user"],
+            "token" => $args["token"]
+        );
+        $this->container->view->render($response, "Page/valid_reservation.twig", $param);
         return $response;
     }
 

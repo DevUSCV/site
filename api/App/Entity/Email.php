@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Config;
+use App\Entity\User;
+use App\Ressources\UserResource;
+use Slim\Container;
 
 class Email {
 
@@ -13,20 +16,31 @@ class Email {
     private $content;
 
     public function __construct(String $to, String $object, String $content, String $from = "noreply@" . Config::DOMAIN) {
+        $userRepository = (new UserResource(new Container()))->getEntityManager()->getRepository(User::class);
         $this->from = $from;
         $this->to = $to;
         $this->object = Config::SITE_NAME . " : " . $object;
         $this->content = $content;
+        if ($to == "modo" || $to == "admin") {
+            $users = $userRepository->findBy(array("status" => $to));
+            if ($users === []) {
+                $users = array($userRepository->findOneBy(array("status" => "admin")));
+            }
+            $this->to = "";
+            foreach($users as $user){
+                $this->to .= $user->getEmail() . ", ";
+            }
+        }
     }
 
-    public function send() {        
+    public function send() {
         if ($this->to && $this->content && $this->object) {
             $this->headers = 'MIME-Version: 1.0' . "\n"
-                . 'Content-type: text/html; charset=ISO-8859-1' . "\n"
-                . 'From: "' . Config::SITE_NAME . '" <noreply@' . Config::DOMAIN . '>' . "\n" 
-                . 'Reply-To: ' . $this->from . "\n"                 
-                . 'Delivered-to: ' . $this->to . "\n" 
-                . 'X-Mailer: PHP/' . phpversion();
+                    . 'Content-type: text/html; charset=ISO-8859-1' . "\n"
+                    . 'From: "' . Config::SITE_NAME . '" <noreply@' . Config::DOMAIN . '>' . "\n"
+                    . 'Reply-To: ' . $this->from . "\n"
+                    . 'Delivered-to: ' . $this->to . "\n"
+                    . 'X-Mailer: PHP/' . phpversion();
             return mail($this->to, $this->object, $this->content, $this->headers);
         } else {
             return false;
@@ -65,6 +79,4 @@ class Email {
         $this->content = $content;
     }
 
-
-    
 }

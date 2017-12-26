@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
         document.querySelector("a.facebook_link").href = data.url_facebook;
         document.querySelector("span.site_address").innerHTML = data.address_contact;
     });
+    // SET FOOTER
+    $.getJSON(API_URL + "/article/footer", (data) => {
+        SITE = data;
+        document.querySelector("p#footer_article").innerHTML = data.content;
+    });
 //    SET SIDE NAV
     $('.button-collapse').sideNav({
         menuWidth: 300,

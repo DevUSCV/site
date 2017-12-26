@@ -75,10 +75,27 @@ class ReservationResource extends AbstractResource {
             $reservation->setToken(bin2hex(openssl_random_pseudo_bytes(128)));
             $this->getEntityManager()->persist($reservation);
             $this->getEntityManager()->flush($reservation);
-            EmailRessource::newReservation($reservation);            
+            EmailRessource::newReservation($reservation);
             return $response->write(true);
         } else {
             return $response->write(false)->withStatus(400, "Invalid Reservation");
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // ------------------------------------------------------------------------- VALIDATE RESERVATION
+    // -------------------------------------------------------------------------
+    public function validReservation(Request $request, Response $response, $args) {
+        $token = $args["token"];
+        $reservation = $this->getEntityManager()->getRepository(Reservation::class)->findOneBy(array("token" => $token));
+        if ($reservation instanceof Reservation) {
+            $reservation->setTime(null);
+            $reservation->setStatus("valid");
+            $this->getEntityManager()->flush($reservation);
+            EmailRessource::verifiedReservation($reservation);
+            return $response->write(true);
+        }else{
+            return $response->write(false)->withStatus(404, "Token Not Found");
         }
     }
 

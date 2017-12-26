@@ -106,23 +106,30 @@ document.addEventListener("DOMContentLoaded", function (e) {
                                 + "<thead>"
                                 + "<tr class='grey darken-3 white-text'>"
                                 + "<th>Heure</th>"
+                                + "<th>Nom Complet</th>"
                                 + "<th>Activité</th>"
                                 + "<th>Support</th>"
+                                + "<th>participants</th>"
                                 + "<th>Confirmé</th>"
                                 + "</tr>"
                                 + "</thead>"
                                 + "<tbody>";
                         if (data.reservation.length > 0) {
                             for (var reservation of data.reservation) {
-                                html += "<tr onclick='view_reservation(" + reservation.reservation_id + ")'>"
-                                        + "<td>" + reservation.time + "h</td>"
+                                if(reservation.status){
+                                    html += "<tr onclick='view_reservation(" + reservation.reservation_id + ")'>"
+                                        + "<td>" + (reservation.time ? reservation.time + "h" : "-" ) + "</td>"
+                                        + "<td>" + reservation.full_name + "</td>"
                                         + "<td>" + reservation.activity + "</td>"
                                         + "<td>" + reservation.support + "</td>"
+                                        + "<td>" + reservation.people + "</td>"
                                         + (reservation.status == "confirm" ?
                                                 "<td class='green white-text'><i class='fa fa-check' aria-hidden='true'></i></td>" : "")
                                         + (reservation.status == "valid" ?
                                                 "<td class='red white-text'><i class='fa fa-times' aria-hidden='true'></i></td>" : "")
                                         + "</tr>";
+                                }
+                                
                             }
                         } else {
                             html += "<tr><td colspan='4'><b>Aucune reservation a cette date</b></td></tr>"
@@ -156,8 +163,8 @@ function reservate(grecaptcha) {
         $.post(API_URL + "/reservation",
                 data,
                 function (data) {
-                    document.querySelector("#modal h4").innerHTML = "<i class='fa fa-check' aria-hidden='true'></i> Reservation enregistrée.";
-                    document.querySelector("#modal div.modal-content div").innerHTML = '<h3>Un email vous as été envoyé.</h3>Veuillez valider votre réservation.';
+                    document.querySelector("#modal h4").innerHTML = "<i class='fa fa-check' aria-hidden='true'></i> Demande de réservation enregistrée.";
+                    document.querySelector("#modal div.modal-content div").innerHTML = 'Un email vous as été envoyé.<br><b>Veuillez valider votre réservation.</b>';
                     $('#modal').modal('open');
                 })
                 .fail(function (jqXHR, textStatus) {

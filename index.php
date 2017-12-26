@@ -22,6 +22,7 @@ $app->get("/connection", App\Controller\PageController::class . ":formConnection
 $app->get("/article/editor/{article_name}", App\Controller\PageController::class . ":articleEditor")->setName("ArticleEditor");
 $app->get("/blog/editor/{blog_post_id}", App\Controller\PageController::class . ":blogEditor")->setName("BlogEditor");
 $app->get("/valid/{token}", App\Controller\PageController::class . ":validUser")->setName("validUser");
+$app->get("/reservation/valid/{token}", App\Controller\PageController::class . ":validReservation")->setName("validReservation");
 
 // ----------------------------------------------------------------------------- PROFILE
 $app->get("/profil", App\Controller\PageController::class . ":profil")->setName("profil");
