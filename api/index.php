@@ -32,6 +32,8 @@ $app->get("/", App\Ressources\SiteInfoResource::class . ":getSiteInfo");
 $app->get("/slide", App\Ressources\SlideResource::class . ":getSlide");
 
 
+// ----------------------------------------------------------------------------- SPONSOR ROUTES
+require './Routes/SponsorRoute.php';
 // ----------------------------------------------------------------------------- USER ROUTES
 require './Routes/UserRoute.php';
 // ----------------------------------------------------------------------------- ADDRESS ROUTES
@@ -48,10 +50,14 @@ require './Routes/BlogRoute.php';
 require './Routes/BlogPostRoute.php';
 // ----------------------------------------------------------------------------- BLOG POST COMMENT ROUTES
 require './Routes/BlogPostCommentRoute.php';
+// ----------------------------------------------------------------------------- LICENSE ROUTES
+require './Routes/LicenseRoute.php';
 // ----------------------------------------------------------------------------- PRICE ROUTES
 require './Routes/PriceRoute.php';
 // ----------------------------------------------------------------------------- PHOTO ROUTES
 require './Routes/PhotoRoute.php';
+// ----------------------------------------------------------------------------- FILE ROUTES
+require './Routes/FileRoute.php';
 // ----------------------------------------------------------------------------- LOCATION PRICE
 require './Routes/LocationPriceRoute.php';
 // ----------------------------------------------------------------------------- RESERVATION DAY

@@ -14,6 +14,7 @@
     "require": {
         "slim/slim": "^3.9",
         "doctrine/orm": "^2.5",
-        "slim/middleware": "^1.0"
+        "slim/middleware": "^1.0",
+        "phpoffice/phpspreadsheet": "^1.0"
     }
 }

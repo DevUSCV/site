@@ -70,15 +70,17 @@
                                     <div class="col s12">
                                         <div class="input-field col s6">
                                             <i class="fa fa-lock prefix" aria-hidden="true"></i>
-                                            <input id="status" type="text" name="status" class="datepicker" disabled value='{{ user.getStatus }}'/>
+                                            <input id="status" type="text" name="status" class="datepicker" disabled 
+                                                   value='{% if user.getStatus == "active" %}Membre{% elseif user.getStatus == "modo" %}Modérateur{%elseif user.getStatus == "admin" %}Administrateur{% endif %}'/>
                                             <label for="status">Status</label>
                                         </div>                       
                                     </div>
-                                </form>                                
+                                </form>
+                                <div class="center">
+                                    <button class="btn blue disabled" onclick="update_user() ">Enregistrer les moddifications</button>
+                                </div>                                
                             </div>
-                            <div class="card-action center">
-                                <button class="btn blue disabled">Enregistrer les moddifications</button>
-                            </div>
+
                         </div>
 
 
@@ -88,7 +90,20 @@
                                 Mes Licences
                             </span>
                             <div class="card-content">
-                                Bientot
+                                <table id="my_licences" class="centered bordered">
+                                    <thead>
+                                        <tr class="grey darken-3 white-text">
+                                            <th>N° license</th>
+                                            <th>Adhérents</th>
+                                            <th>Type</th>
+                                            <th>Pratique</th>
+                                            <th>Année</th>
+                                            <th>Date</th>
+                                            <th>Adresse</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
                             </div>
                         </div>
 
@@ -99,9 +114,10 @@
                                 Mes Reservations
                             </span>
                             <div class="card-content">
-                                <table id="my_reservation" class="centered bordered">
+                                <table id="my_reservations" class="centered bordered">
                                     <thead>
                                         <tr class="grey darken-3 white-text">
+                                            <th>Date</th>
                                             <th>Heure</th>
                                             <th>Activitée</th>
                                             <th>Support</th>
@@ -109,6 +125,7 @@
                                             <th>Status</th>
                                         </tr>
                                     </thead>
+                                    <tbody></tbody>
                                 </table>
                             </div>
                             <div class="card-action center">
@@ -151,26 +168,4 @@
 {% endblock %}
 
 {% block end_script %}
-    <script>
-        {% if user %}
-            document.addEventListener("DOMContentLoaded", function () {
-
-                $('.datepicker').pickadate({
-                    monthsFull: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
-                    monthsShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'],
-                    weekdaysFull: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-                    weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Dim'],
-                    selectMonths: true,
-                    max: true,
-                    selectYears: 110,
-                    today: null,
-                    clear: null,
-                    close: 'Ok',
-                    closeOnSelect: false
-                });
-
-            });
-        {% endif %}
-    </script>
-
 {% endblock %}

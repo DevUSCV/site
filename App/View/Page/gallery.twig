@@ -12,7 +12,12 @@
 {% block content %}
     <div class="row content">
         <div class="container">
-        <h1>Galerie</h1>
+        <h1>
+            Galerie
+            {% if user.getStatus == "modo" or user.getStatus == "admin" %}
+            <a onclick="add_image()" class="btn-floating blue waves-effect"><i class="fa fa-plus" aria-hidden="true"></i></a> 
+            {% endif %}
+        </h1>
         </div>
         <div class="gallery container" itemscope itemtype="http://schema.org/ImageGallery">            
         </div>

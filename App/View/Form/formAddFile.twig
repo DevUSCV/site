@@ -1,0 +1,31 @@
+<div class="row">
+    <form id="add_file_form_form" class="container" enctype="multipart/form-data">
+        <div class="col s12">
+            <div class="input-field col s12">
+                <i class="fa fa-info prefix" aria-hidden="true"></i>
+                <input id="name" type="text" name="name" class="validate" required onkeyup="check_send_file_form()"  minlength="5" />
+                <label for="name">Nom</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="fa fa-info prefix" aria-hidden="true"></i>
+                <textarea id="description" type="text" name="description" class="materialize-textarea" required onkeyup="check_send_file_form()" minlength="5" ></textarea>
+                <label for="description">Desctiption</label>
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="file-field input-field">
+                <div class="btn blue col s4 offset-s4">
+                    <span><i class="fa fa-file" aria-hidden="true"></i> Fichier</span>
+                    <input type="file" onchange="check_send_file_form()" id="file" name="file" required >
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>          
+        </div>
+    </form>  
+
+</div>
+<div class="card-action">
+    <button id="send_file_button" class="btn green disabled" onclick="send_file()"><i class="fa fa-upload" aria-hidden="true"></i> Envoie</button>
+</div> 

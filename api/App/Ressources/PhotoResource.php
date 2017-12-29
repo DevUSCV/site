@@ -99,10 +99,11 @@ class PhotoResource extends AbstractResource {
         if ($photo_id > 0) {
             $data = $this->getEntityManager()->getRepository(Photo::class)->find($photo_id);
             if ($data instanceof Photo) {
-                unlink($data->getUrl_small());
-                unlink($data->getUrl_large());
+                unlink("." . $data->getUrl_small());
+                unlink("." . $data->getUrl_large());
                 $this->getEntityManager()->remove($data);
                 $this->getEntityManager()->flush();
+                return $response->write(true);
             } else {
                 return $response->withStatus(404, "No Photo Found");
             }

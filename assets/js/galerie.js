@@ -3,13 +3,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
     $.getJSON(API_URL + "/photo", function (data) {
         var gallery = "";
         for (var photo of data) {
-            gallery += " <figure class='col s12 m6 l3' itemprop='associatedMedia' itemscope itemtype='http://schema.org/ImageObject'>"
+            gallery += " <figure class='col s12 m6 l3' itemprop='associatedMedia' itemscope itemtype='http://schema.org/ImageObject' id='image_" + photo.photo_id + "'>"
                     + "     <a href='" + API_URL + photo.url_large + "' itemprop='contentUrl' data-size='1024x768'>"
                     + "         <img class='responsive-img' src='" + API_URL + photo.url_small + "' itemprop='thumbnail' alt='Image description' />"
                     + "     </a>"
                     + "     <figcaption itemprop='caption description'>"
-                    +           photo.description
+                    + photo.description
                     + "     </figcaption>"
+                    + "<a class='btn-floating red delete_image" + (isAdmin() ? "" : " invisible" ) + "' data-id='" + photo.photo_id + "'><i class='fa fa-trash' aria-hidden='true'></i></a>"
                     + "</figure>";
         }
         document.querySelector("div.gallery").innerHTML += gallery;
@@ -17,6 +18,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
         initPhotoSwipeFromDOM('.gallery');
         var tl = new TimelineLite();
         tl.staggerFrom($("figure"), 0.5, {alpha: 0}, 0.1);
+        $("a.delete_image").click(function (e) {
+            e.stopPropagation();
+            delete_image(this.dataset.id);            
+        });
     });
 });
 

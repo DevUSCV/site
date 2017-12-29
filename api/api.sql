@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 22 Décembre 2017 à 16:14
+-- Généré le :  Ven 29 Décembre 2017 à 03:04
 -- Version du serveur :  5.7.20-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.22-0ubuntu0.16.04.1
 
@@ -63,12 +63,12 @@ CREATE TABLE `article` (
 --
 
 INSERT INTO `article` (`article_id`, `name`, `title`, `content`, `author_name`, `last_editor_name`, `create_date`, `last_edit_date`) VALUES
-(1, 'evenements', 'Les regates a venir', 'Bient&ocirc;t', 'ADMIN', 'Alvernhe Thierry', '2017-11-15 14:58:39', '2017-12-22 09:55:58'),
-(2, 'pratique_deriveur', 'Pratique du dériveur', 'Article a rediger pour dériveur\n\nOmitto iuris dictionem in libera civitate contra leges senatusque consulta; caedes relinquo; libidines praetereo, quarum acerbissimum extat indicium et ad insignem memoriam turpitudinis et paene ad iustum odium imperii nostri, quod constat nobilissimas virgines se in puteos abiecisse et morte voluntaria necessariam turpitudinem depulisse. Nec haec idcirco omitto, quod non gravissima sint, sed quia nunc sine teste dico.\n\nIllud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.', 'ADMIN', NULL, NULL, NULL),
+(1, 'evenements', 'Les regates a venir', 'REGATE A CARMAUX<br /><br />DIMANCHE 14 JANVIER &nbsp; &nbsp;9H &nbsp; &nbsp;REGATE VRC &nbsp;VOILE RADIO COMMANDEE&nbsp;<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CLASSE 1 METRE &nbsp; &nbsp;GRADE 5A<br /><br /><br />DIMANCHE 8 AVRIL &nbsp; &nbsp; &nbsp; 9H &nbsp; &nbsp;REGATE OPTIMIST&nbsp;<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;REGATE INTERSERIE DERIVEUR', 'ADMIN', 'Alvernhe Thierry', '2017-11-15 14:58:39', '2017-12-27 23:46:41'),
+(2, 'pratique_deriveur', 'Pratique du dériveur', 'On appelle &nbsp;DERIVEUR &nbsp;tout voilier qui a la proprit&eacute; des posseder une quille relevable&nbsp;<br />Generalement ce sont des bateaux de petite longueur souvent inferieure &agrave; 6 ou 7 metres.<br />Le plus petit et sans doute le plus connus de tous &nbsp;est l\'OPTIMIST , dont beaucoup d\'enfant ont pu s\'initier dans les ecoles. Il sadresse &nbsp;bien sur a des enfants et n\'est pas du tout adapt&eacute; pour des adultes, beaucoup trop grands. Il est dot&eacute; d\'une seule voile , et on manoeuvre le gouvernail pour tourner.<br />Tres pris&eacute; dans les ecoles de voile il va permettre d\'initier les enfants et leur faire comprendre la technique de la voile et comment utiliser un voilier pour se rendre &nbsp;o&ugrave; l\'on veut. Pour des gabarits plus grands on utilisera le LASER , voilier &agrave; une seule place tres sportif et qui demande des connaissance techniques plus intenses , ou &nbsp;des deriveurs doubles (2places) comme le 420 ou le 470 plus sportif mais lui aussi tres technique.<br />Le catamarran est lui aussi un deriveur &agrave; deux coques ce qui lui vaut une plus grande stabilit&eacute; et de belles performances et sensations, tout en restant simple d\'utilisation.', 'ADMIN', 'Alvernhe Thierry', NULL, '2017-12-27 23:47:07'),
 (3, 'pratique_vrc', 'Pratique de la VRC', '<div style="color: #000000; background-color: rgba(0, 0, 0, 0); font-family: \'Arial Black\', Gadget, sans-serif;"><span style="font-family: \'Arial Black\', Gadget, sans-serif; color: #000000; background-color: rgba(0, 0, 0, 0);">Afin de permettre &agrave; tous ses membres de s\'initier &agrave; la VRC dite Voile Radio Command&eacute;e, <br />L\'USC Voile vient d\'acqu&eacute;rir une nouvelle flotte de 6 Dragon Force.</span><br /><br /><u>DESCRIPTION DU DRAGON FORCE:</u></div>\n<div style="color: #000000; background-color: rgba(0, 0, 0, 0); font-family: \'Arial Black\', Gadget, sans-serif;"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://4.bp.blogspot.com/-i5SilQPz49Q/WQSOpExtrVI/AAAAAAAAS-U/m9kP43UYl9A-pbWfR6K6ywNG0Tbb7J5sQCLcB/s640/Fond%2Bd%2527%25C3%25A9cran.jpg" alt="VRC Dragon Force" width="328" height="218" /></div>\n<div style="color: #323d4f; font-family: \'Lucida Grande\', \'Trebuchet MS\', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 18.200000762939453px; background-color: #ececec;"><u>Dimensions : &nbsp;</u> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div>\n<div style="color: #323d4f; font-family: \'Lucida Grande\', \'Trebuchet MS\', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 18.200000762939453px; background-color: #ececec;">- Mat 910mm &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div>\n<div style="color: #323d4f; font-family: \'Lucida Grande\', \'Trebuchet MS\', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 18.200000762939453px; background-color: #ececec;">- Coque &nbsp;80 et quille/lest 350 soit 1334 mm. Longueur du bateau : 65cm&nbsp;&nbsp; &nbsp; &nbsp;</div>\n<div style="color: #323d4f; font-family: \'Lucida Grande\', \'Trebuchet MS\', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 18.200000762939453px; background-color: #ececec;"><u>Masses :&nbsp;</u></div>\n556 lest + 101 quille + 79 gr&eacute;ement + 484 coque &eacute;quip&eacute;e (&eacute;lectronique origine) + 40g<br />accus 700 mAh LIFE = 1250g', 'ADMIN', 'Alvernhe Thierry', '2017-11-15 16:26:00', '2017-12-22 10:01:15'),
 (4, 'pratique_croisiere', 'Pratique de la croisiere', 'Article a rediger pour les croisieres\n\nOmitto iuris dictionem in libera civitate contra leges senatusque consulta; caedes relinquo; libidines praetereo, quarum acerbissimum extat indicium et ad insignem memoriam turpitudinis et paene ad iustum odium imperii nostri, quod constat nobilissimas virgines se in puteos abiecisse et morte voluntaria necessariam turpitudinem depulisse. Nec haec idcirco omitto, quod non gravissima sint, sed quia nunc sine teste dico.\n\nIllud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.', 'ADMIN', NULL, '2017-11-15 16:27:50', NULL),
 (5, 'entrainements', 'Le club vous propose divers entrainements', 'A rediger\n\nOmitto iuris dictionem in libera civitate contra leges senatusque consulta; caedes relinquo; libidines praetereo, quarum acerbissimum extat indicium et ad insignem memoriam turpitudinis et paene ad iustum odium imperii nostri, quod constat nobilissimas virgines se in puteos abiecisse et morte voluntaria necessariam turpitudinem depulisse. Nec haec idcirco omitto, quod non gravissima sint, sed quia nunc sine teste dico.\n\nIllud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.', 'ADMIN', NULL, '2017-11-15 16:41:35', NULL),
-(6, 'moniteur1', 'Jeremy Thiroux', '<div><img style="float: left;" src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-1/c0.0.160.160/p160x160/19225780_10213620225089285_740117216450843368_n.jpg?oh=93844f0c44cf00c4965283ae9b645f35&amp;oe=5AA302A9" />\n<div style="font-family: \'Arial Black\', Gadget, sans-serif; font-size: 18px;">&nbsp; THIROUX J&eacute;r&eacute;my</div>\n<div style="font-family: \'Arial Black\', Gadget, sans-serif; font-size: 18px;">&nbsp; Moniteur CQPAMV</div>\n<div style="font-family: \'Arial Black\', Gadget, sans-serif; font-size: 18px;">&nbsp; en formation BPJEPS</div>\n</div>', 'ADMIN', 'Alvernhe Thierry', '2017-11-15 16:41:38', '2017-12-22 10:44:29'),
+(6, 'moniteur1', 'Jeremy Thiroux', '<div><img style="float: left;" src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-1/c0.0.160.160/p160x160/19225780_10213620225089285_740117216450843368_n.jpg?oh=93844f0c44cf00c4965283ae9b645f35&amp;oe=5AA302A9" />\n<div style="font-family: \'Arial Black\', Gadget, sans-serif; font-size: 18px;">&nbsp; THIROUX J&eacute;r&eacute;my</div>\n<div style="font-family: \'Arial Black\', Gadget, sans-serif; font-size: 18px;">&nbsp; Moniteur CQPAMV</div>\n<div style="font-family: \'Arial Black\', Gadget, sans-serif; font-size: 18px;">&nbsp; en formation BPJEPS<br /><br /><br /><br /><br /></div>\n</div>', 'ADMIN', 'Alvernhe Thierry', '2017-11-15 16:41:38', '2017-12-28 12:21:41'),
 (7, 'moniteur2', 'Olivier Cazes', '<div><img style="float: left;" src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-1/p160x160/12347960_1249985845027186_788814770178658612_n.jpg?oh=8ce6aceff26cc9723a5e8fd2d0b683e5&amp;oe=5AA7EC6E" /></div>\n<div style="font-size: 13px;"><br />&nbsp; Cazes</div>\n<div style="font-size: 13px;">&nbsp; Olivier</div>\n<div style="font-size: 13px;">&nbsp; 17, rue de Erables</div>\n<div style="font-size: 13px;">&nbsp; 81400 Rosieres</div>\n<div style="font-size: 13px;">&nbsp; cazesolivier@free.fr</div>\n<div style="font-size: 13px;">&nbsp; 06.70.52.20.97</div>', 'ADMIN', 'Alvernhe Thierry', '2017-11-15 16:41:39', '2017-12-22 10:44:58'),
 (8, 'moniteur3', 'COMITE D\'ADMINISTRATION 2017-2020', '<table style="border-collapse: collapse; width: 100%;" border="1">\n<tbody>\n<tr>\n<td style="width: 33.3333%;">\n<div style="font-size: 16px; font-weight: bold;">Pr&eacute;sident</div>\n<div style="font-size: 13px;">Alvernhe Thierry</div>\n<div style="font-size: 13px;">1, rue Jean Cocteau</div>\n<div style="font-size: 13px;">81400 Carmaux</div>\n<div style="font-size: 13px;">thierryalvernhe@sfr.fr</div>\n<div style="font-size: 13px;">06.85.67.64.61</div>\n</td>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Secr&eacute;taire</div>\n<div style="font-size: 13px;">Swiatek David</div>\n<div style="font-size: 13px;">2, rue de Janailhac</div>\n<div style="font-size: 13px;">87570 Rilhac Rancon</div>\n<div style="font-size: 13px;">david.swiatek@free.fr</div>\n<div style="font-size: 13px;">06.86.43.67.56</div>\n</td>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Tr&eacute;sorier</div>\n<div style="font-size: 13px;">Fabre Christian</div>\n<div style="font-size: 13px;">18, rue Emile Roux</div>\n<div style="font-size: 13px;">81160 St Juery</div>\n<div style="font-size: 13px;">cri.fabre@wanadoo.fr</div>\n<div style="font-size: 13px;">06.81.26.92.08</div>\n</td>\n</tr>\n<tr>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Responsable Licences</div>\n<div style="font-size: 13px;">Rossignol Yannick</div>\n<div style="font-size: 13px;">20bis, rue Francisco Goya</div>\n<div style="font-size: 13px;">81000 Albi</div>\n<div style="font-size: 13px;">y.r@free.fr</div>\n<div style="font-size: 13px;">06.23.09.58.53</div>\n</td>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Secr&eacute;taire adjoint</div>\n<div style="font-size: 13px;">Deslandes Fran&ccedil;ois-Xavier</div>\n<div style="font-size: 13px;">39, rue Mozart</div>\n<div style="font-size: 13px;">81000 Albi</div>\n<div style="font-size: 13px;">fxdeslandes@gmail.com</div>\n<div style="font-size: 13px;">06.82.66.75.83</div>\n</td>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Tr&eacute;sorier adjoint</div>\n<div style="font-size: 13px;">Uribelarrea Alain</div>\n<div style="font-size: 13px;">3bis, rue des Bons Enfants</div>\n<div style="font-size: 13px;">81400 Carmaux</div>\n<div style="font-size: 13px;">alain.uribelarrea@orange.fr</div>\n<div style="font-size: 13px;">06.43.57.62.36</div>\n</td>\n</tr>\n<tr>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Responsable Formation</div>\n<div style="font-size: 13px;">Chelle Philippe</div>\n<div style="font-size: 13px;">30, rte de Carbonne</div>\n<div style="font-size: 13px;">31390 Carbonne</div>\n<div style="font-size: 13px;">phchelle@laposte.net</div>\n<div style="font-size: 13px;">07.83.41.07.18</div>\n</td>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Membre</div>\n<div style="font-size: 13px;">Capelle Fr&eacute;deric</div>\n<div style="font-size: 13px;">59, ch. E. Mancel &ndash; villa 25</div>\n<div style="font-size: 13px;">81000 Albi</div>\n<div style="font-size: 13px;">frederic.capelle@hotmail.fr</div>\n<div style="font-size: 13px;">06.09.90.88.08</div>\n</td>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Membre</div>\n<div style="font-size: 13px;">Cazes Olivier</div>\n<div style="font-size: 13px;">17, rue de Erables</div>\n<div style="font-size: 13px;">81400 Rosieres</div>\n<div style="font-size: 13px;">cazesolivier@free.fr</div>\n<div style="font-size: 13px;">06.70.52.20.97</div>\n</td>\n</tr>\n<tr>\n<td style="width: 33.3333%;">\n<div style="font-weight: bold; font-size: 16px;">Membre</div>\n<div style="font-size: 13px;">Rossignol Erick</div>\n<div style="font-size: 13px;">41, rue Henri Bonis</div>\n<div style="font-size: 13px;">31100 Toulouse</div>\n<div style="font-size: 13px;">d9d6@free.fr</div>\n<div style="font-size: 13px;">06.38.91.05.48</div>\n</td>\n<td style="width: 33.3333%;">&nbsp;</td>\n<td style="width: 33.3333%;">&nbsp;</td>\n</tr>\n</tbody>\n</table>', 'ADMIN\n', 'Alvernhe Thierry', '2017-11-23 06:41:33', '2017-12-22 10:43:34'),
 (9, 'apropos', 'Union Sportive Carmaux Voile', 'Notre association exerce ses activités nautiques depuis 1961 sur le plan d ’eau de la Roucarié près de Monestiés, a quelques kilomètres d’Albi, d ans un cadre de verdure et de calme.<br>\nC’est une réserve d’eau potable, ou une zone a été aménagée pour la baignade  et où nous vous proposons de passer quelques journées de vos vacances.<br>\nNotre Base Nautique tournée essentiellement vers la voile possède les labels  de qualité décernés par la Fédération Française de Voile, et à ce titre nous  vous proposons un enseignement performant avec des moniteurs  diplômés d’état.<br>\nStages d’initiation ou de perfectionnement, leçons particulières, ou  tout simplement locations, nous vous offrons la possibilité d’utiliser notre  parc de matériel, divers et varié, en veillant à votre sécurité et à celle de  vos enfants.<br>\nNos structures d’accueil vous permettent de venir pique-niquer au bord de  l’eau et d’utiliser notre terrasse et barbecue.<br>\nLe temps des vacances c’est également le temps des Loisirs avec  L’U.S.C VOILE.<br>\nC’est pourquoi, nous vous invitons à passer nous voir !!', NULL, NULL, '2017-11-23 06:57:24', NULL),
@@ -79,7 +79,8 @@ INSERT INTO `article` (`article_id`, `name`, `title`, `content`, `author_name`, 
 (14, 'stages_conditions', 'Conditions d\'acces aux stages', 'Ces stages d\'initiation et/ou perfectionnement ont pour objectif d\'apprendre ou de se perfectionner dans l\'activité voile.\r\n\r\nIls s\'appuient sur des cours théoriques et pratiques encadré par un Moniteur qualifié.\r\n\r\nLes séances ont un suivi pédagogique avec une progression logique en fonction du niveau des élèves.\r\n\r\nAttention: la souscription du Passeport Voile est obligatoire pour les non licenciés FFV.', 'ADMIN', NULL, '2017-11-23 15:40:14', NULL),
 (15, 'groupes_conditions', 'Conditions d\'acces aux activitées de groupe', 'Nous accueillons les centres aérer, les écoles, les familles, ou les sociétés et organisont des activitée de groupes variés et conviviales. ', 'ADMIN', NULL, '2017-11-23 15:40:55', NULL),
 (16, 'reservation', 'Les Reservations', 'Toute reservation doit etre effectuer au minimum 48h avant la date choisit.<br />Pensez a pr&eacute;ciser la plage horaire souhait&eacute;, l\'age des participants ou tout autre d&eacute;tail vous parainnant pertinant dans la section message.', 'ADMIN', 'Alvernhe Thierry', '2017-11-15 14:58:39', '2017-12-22 11:13:24'),
-(17, 'footer', 'Pied de page', 'L\'U.S;CARMAUX VOILE exerce son activité sur le barrage de la Roucarié , sur la commune de Monestiés, depuis 1961.  Le plan d\'eau de 64 hectares permet la pratique de la voile sous toutes ses formes . Planches à Voile, Dériveurs doubles ou solitaires, micro, mais aussi la Voile Radio-commandée.\n\nLe Palmarès du Club est éloquent, avec des compétiteurs qui ont participé à des Championnat du Monde , d\'Europe ou maintes régates internationales, et des titres honorables obtenus en 470, LASER, et Voile Radio-commandée.\n\nC\'est particulièrement dans cette dernière catégorie qu\'excelle les coureurs de l\'USC Voile en plaçant régulièrement le club depuis plusieurs années dans les 3 premières places du classement national des clubs.\n\nMais l\'USC Voile c\'est aussi une ecole de Voile , où sont organisés des cours et des stages d\'initiation, de perfectionnement, de compétition, et de formation de moniteurs de Voile. Plusieurs Educateurs et Moniteurs diplomés travaillent au sein du club pour apporter un enseignement de qualité.\n\nC\'est aussi , une large ouverture vers la voile Loisir , avec les planches à voile et les catamarrans qui peuvent être loués sur place. \nLa Base Nautique qui offre des structures adaptées à l\'activité Voile , est ouverte du mois de Mars à fin Novembre .\nDes compétitions sont organisées chaque années sur le plan d\'eau de la Roucarié.\n\nLe Camping géré par l\'USC VOILE permet d\'accueillir les particuliers, familles et groupes durant toute la période estivale.', 'ADMIN', 'ADMIN', '2017-11-15 14:58:39', '2017-11-15 16:44:16');
+(17, 'footer', 'Pied de page', 'L\' US CARMAUX VOILE exerce son activit&eacute; sur le barrage de la Roucari&eacute; , sur la commune de Monesti&eacute;s, depuis 1961. Le plan d\'eau de 64 hectares permet la pratique de la voile sous toutes ses formes . Planches &agrave; Voile, D&eacute;riveurs doubles ou solitaires, micro, mais aussi la Voile Radio-command&eacute;e. Le Palmar&egrave;s du Club est &eacute;loquent, avec des comp&eacute;titeurs qui ont particip&eacute; &agrave; des Championnat du Monde , d\'Europe ou maintes r&eacute;gates internationales, et des titres honorables obtenus en 470, LASER, et Voile Radio-command&eacute;e. C\'est particuli&egrave;rement dans cette derni&egrave;re cat&eacute;gorie qu\'excelle les coureurs de l\'USC Voile en pla&ccedil;ant r&eacute;guli&egrave;rement le club depuis plusieurs ann&eacute;es dans les 3 premi&egrave;res places du classement national des clubs. Mais l\'USC Voile c\'est aussi une ecole de Voile , o&ugrave; sont organis&eacute;s des cours et des stages d\'initiation, de perfectionnement, de comp&eacute;tition, et de formation de moniteurs de Voile. Plusieurs Educateurs et Moniteurs diplom&eacute;s travaillent au sein du club pour apporter un enseignement de qualit&eacute;. C\'est aussi , une large ouverture vers la voile Loisir , avec les planches &agrave; voile et les catamarrans qui peuvent &ecirc;tre lou&eacute;s sur place. La Base Nautique qui offre des structures adapt&eacute;es &agrave; l\'activit&eacute; Voile , est ouverte du mois de Mars &agrave; fin Novembre . Des comp&eacute;titions sont organis&eacute;es chaque ann&eacute;es sur le plan d\'eau de la Roucari&eacute;. Le Camping g&eacute;r&eacute; par l\'USC VOILE permet d\'accueillir les particuliers, familles et groupes durant toute la p&eacute;riode estivale.', 'ADMIN', 'Alvernhe Thierry', '2017-11-15 14:58:39', '2017-12-23 11:36:04'),
+(18, 'download', 'Les Téléchargements', 'Vous trouverez ici tout ce dont vous aurez besoins.', NULL, 'Alvernhe Thierry', '2017-12-28 15:03:54', '2017-12-28 22:24:21');
 
 -- --------------------------------------------------------
 
@@ -39410,14 +39411,63 @@ INSERT INTO `city` (`city_id`, `name`, `zipcode`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `file`
+--
+
+CREATE TABLE `file` (
+  `file_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `file`
+--
+
+INSERT INTO `file` (`file_id`, `name`, `description`, `url`) VALUES
+(15, 'Certificat médical', 'L’obtention d’une licence d’une fédération sportive est subordonnée à la présentation d’un certificat médical.\r\n\r\nCe certificat médical permet d’établir l’absence de contre-indication à la pratique du sport et mentionne, s’il y a lieu, la ou les disciplines dont la pratique est contre-indiquée. Il peut ne porter que sur une discipline ou un ensemble de disciplines connexes.', '/uploads/file/Certificat_médical_4de835c818ad9dc5.pdf'),
+(16, 'Fiche Inscription 2018', 'Fiche inscription pour l’année 2018 au format .pdf', '/uploads/file/Fiche_Inscription_2018_ac9297eef48fa615.pdf'),
+(17, 'Fiche Inscription 2018', 'Fiche inscription pour l’année 2018 au format .docx', '/uploads/file/Fiche_Inscription_2018_e241a66b04c4ec28.docx');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `license`
 --
 
 CREATE TABLE `license` (
-  `license_id` int(10) UNSIGNED NOT NULL,
-  `type` varchar(255) DEFAULT NULL,
-  `number` varchar(255) DEFAULT NULL
+  `number` varchar(20) NOT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `sex` varchar(1) DEFAULT NULL,
+  `birth_date` varchar(10) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `zipcode` varchar(10) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `year` varchar(10) DEFAULT NULL,
+  `type` varchar(20) DEFAULT NULL,
+  `primo` varchar(255) DEFAULT NULL,
+  `practice` varchar(255) DEFAULT NULL,
+  `aptitude` varchar(255) DEFAULT NULL,
+  `club` varchar(10) DEFAULT NULL,
+  `date` varchar(20) DEFAULT NULL,
+  `qualification` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `license`
+--
+
+INSERT INTO `license` (`number`, `lastname`, `firstname`, `sex`, `birth_date`, `address`, `zipcode`, `city`, `email`, `year`, `type`, `primo`, `practice`, `aptitude`, `club`, `date`, `qualification`) VALUES
+('0535406Q', 'Rossignol', 'Yannick', 'M', '29/03/1969', '20 BIS RUE FRANCISCO GOYA', '81000', 'ALBI', 'admin@uscv.fr', '2018', 'Adulte', NULL, 'Voile Radiocommandée', 'COMPETITION', '81002', '17/12/2017', 'JYR , RES'),
+('1155230Q', 'Lassort', 'Mathieu', 'M', '31/07/1980', 'Lieu Dit Barbefere', '81190', 'Trevien', 'matthieu.lassort@gmail.com', '2018', 'Adulte', NULL, '?', 'ADHESION', '81002', '01/09/2017', NULL),
+('1218657K', 'Faraud', 'Franck', 'M', '24/11/1965', '30RUE GEORGES CUVIER', '81400', 'Carmaux', 'franck.faraud@sfr.fr', '2018', 'Adulte', NULL, 'Dériveurs', 'ADHESION', '81002', '01/09/2017', NULL),
+('1423006Y', 'Coston', 'Gregory', 'M', '30/06/1977', '8 PLACE DES ANCIENS COMBATTANT', '81440', 'MONTDRAGON', 'gregory.coston@wanadoo.fr', '2018', 'Adulte', NULL, 'Dériveurs', 'ADHESION', '81002', '01/09/2017', NULL),
+('1423010C', 'Lassort', 'Liam', 'M', '17/01/2012', 'Lieu Dit Barbefere', '81190', 'Trevien', 'matthieu.lassort@gmail.com', '2018', 'Jeune', NULL, 'Dériveurs', 'ADHESION', '81002', '01/09/2017', NULL),
+('1423234L', 'Cantaloube', 'Magalie', 'F', '01/01/1983', 'Le Groussayras', '81130', 'Villeuve Sur Verre', 'larroque1983@hotmail.com', '2018', 'Adulte', NULL, 'Dériveurs', 'ADHESION', '81002', '05/09/2017', NULL),
+('1428709P', 'Migairou', 'Philippe', 'M', '16/06/1964', '2251 Route De Fauch', '81990', 'Albi', 'migairouphilippe@yahoo.fr', '2018', 'Adulte', NULL, 'Habitables', 'ADHESION', '81002', '04/11/2017', NULL);
 
 -- --------------------------------------------------------
 
@@ -39475,19 +39525,15 @@ CREATE TABLE `photo` (
 --
 
 INSERT INTO `photo` (`photo_id`, `url_large`, `url_small`, `title`, `description`) VALUES
-(2, '/uploads/photos/2c875d92adff9f8b_large.jpg', '/uploads/photos/2c875d92adff9f8b.jpg', 'Titre de mon Image', 'Descriptionde mon Image'),
-(3, '/uploads/photos/d1bcfcb70bd1f5d9_large.jpg', '/uploads/photos/d1bcfcb70bd1f5d9.jpg', 'Titre de mon Image', 'Descriptionde mon Image'),
 (4, '/uploads/photos/8ff99e349da0a0a2_large.jpg', '/uploads/photos/8ff99e349da0a0a2.jpg', 'Titre de mon Image', 'Descriptionde mon Image'),
-(5, '/uploads/photos/b7b0e4c5e0450596_large.jpg', '/uploads/photos/b7b0e4c5e0450596.jpg', 'Titre de mon Image', 'Descriptionde mon Image'),
 (6, '/uploads/photos/02bc127ed5097cde_large.jpg', '/uploads/photos/02bc127ed5097cde.jpg', 'Titre de mon Image', 'Descriptionde mon Image'),
 (7, '/uploads/photos/043031870384f717_large.jpg', '/uploads/photos/043031870384f717.jpg', 'Titre de mon Image', 'Descriptionde mon Image'),
-(8, '/uploads/photos/156d25d9a5287e3e_large.jpg', '/uploads/photos/156d25d9a5287e3e.jpg', 'Titre de mon Image', 'Descriptionde mon Image'),
 (9, '/uploads/photos/2197beded3279b60_large.jpg', '/uploads/photos/2197beded3279b60.jpg', 'Titre de mon Image', 'Descriptionde mon Image'),
 (10, '/uploads/photos/3139ab598c19ec8b_large.jpg', '/uploads/photos/3139ab598c19ec8b.jpg', 'Titre de mon Image', 'Descriptionde mon Image'),
 (11, '/uploads/photos/ac0ca6fccd885216_large.jpg', '/uploads/photos/ac0ca6fccd885216.jpg', 'Titre de mon Image', 'Descriptionde mon Image'),
 (12, '/uploads/photos/a4db3cd7601dbf24_large.jpg', '/uploads/photos/a4db3cd7601dbf24.jpg', 'Titre de mon Image', 'Descriptionde mon Image'),
-(13, '/uploads/photos/ba232a82cd0fd189_large.jpg', '/uploads/photos/ba232a82cd0fd189.jpg', 'Titre de mon Image', 'Descriptionde mon Image'),
-(14, '/uploads/photos/e1049947f7249131_large.jpg', '/uploads/photos/e1049947f7249131.jpg', 'Titre de mon Image', 'Descriptionde mon Image jhbvsdjfh sd fgjsqhdfg qshdjfg qsdfg qshjgf shq gfhjsqd fqsdfg qsdg qsg qdsf gqsdgqdsfg qsdg qdsg qdsfg dsqg sqgsq gqsdg dfg sdqg sf gzekjhFGKZUE FGDUKHJQGFuyzeait fyui');
+(14, '/uploads/photos/e1049947f7249131_large.jpg', '/uploads/photos/e1049947f7249131.jpg', 'Titre de mon Image', 'Descriptionde mon Image jhbvsdjfh sd fgjsqhdfg qshdjfg qsdfg qshjgf shq gfhjsqd fqsdfg qsdg qsg qdsf gqsdgqdsfg qsdg qdsg qdsfg dsqg sqgsq gqsdg dfg sdqg sf gzekjhFGKZUE FGDUKHJQGFuyzeait fyui'),
+(15, '/uploads/photos/d1c0ee7754b5825d_large.jpg', '/uploads/photos/d1c0ee7754b5825d.jpg', 'Nouvelle Image', 'Wahou qu\'elle est belle !!!');
 
 -- --------------------------------------------------------
 
@@ -39543,7 +39589,7 @@ CREATE TABLE `reservation` (
   `status` varchar(255) DEFAULT '0',
   `full_name` varchar(255) DEFAULT NULL,
   `email` varchar(500) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
   `message` varchar(500) DEFAULT NULL,
   `activity` varchar(50) DEFAULT NULL,
   `support` varchar(50) DEFAULT NULL,
@@ -39557,9 +39603,13 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`reservation_id`, `reservation_day_id`, `time`, `create_date`, `status`, `full_name`, `email`, `phone`, `message`, `activity`, `support`, `people`, `detail`, `token`) VALUES
-(1, 1, '14:00:00', '2017-12-06 00:00:00', 'valid', 'Vincent Lechopier', 'lechopier.vincent@gmail.com', '0123456789', 'Joyeux Noel', 'Stage', 'Catamaran', NULL, NULL, ''),
-(2, 1, '12:00:00', '2017-12-06 00:00:00', 'confirm', 'Vincent Lechopier', 'lechopier.vincent@gmail.com', '0123456789', 'Joyeux Noel', 'Stage', 'Catamaran', NULL, NULL, ''),
-(4, 21, NULL, '2017-12-22 15:10:39', NULL, 'Thierry Alvernhe', 'admin@uscv.fr', '0123456789', NULL, 'cours particuliers', 'dériveur', 1, '', '63c78ab80acb3379a99205e77a976a7fffdf8a951f8dcdbbbee0e94e2bd0a44f135b8649e8b59498d14c1bafb402a6a7e3c6b4b4f0a54af908fb51620d07e25392b032b9552e2746dace7aa8244e268b1e879fc8de566311124e52bdd338c07902fd908e2d7559e6e059df42e5840a83b2bf222a606650cff81561d23d0af54e');
+(1, 1, '14:00:00', '2017-12-05 00:00:00', 'valid', 'Vincent Lechopier', 'admin@uscv.fr', '0123456789', 'Joyeux Noel', 'Stage', 'Catamaran', 12, NULL, ''),
+(2, 12, '12:00:00', '2017-12-28 00:00:00', 'confirm', 'Vincent Lechopier', 'admin@uscv.fr', '0123456789', 'Joyeux Noel', 'Stage', 'Catamaran', 5, NULL, ''),
+(4, 21, NULL, '2017-12-13 15:10:39', 'confirm', 'Thierry Alvernhe', 'admin@uscv.fr', '0123456789', NULL, 'cours particuliers', 'dériveur', 1, '', '63c78ab80acb3379a99205e77a976a7fffdf8a951f8dcdbbbee0e94e2bd0a44f135b8649e8b59498d14c1bafb402a6a7e3c6b4b4f0a54af908fb51620d07e25392b032b9552e2746dace7aa8244e268b1e879fc8de566311124e52bdd338c07902fd908e2d7559e6e059df42e5840a83b2bf222a606650cff81561d23d0af54e'),
+(5, 8, NULL, '2017-12-17 16:58:25', 'confirm', 'Vincent Lechopier', 'admin@uscv.fr', 'sdfgsdfgsdg', NULL, 'cours particuliers', 'dériveur', 12, '', 'a83d0d851b5bcc98b4b5e53386b2446bd8b05484a6089eaed1c98fec92263e3adfd9ed5693487fe33660ded3d5cb6ac4fde4ccf852af7f4e7dd4ad041e8e6fae430b7f7442116cee51f8b9aac9178223797537f69afb1023f1681e8cebbb8df8c0e04bf4e6905b0a338b4e562611b7da6c6f012f97d29ffbdf0c43d91ffa54aa'),
+(6, 11, NULL, '2017-12-23 16:59:06', 'valid', 'Vincent Lechopier', 'admin@uscv.fr', 'erthterhyg', NULL, 'stage', 'dériveur', 4, '', 'c34f95b3999d4c125ef94ad1b6cb1f7c3a48c96c45dda87335307c1241f3d8bfea50686424ec6030d7a4f174a5b92380e9adb238ca7815bd0b9ed03e30b658bb4b4db5c2b68170deca84d7742360906fcb055a477a68a486e63a67c70a8d7bcb5188faa0214be9714724b4491f0548126fa8e12f95ad82ee068483c83ba2c2f0'),
+(7, 16, NULL, '2017-12-02 17:04:31', 'valid', 'Vincent Lechopier', 'admin@uscv.fr', 'srthgrthgrshs', NULL, 'cours particuliers', 'catamaran', 4, '', '66f841b0d07a4c584eddb01ea19e34725fd5a42a248abbc54c328130915b5c7aa1c99ed6253a1b593a443f60ae0512ba1feb945a83a8366ae4737d567c9c2479f41fd2909b6863a64dcd7df2651e980016e04d52aab3c6f560e9843b433af9b4d7ff103ac354e18ea5bab80cd465d98d79a6c341ba939513a63c43b6ccaa7a33'),
+(8, 4, NULL, '2017-12-02 17:12:11', 'valid', 'Vincent Lechopier', 'vicentedelasvega@gmail.comadmin@uscv.fr', 'tyjghfjfgh', NULL, 'stage', 'paddle', 5, '', 'f3561b38525718f7133c7fbc53481f1e4dbcbb2412a85adbb09def5827814b4a1f17f1a16a8affc2aaa18fa05e565d6abd0190900b600e8401efb6caa89b5c8fe2823e576bf3c2f3de8e9c51edbfe9cf2094535aa10ad3c8ccc89a56585159b008e74c5c33a7019a55bd502db508c2d9f4e51dba6edd4093266468c2cbd9a1a9');
 
 -- --------------------------------------------------------
 
@@ -39673,6 +39723,27 @@ INSERT INTO `slide` (`slide_id`, `img_url`, `title`, `content`, `position`) VALU
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `sponsor`
+--
+
+CREATE TABLE `sponsor` (
+  `sponsor_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `url` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `sponsor`
+--
+
+INSERT INTO `sponsor` (`sponsor_id`, `name`, `url`) VALUES
+(1, 'Crédit Agricole Carmaux', 'https://www.ca-nmp.fr/banque-assurance/carmaux/carmaux.html'),
+(2, 'Ville de Carmaux', 'http://www.carmaux.fr/'),
+(3, 'Spie Sud-Ouest', 'http://www.spie.com/fr');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `user`
 --
 
@@ -39696,9 +39767,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `birth_date`, `address_id`, `license_id`, `phone`, `email`, `password`, `subscribe_date`, `status`, `token`) VALUES
-(12, 'Jeremy', 'Thiroux', '2017-11-01 00:00:00', 6, NULL, NULL, 'patou@email.com', '$2y$10$/mFwL7T/Pu/aM1GksXsUCexY9rY3U1OrK34de54hWp9Sez/jpslly', '2017-11-15 14:01:24', 'modo', ''),
-(4567418, 'Thierry', 'Alvernhe', NULL, NULL, NULL, NULL, 'admin@uscv.fr', '$2y$10$pp.Nfspv5OLekEm930JQy.TmF/UGAdfRoWl2EjofAVfNxUuEGazb.', NULL, 'admin', NULL),
-(4567419, 'Vincent', 'Lechopier', NULL, NULL, NULL, NULL, 'vicentedelasvega@gmail.com', '$2y$10$TbH7iSilOT4F9MXQ6rBCi.0cNdW9lz4dVSH9C7zzRK9uY4ow2LNGG', '2017-12-22 15:52:14', 'active', NULL);
+(12, 'Jeremy', 'Thiroux', '2017-11-01 00:00:00', 6, NULL, NULL, 'patou@email.com', '$2y$10$/mFwL7T/Pu/aM1GksXsUCexY9rY3U1OrK34de54hWp9Sez/jpslly', '2017-11-15 14:01:24', 'active', ''),
+(4567418, 'Thierry', 'Alvernhe', NULL, NULL, NULL, NULL, 'admin@uscv.fr', '$2y$10$pp.Nfspv5OLekEm930JQy.TmF/UGAdfRoWl2EjofAVfNxUuEGazb.', '2017-12-04 00:00:00', 'admin', NULL),
+(4567419, 'Vincent', 'Lechopier', NULL, NULL, NULL, NULL, 'vicentedelasvega@gmail.com', '$2y$10$TbH7iSilOT4F9MXQ6rBCi.0cNdW9lz4dVSH9C7zzRK9uY4ow2LNGG', '2017-12-22 15:52:14', 'modo', NULL);
 
 --
 -- Index pour les tables exportées
@@ -39752,10 +39823,16 @@ ALTER TABLE `city`
   ADD PRIMARY KEY (`city_id`);
 
 --
+-- Index pour la table `file`
+--
+ALTER TABLE `file`
+  ADD PRIMARY KEY (`file_id`);
+
+--
 -- Index pour la table `license`
 --
 ALTER TABLE `license`
-  ADD PRIMARY KEY (`license_id`);
+  ADD UNIQUE KEY `number` (`number`);
 
 --
 -- Index pour la table `location_price`
@@ -39809,6 +39886,12 @@ ALTER TABLE `slide`
   ADD PRIMARY KEY (`slide_id`);
 
 --
+-- Index pour la table `sponsor`
+--
+ALTER TABLE `sponsor`
+  ADD PRIMARY KEY (`sponsor_id`);
+
+--
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
@@ -39830,7 +39913,7 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT pour la table `article`
 --
 ALTER TABLE `article`
-  MODIFY `article_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `article_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT pour la table `article_comment`
 --
@@ -39850,17 +39933,17 @@ ALTER TABLE `blog_post`
 -- AUTO_INCREMENT pour la table `blog_post_comment`
 --
 ALTER TABLE `blog_post_comment`
-  MODIFY `article_comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `article_comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `city`
 --
 ALTER TABLE `city`
   MODIFY `city_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39203;
 --
--- AUTO_INCREMENT pour la table `license`
+-- AUTO_INCREMENT pour la table `file`
 --
-ALTER TABLE `license`
-  MODIFY `license_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `file`
+  MODIFY `file_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT pour la table `location_price`
 --
@@ -39870,7 +39953,7 @@ ALTER TABLE `location_price`
 -- AUTO_INCREMENT pour la table `photo`
 --
 ALTER TABLE `photo`
-  MODIFY `photo_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `photo_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT pour la table `price`
 --
@@ -39880,7 +39963,7 @@ ALTER TABLE `price`
 -- AUTO_INCREMENT pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reservation_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `reservation_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `reservation_day`
 --
@@ -39901,6 +39984,11 @@ ALTER TABLE `site_info`
 --
 ALTER TABLE `slide`
   MODIFY `slide_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT pour la table `sponsor`
+--
+ALTER TABLE `sponsor`
+  MODIFY `sponsor_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
@@ -39944,8 +40032,7 @@ ALTER TABLE `reservation`
 -- Contraintes pour la table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `fk_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_license` FOREIGN KEY (`license_id`) REFERENCES `license` (`license_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

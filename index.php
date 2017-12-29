@@ -28,6 +28,10 @@ $app->get("/reservation/valid/{token}", App\Controller\PageController::class . "
 // ----------------------------------------------------------------------------- PROFILE
 $app->get("/profil", App\Controller\PageController::class . ":profil")->setName("profil");
 
+// ----------------------------------------------------------------------------- DOWNLOAD
+$app->get("/download", App\Controller\PageController::class . ":download")->setName("download");
+$app->get("/addfile", App\Controller\PageController::class . ":formAddFile")->setName("addFile");
+
 // ----------------------------------------------------------------------------- LE CLUB
 $app->get("/club", App\Controller\PageController::class . ":club")->setName("club");
 $app->get("/club/actualites", App\Controller\PageController::class . ":club")->setName("club_news");
@@ -50,6 +54,7 @@ $app->get("/location", App\Controller\PageController::class . ":location")->setN
 
 // ----------------------------------------------------------------------------- GELERIE
 $app->get("/gallerie", App\Controller\PageController::class . ":gallery")->setName("gallery");
+$app->get("/addimage", App\Controller\PageController::class . ":formAddImage")->setName("addImage");
 
 
 // Run the Application

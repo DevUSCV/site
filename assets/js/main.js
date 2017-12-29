@@ -17,8 +17,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
     // SET FOOTER
     $.getJSON(API_URL + "/article/footer", (data) => {
-        SITE = data;
         document.querySelector("p#footer_article").innerHTML = data.content;
+    });
+    $.getJSON(API_URL + "/sponsor", (data) => {
+        for(var sponsor of data){
+            document.querySelector("#sponsor").innerHTML += "<li>"
+                    + (isAdmin() ? "<a class='red-text' onclick='delete_sponsor(" + sponsor.sponsor_id + ")'><i class='fa fa-trash' aria-hidden='true'></i></a> " : "")
+                    + "<a target='_BLANK' class='grey-text text-lighten-3' href='" + sponsor.url + "'>" + sponsor.name + "</a>"
+                    + "</li>";
+        }        
     });
 //    SET SIDE NAV
     $('.button-collapse').sideNav({

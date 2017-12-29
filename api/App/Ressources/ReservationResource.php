@@ -31,6 +31,32 @@ class ReservationResource extends AbstractResource {
     }
 
     // -------------------------------------------------------------------------
+    // ------------------------------------------------------------------------- GET RESERVATION
+    // -------------------------------------------------------------------------
+    public function getMyReservation(Request $request, Response $response, $args) {
+        $data = [];
+        $data["valid"] = $this->getEntityManager()->getRepository(Reservation::class)->createQueryBuilder("r")
+                ->andWhere("r.status = :status")
+                ->andWhere("r.email = :email")
+                ->setParameter("status", "valid")
+                ->setParameter("email", $_SESSION["user"]->getEmail())
+                ->leftJoin("r.date", "rd")
+                ->orderBy("rd.date", "DESC")
+                ->setMaxResults(10)
+                ->getQuery()->getResult();
+        $data["confirm"] = $this->getEntityManager()->getRepository(Reservation::class)->createQueryBuilder("r")
+                ->andWhere("r.status = :status")
+                ->andWhere("r.email = :email")
+                ->setParameter("status", "confirm")
+                ->setParameter("email", $_SESSION["user"]->getEmail())
+                ->leftJoin("r.date", "rd")
+                ->orderBy("rd.date", "DESC")
+                ->setMaxResults(10)
+                ->getQuery()->getResult();
+        return $response->write(json_encode($data));
+    }
+
+    // -------------------------------------------------------------------------
     // ------------------------------------------------------------------------- CREATE RESERVATION
     // -------------------------------------------------------------------------
     public function createReservation(Request $request, Response $response, $args) {
@@ -94,7 +120,7 @@ class ReservationResource extends AbstractResource {
             $this->getEntityManager()->flush($reservation);
             EmailRessource::verifiedReservation($reservation);
             return $response->write(true);
-        }else{
+        } else {
             return $response->write(false)->withStatus(404, "Token Not Found");
         }
     }

@@ -30,6 +30,14 @@ class PageController {
         $this->container->view->render($response, "Page/profil.twig", $param);
         return $response;
     }
+//   --------------------------------------------------------------------------- TELECHARGEMENTS
+    public function download(Request $request, Response $response, $args) {
+        $param = array(
+            "user" => $this->container["user"]
+        );
+        $this->container->view->render($response, "Page/download.twig", $param);
+        return $response;
+    }
 
 //   --------------------------------------------------------------------------- LE CLUB 
     public function club(Request $request, Response $response, $args) {
@@ -156,6 +164,26 @@ class PageController {
             "user" => $this->container["user"],
         );
         $this->container->view->render($response, "Form/formConnection.twig", $param);
+        return $response;
+    }
+    
+//   --------------------------------------------------------------------------- FORMULAIRES AJOUT FICHIER
+//   ---------------------------------------------------------------------------
+    public function formAddFile(Request $request, Response $response, $args) {
+        $param = array(
+            "user" => $this->container["user"],
+        );
+        $this->container->view->render($response, "Form/formAddFile.twig", $param);
+        return $response;
+    }
+    
+//   --------------------------------------------------------------------------- FORMULAIRES AJOUT IMAGE
+//   ---------------------------------------------------------------------------
+    public function formAddImage(Request $request, Response $response, $args) {
+        $param = array(
+            "user" => $this->container["user"],
+        );
+        $this->container->view->render($response, "Form/formAddImage.twig", $param);
         return $response;
     }
 

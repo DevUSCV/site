@@ -11,7 +11,7 @@ function init(blog_post_id) {
             for (var comment of data.comment) {
                 var item = document.createElement("div");
                 item.id = "blog_post_comment_" + comment.blog_post_comment_id;
-                item.innerHTML = (isModo() ? "<a class='red-text' onclick='delete_post_comment(" + comment.blog_post_comment_id + ")'><i class='fa fa-trash-o' aria-hidden='true'></i></a> " : "")
+                item.innerHTML = (isModo() ? "<a class='red-text' onclick='delete_post_comment(" + comment.blog_post_comment_id + ")'><i class='fa fa-trash' aria-hidden='true'></i></a> " : "")
                         + "<b>" + comment.author_name + "</b><small class='right'>" + comment.create_date + "</small><br><p class='col s12'>" + comment.content 
                         + "</p>";
                 comment_div.appendChild(item);

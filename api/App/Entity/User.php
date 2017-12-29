@@ -3,7 +3,8 @@
 namespace App\Entity;
 
 use App\Entity;
-use Doctrine\ORM\Mapping;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use JsonSerializable;
 
 /**
@@ -45,11 +46,6 @@ class User implements JsonSerializable {
     /** @Column(type="datetime", name="subscribe_date") */
     protected $subscribe_date;
 
-    /**
-     * @OneToOne(targetEntity="License")
-     * @JoinColumn(name="license_id", referencedColumnName="license_id")
-     */
-    private $license;
 
     /**
      * @var string
@@ -79,7 +75,7 @@ class User implements JsonSerializable {
      * @var string
      * @Column(type="string", length=500)
      */
-    protected $token;
+    protected $token;     
 
     function getUser_id() {
         return $this->user_id;
@@ -101,9 +97,6 @@ class User implements JsonSerializable {
         return $this->birth_date;
     }
 
-    function getLicense() {
-        return $this->license;
-    }
 
     function getPhonel() {
         return $this->phone;
@@ -137,9 +130,6 @@ class User implements JsonSerializable {
         $this->birth_date = $birth_date;
     }
 
-    function setLicense($license) {
-        $this->license = $license;
-    }
 
     function setPhone($phone) {
         $this->phone = $phone;
@@ -196,9 +186,8 @@ class User implements JsonSerializable {
             'subscribe_date' => $this->subscribe_date,
             'status' => $this->status,
             'address' => $this->address,
-            'license' => $this->license,
             'phone' => $this->phone,
-            'email' => $this->email,
+            'email' => $this->email
         );
     }
 

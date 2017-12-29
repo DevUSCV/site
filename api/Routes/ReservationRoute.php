@@ -6,4 +6,6 @@ $app->post("/reservation", App\Ressources\ReservationResource::class . ":createR
 // PUT 
 // GET
 $app->get("/reservation/valid/{token}", App\Ressources\ReservationResource::class . ":validReservation");
+$app->get("/reservation", App\Ressources\ReservationResource::class . ":getMyReservation")
+        ->add(new App\Middleware\Security\Logged());
 // DELETE

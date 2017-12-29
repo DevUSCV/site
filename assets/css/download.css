@@ -10,7 +10,7 @@ table th{
 }
 
 table td{
-    padding: 5px 0;
+    padding: 5px 0!important;
 }
 
 /*------------------------------------------------------------------------------ ONGLETS*/
@@ -22,14 +22,14 @@ div.bottom_nav{
     z-index: 1000;
 }
 
-div.row ul.tabs li a{
+div.row.bottom_nav ul.tabs li a{
     font-family: 'Caviar Dreams'!important;
     color: white!important;
 }
 
-div.row ul.tabs li a:hover{
+div.row.bottom_nav ul.tabs li a:hover{
     background-color: #3b96e2;
 }
-div.row ul.tabs li.indicator{
-    background-color: #3b96e2;
-} 
+div.row.bottom_nav ul.tabs li.indicator{
+    display: none;
+}
