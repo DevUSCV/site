@@ -1,0 +1,64 @@
+<div class="row">
+    <form id="location_form" class="container" enctype="multipart/form-data">
+        <input type="hidden" name="location_price_id" value="{{ location_price_id }}">
+        <div class="col s12">
+            <div class="input-field col s12">
+                <i class="fa fa-info prefix" aria-hidden="true"></i>
+                <input id="name" type="text" name="name" class="validate" required onkeyup="check_location_form()"  minlength="5" />
+                <label for="name">Nom</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="fa fa-info prefix" aria-hidden="true"></i>
+                <textarea id="description" type="text" name="description" class="materialize-textarea" onkeyup="check_location_form()" minlength="5" ></textarea>
+                <label for="description">Desctiption</label>
+            </div>
+        </div>
+
+        <div class="col s12">
+            <div class="file-field input-field col s12">
+                <div class="btn blue col s4">
+                    <span><i class="fa fa-picture-o " aria-hidden="true"></i> Image</span>
+                    <input type="file" onchange="check_location_form()" id="image" name="image" {% if not location_price_id %}required{% endif %} >
+                </div>
+                <div class="file-path-wrapper col s8">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>          
+        </div>
+
+        <div class="col s6">
+            <div class="input-field col s12">
+                <i class="fa fa-eur prefix" aria-hidden="true"></i>
+                <input id="half_hour" type="text" name="half_hour" class="validate" onkeyup="check_location_form()" />
+                <label for="name">Demi Heure</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="fa fa-eur prefix" aria-hidden="true"></i>
+                <input id="hour" type="text" name="hour" class="validate" onkeyup="check_location_form()" />
+                <label for="name">Une Heure</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="fa fa-eur prefix" aria-hidden="true"></i>
+                <input id="two_hour" type="text" name="two_hour" class="validate" onkeyup="check_location_form()" />
+                <label for="name">Deux Heure</label>
+            </div>
+        </div>
+
+        <div class="col s6">
+            <div class="input-field col s12">
+                <i class="fa fa-eur prefix" aria-hidden="true"></i>
+                <input id="half_day" type="text" name="half_day" class="validate" onkeyup="check_location_form()" />
+                <label for="name">Demi Journée</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="fa fa-eur prefix" aria-hidden="true"></i>
+                <input id="day" type="text" name="day" class="validate" onkeyup="check_location_form()" />
+                <label for="name">Journée</label>
+            </div>
+        </div>
+    </form>  
+
+</div>
+<div class="card-action">
+    <button id="send_location_button" class="btn green disabled" onclick="send_location()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
+</div> 

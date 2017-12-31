@@ -92,10 +92,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         var month = e.target.dataset.month;
         var year = e.target.dataset.year;
         var today = new Date();
-        if (month >= today.getMonth() && day >= today.getDate()) {
-            if (!isModo() && day == today.getDate()) {
-                return;
-            }
+        if (isModo() || (month >= today.getMonth() && day > today.getDate())) {
             $.get(SITE_ROOT + "/reservation/formulaire", {year: year, month: month, day: day}, function (data) {
                 document.querySelector("#modal h4").innerHTML = "Reservation pour le " + day + " " + months[month] + " " + year;
                 document.querySelector("#modal div.modal-content div").innerHTML = "<div id='reservation_planning'></div>" + data;

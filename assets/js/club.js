@@ -90,8 +90,20 @@ function equipe() {
         document.querySelector("#team_2 p").innerHTML = data.content;
     });
     $.getJSON(API_URL + "/article/moniteur3", (data) => {
-        document.querySelector("#team_other span.card-title").innerHTML = data.title;
-        document.querySelector("#team_other p").innerHTML = data.content;
+        document.querySelector("#team_3 span.card-title").innerHTML = data.title;
+        document.querySelector("#team_3 p").innerHTML = data.content;
+    });
+    $.getJSON(API_URL + "/article/moniteur4", (data) => {
+        document.querySelector("#team_4 span.card-title").innerHTML = data.title;
+        document.querySelector("#team_4 p").innerHTML = data.content;
+    });
+    $.getJSON(API_URL + "/article/moniteur5", (data) => {
+        document.querySelector("#team_5 span.card-title").innerHTML = data.title;
+        document.querySelector("#team_5 p").innerHTML = data.content;
+    });
+    $.getJSON(API_URL + "/article/moniteur6", (data) => {
+        document.querySelector("#team_6 span.card-title").innerHTML = data.title;
+        document.querySelector("#team_6 p").innerHTML = data.content;
     });
 }
 ;

@@ -57,13 +57,7 @@ class Reservation implements JsonSerializable {
      * @Column(type="string", length=255)
      */
     protected $phone;
-    
-    /**
-     * @var string
-     * @Column(type="string", length=500)
-     */
-    protected $message;
-    
+        
     /**
      * @var string
      * @Column(type="string", length=50)
@@ -78,9 +72,21 @@ class Reservation implements JsonSerializable {
     
     /**
      * @var string
+     * @Column(type="string", length=255)
+     */
+    protected $monitor;
+    
+    /**
+     * @var string
      * @Column(type="string", length=500)
      */
     protected $detail;
+    
+        /**
+     * @var string
+     * @Column(type="string", length=500)
+     */
+    protected $message;
     
     /**
      * @var string
@@ -204,13 +210,22 @@ class Reservation implements JsonSerializable {
     function setPeople($people) {
         $this->people = $people;
     }
+    
+    function getMonitor() {
+        return $this->monitor;
+    }
 
+    function setMonitor($monitor) {
+        $this->monitor = $monitor;
+    }
+
+    
                 
     public function jsonSerialize() {
         return array(
             'reservation_id' => $this->reservation_id,
             'date' => $this->date->getDate(),
-            'time' => ($this->time ? $this->time->format("H") : null),
+            'time' => ($this->time ? $this->time->format("H:i") : null),
             'create_date' => $this->create_date,
             'status' => $this->status,
             'full_name' => $this->full_name,            
@@ -220,6 +235,8 @@ class Reservation implements JsonSerializable {
             'support' => $this->support,
             "people" => $this->getPeople(),
             'detail' => $this->detail,
+            'message' => $this->message,
+            'monitor' => $this->monitor
         );
     }
 

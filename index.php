@@ -21,7 +21,6 @@ $app->get("/connection", App\Controller\PageController::class . ":formConnection
 
 $app->get("/article/editor/{article_name}", App\Controller\PageController::class . ":articleEditor")->setName("ArticleEditor");
 $app->get("/blog/editor/{blog_post_id}", App\Controller\PageController::class . ":blogEditor")->setName("BlogEditor");
-$app->get("/reservation/editor/{reservation_id}", App\Controller\PageController::class . ":reservationEditor")->setName("ReservationEditor");
 $app->get("/valid/{token}", App\Controller\PageController::class . ":validUser")->setName("validUser");
 $app->get("/reservation/valid/{token}", App\Controller\PageController::class . ":validReservation")->setName("validReservation");
 
@@ -48,9 +47,12 @@ $app->get("/activite", App\Controller\PageController::class . ":activite")->setN
 // ----------------------------------------------------------------------------- RESERVATION
 $app->get("/reservation", App\Controller\PageController::class . ":reservation")->setName("reservation");
 $app->get("/reservation/formulaire", App\Controller\PageController::class . ":formReservation")->setName("formReservation");
+$app->get("/reservation/editor/{reservation_id}", App\Controller\PageController::class . ":reservationEditor")->setName("reservationEditor");
 
 // ----------------------------------------------------------------------------- LOCATION
 $app->get("/location", App\Controller\PageController::class . ":location")->setName("location");
+$app->get("/location/editor", App\Controller\PageController::class . ":locationEditor")->setName("locationEditor");
+$app->get("/location/editor/{location_price_id}", App\Controller\PageController::class . ":locationEditor")->setName("locationEditor");
 
 // ----------------------------------------------------------------------------- GELERIE
 $app->get("/gallerie", App\Controller\PageController::class . ":gallery")->setName("gallery");

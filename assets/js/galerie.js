@@ -8,13 +8,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     + "         <img class='responsive-img' src='" + API_URL + photo.url_small + "' itemprop='thumbnail' alt='Image description' />"
                     + "     </a>"
                     + "     <figcaption itemprop='caption description'>"
+                    + "<h6>" + photo.title + "</h6>"
                     + photo.description
                     + "     </figcaption>"
                     + "<a class='btn-floating red delete_image" + (isAdmin() ? "" : " invisible" ) + "' data-id='" + photo.photo_id + "'><i class='fa fa-trash' aria-hidden='true'></i></a>"
                     + "</figure>";
         }
         document.querySelector("div.gallery").innerHTML += gallery;
-        // execute above function
         initPhotoSwipeFromDOM('.gallery');
         var tl = new TimelineLite();
         tl.staggerFrom($("figure"), 0.5, {alpha: 0}, 0.1);

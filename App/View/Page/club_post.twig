@@ -5,7 +5,7 @@
     <script src="/assets/js/club.js"></script>
     <script src="/assets/js/club_post.js"></script>
 
-    <title>Article</title>
+    <title>Lire un Billet</title>
 {% endblock %}
 
 {% block post %}
@@ -16,17 +16,21 @@
             <div class="card col s12 l8">
                 <div class="card-content">
                     <span class="card-title post_title"></span>                    
-                    <p class="post_content"></p>
-                    <div class="post_author right"></div>
+                    <p class="post_content"></p>                    
                 </div>
                 <div class="card-action">
-                    <a href="#" class="blue btn"><i class="fa fa-share-alt" aria-hidden="true"></i> Partager</a>
+                    <div class="fb-share-button" 
+                         data-href="" 
+                         data-layout="button_count">
+                    </div>
+                    <div class="post_author right"></div>
                 </div>
             </div>
-            <div class="card large col s12 l4">
+            <div class="card col s12 l4">
                 <div class="card-content">
                     <span class="card-title">Commentaires</span>
-                    <div class="post_comment collection"></div>
+                    <div class="post_comment collection">
+                    </div>
                 </div>
                 <div class="card-action">
                     {% if not user %}
@@ -53,4 +57,15 @@
             });
         });
     </script>
+
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id))
+                return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.11';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 {% endblock %}

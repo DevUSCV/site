@@ -52,3 +52,9 @@ a.back_home{
 #entrainements *, #apropos *{
     color: black;
 }
+
+.post_comment{
+    overflow-y: scroll;
+    min-height: 200px;
+    max-height: 400px;
+}

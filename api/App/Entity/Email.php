@@ -21,9 +21,9 @@ class Email {
         $this->to = $to;
         $this->object = Config::SITE_NAME . " : " . $object;
         $this->content = $content;
-        if ($to == "modo" || $to == "admin") {
-            $users = $userRepository->findBy(array("status" => $to));
-            if ($users === []) {
+        if ($to == "modo" ) {
+            $users = $userRepository->findBy(array("status" => "modo"));
+            if (empty($users)) {
                 $users = array($userRepository->findOneBy(array("status" => "admin")));
             }
             $this->to = "";
@@ -32,6 +32,7 @@ class Email {
             }
         }
     }
+    
 
     public function send() {
         if ($this->to && $this->content && $this->object) {

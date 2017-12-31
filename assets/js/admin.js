@@ -47,7 +47,7 @@ function confirm_delete_post_comment(blog_post_comment_id) {
 }
 
 function view_reservation(reservation_id) {
-    alert(reservation_id);
+    location = SITE_ROOT + "/reservation/editor/" + reservation_id;
 }
 
 function add_file() {
@@ -66,9 +66,9 @@ function check_send_file_form() {
             form.file.validity.valid
             );
     if (valid) {
-        $("#send_file_button").removeClass("disabled")
+        $("#send_file_button").removeClass("disabled");
     } else {
-        $("#send_file_button").addClass("disabled")
+        $("#send_file_button").addClass("disabled");
     }
     return valid;
 }
@@ -130,7 +130,7 @@ function add_sponsor() {
 }
 
 function delete_sponsor(sponsor_id) {
-    alert("TOTO spondor_id = " + sponsor_id);
+    alert("TODO spondor_id = " + sponsor_id);
 }
 
 function delete_image(image_id) {
@@ -206,4 +206,102 @@ function send_image() {
             }
         });
     }
+}
+
+function edit_location_price(location_price_id){
+    $.get(SITE_ROOT + "/location/editor/" + location_price_id, function (data) {
+        document.querySelector("#modal h4").innerHTML = "<i class='fa fa-pencil' aria-hidden='true'></i> Tarif Location";
+        document.querySelector("#modal div.modal-content div").innerHTML = data;
+        $('#modal').modal('open');
+        $.getJSON(API_URL + "/location/" + location_price_id, function(data){
+            var form = document.querySelector("#location_form");
+            form.name.value = data.name;
+            form.description.value = data.description;
+            form.half_hour.value = data.half_hour;
+            form.hour.value = data.hour;
+            form.two_hour.value = data.two_hour;
+            form.half_day.value = data.half_day;
+            form.day.value = data.day;
+        });
+    });
+}
+
+function add_location_price(){
+    $.get(SITE_ROOT + "/location/editor", function (data) {
+        document.querySelector("#modal h4").innerHTML = "<i class='fa fa-pencil' aria-hidden='true'></i> Tarif Location";
+        document.querySelector("#modal div.modal-content div").innerHTML = data;
+        $('#modal').modal('open');
+    });
+}
+
+function check_location_form() {
+    var form = document.querySelector("#location_form");
+    var valid = (
+            form.name.validity.valid &&
+            form.description.validity.valid &&
+            form.image.validity.valid &&
+            form.half_hour.validity.valid &&
+            form.hour.validity.valid &&
+            form.two_hour.validity.valid &&
+            form.half_day.validity.valid &&
+            form.day.validity.valid
+            );
+    if (valid) {
+        $("#send_location_button").removeClass("disabled")
+    } else {
+        $("#send_location_button").addClass("disabled")
+    }
+    return valid;
+}
+
+function send_location() {
+    if (check_location_form()) {
+        var form = document.querySelector("#location_form");
+        var data = new FormData(form);
+        console.log(data);
+        $.ajax({
+            type: "POST",
+            url: API_URL + "/location" + (form.location_price_id.value ? "/update" : "" ),
+            data: data,
+            processData: false,
+            contentType: false,
+            enctype: 'multipart/form-data',
+            dataType: "json",
+            success: function (data, textStatus, jqXHR) {
+                document.querySelector("#modal h4").innerHTML = "<i class='fa fa-checked' aria-hidden='true'></i> Succes";
+                document.querySelector("#modal div.modal-content div").innerHTML = "Opération effectuée.";
+                window.setTimeout(function () {
+                    window.location.reload();
+                }, 2000);
+            },
+            error: function (jqxhr, status, error) {
+                document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Echec";
+                document.querySelector("#modal div.modal-content div").innerHTML = error;
+            }
+        });
+    }
+}
+
+function delete_location_price(location_price_id){
+    document.querySelector("#modal h4").innerHTML = "<i class='fa fa-question' aria-hidden='true'></i> Suppression ce tarif";
+    document.querySelector("#modal div.modal-content div").innerHTML = "<div class='container'>Voulez vous supprimer ce tarif ? <br>Cette action est irreversible</div>"
+            + "<div class='modal-footer'><a class='btn red' onclick='confirm_delete_location_price(" + location_price_id + ")'>Supprimer</div></div>";
+    $('#modal').modal('open');
+}
+
+function confirm_delete_location_price(location_price_id) {
+    $.ajax({
+        url: API_URL + '/location/' + location_price_id,
+        type: 'DELETE',
+        dataType: 'json',
+        success: function (result) {
+            document.querySelector("#modal h4").innerHTML = "<i class='fa fa-checked' aria-hidden='true'></i> Succes";
+            document.querySelector("#modal div.modal-content div").innerHTML = "Tarif supprimé avec succes.";
+            $("#location_price_" + location_price_id).hide(300);            
+        },
+        error: function (jqxhr, status, error) {
+            document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Echec";
+            document.querySelector("#modal div.modal-content div").innerHTML = error;
+        }
+    });
 }

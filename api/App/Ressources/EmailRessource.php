@@ -71,10 +71,54 @@ class EmailRessource {
                 . "Activité: " . $reservation->getActivity() . "<br>"
                 . "Support: " . $reservation->getSupport() . "<br>"
                 . "Nombre de participants: " . $reservation->getPeople() . "<br>"
-                . "Votre Message: " . $reservation->getDetail() . "<br>"
+                . "Votre Message: " . $reservation->getDetail() . "<br><br>"
                 . "<a href='" . $_SERVER['HTTP_HOST'] . "' >Acceder au site</a>";
 
         
+        $email = new Email($reservation->getEmail(), $object, $content_head.$content);
+        $email_admin = new Email( "modo", $object_admin, $content_head_admin.$content);
+        return ($email_admin->send() && $email->send());
+    }
+    
+    public static function confirmedReservation(Reservation $reservation){
+        $object = "Confirmation réservation du " . (new \DateTime($reservation->getDate()))->format("d/m/Y");
+        $object_admin = $object . " | " . $reservation->getFull_name();
+        $content_head = "<h1>" . $object . "</h1><h3>" . $_SESSION["user"]->getFirstname() . " " . $_SESSION["user"]->getLastname() . " as confirmé votre réservation</h3>";
+        $content_head_admin = "<h1>" . $object . "</h1><h3>" . $_SESSION["user"]->getFirstname() . " " . $_SESSION["user"]->getLastname() . " as confirmé la réservation</h3>";
+        $content = "date: " . (new \DateTime($reservation->getDate()))->format("d/m/Y") . "<br>"
+                . "Heure: " . $reservation->getTime()->format("H:i") . "<br>"
+                . "Moniteur: " . $reservation->getMonitor() . "<br><br>"
+                . "Nom complet: " . $reservation->getFull_name() . "<br>"
+                . "Téléphone: " . $reservation->getPhone() . "<br>"
+                . "Activité: " . $reservation->getActivity() . "<br>"
+                . "Support: " . $reservation->getSupport() . "<br>"
+                . "Nombre de participants: " . $reservation->getPeople() . "<br>"
+                . "Votre Message: " . $reservation->getDetail() . "<br><br>"
+                . "<a href='" . $_SERVER['HTTP_HOST'] . "' >Acceder au site</a>";
+
+        
+        $email = new Email($reservation->getEmail(), $object, $content_head.$content);
+        $email_admin = new Email( "modo", $object_admin, $content_head_admin.$content);
+        return ($email_admin->send() && $email->send());
+    }
+    
+    public static function deletedReservation(Reservation $reservation){
+        $object = "Annulation reservation du " . (new \DateTime($reservation->getDate()))->format("d/m/Y");
+        $object_admin = $object . " | " . $reservation->getFull_name();
+        $content_head = "<h1>" . $object . "</h1><h3>" . $_SESSION["user"]->getFirstname() . " " . $_SESSION["user"]->getLastname() . " as annulé votre réservation</h3>";
+        $content_head_admin = "<h1>" . $object . "</h1><h3>" . $_SESSION["user"]->getFirstname() . " " . $_SESSION["user"]->getLastname() . " as annulé la réservation</h3>";
+        $content = "<a href='" . $_SERVER['HTTP_HOST'] . "' >Acceder au site</a>";        
+        $email = new Email($reservation->getEmail(), $object, $content_head.$content);
+        $email_admin = new Email( "modo", $object_admin, $content_head_admin.$content);
+        return ($email_admin->send() && $email->send());
+    }
+    
+    public static function mailReservation(Reservation $reservation, String $message){
+        $object = "Message de  " . $_SESSION["user"]->getFirstname() . " " . $_SESSION["user"]->getLastname();
+        $object_admin = $object . " a " . $reservation->getFull_name();
+        $content_head = "<h1>" . $object . "</h1><h3>Concernant votre demande de réservation du " . (new \DateTime($reservation->getDate()))->format("d/m/Y") . "</h3>";
+        $content_head_admin = "<h1>" . $object . "</h1><h3>Concernant la demande de réservation du " . (new \DateTime($reservation->getDate()))->format("d/m/Y") . "</h3>";
+        $content = $message . "<br><br><a href='" . $_SERVER['HTTP_HOST'] . "' >Acceder au site</a>";        
         $email = new Email($reservation->getEmail(), $object, $content_head.$content);
         $email_admin = new Email( "modo", $object_admin, $content_head_admin.$content);
         return ($email_admin->send() && $email->send());

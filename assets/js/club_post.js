@@ -3,9 +3,17 @@ function init(blog_post_id) {
         document.title = "U.S. Carmaux Voile | " + data.title;
         document.querySelector(".post_title").innerHTML = data.title;
         document.querySelector(".post_author").innerHTML = (data.last_editor_name ?
-                ("Modifié par " + data.last_editor_name + " le " + data.last_edit_date) :
-                ("Ecrit par " + data.author_name + " le " + data.create_date));
+                ("Modifié par " + data.last_editor_name + " le " + data.last_edit_date) : "")
+                 + "Ecrit par " + data.author_name + " le " + data.create_date;
         document.querySelector(".post_content").innerHTML = data.content;
+        
+        $('meta[property="og:url"]').attr('content', document.location);
+        $('meta[property="og:title"]').attr('content', data.title);
+        $('meta[property="og:description"]').attr('content', data.content);
+        $('meta[property="og:image"]').attr('content', document.location + "/assets/Image/logo.jpg");
+        document.querySelector(".fb-share-button").dataset.href = document.location;
+
+        
         let comment_div = document.querySelector("div.post_comment");
         if (data.comment.length > 0) {
             for (var comment of data.comment) {

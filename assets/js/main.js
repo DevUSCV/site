@@ -43,6 +43,22 @@ document.addEventListener("DOMContentLoaded", function (e) {
         startingTop: '4%', // Starting top style attribute
         endingTop: '10%', // Ending top style attribute
     });
+    
+    var loading = false;
+    $( document ).ajaxStart(function(){
+        loading = true;
+        window.setTimeout(function(){
+            if(loading){$("#loader").fadeIn(300);}
+        }, 500);
+    });
+    $( document ).ajaxComplete(function(){
+       loading = false; 
+       $("#loader").fadeOut(300);
+    });
+    $( document ).ajaxError(function(){
+       loading = false; 
+       $("#loader").fadeOut(300);
+    });
 });
 function show_contact() {
 

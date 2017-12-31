@@ -1,18 +1,91 @@
 {% extends "template.twig" %}
 
-{% block head %}     
-    <link rel="stylesheet" href="/assets/css/blog_editor.css">
-    <script src="/assets/js/tinymce/tinymce.min.js"></script>  
-    <script src="/assets/js/admin.js"></script>  
-    <script src="/assets/js/form/blog_editor.js"></script>  
-    <title>Edition d'article</title>
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/reservation_editor.css">
+    <script src="/assets/js/tinymce/tinymce.min.js"></script>
+    <script src="/assets/js/admin.js"></script>
+    <script src="/assets/js/form/reservation_editor.js"></script>
+    <title>Edition de Reservation</title>
 {% endblock %}
 
 {% block content %}
     {% if (user.getStatus == "admin" or user.getStatus == "modo") %}
         <div class="row content">
             <div class='container'>
-                RESERVATION EDITOR {{reservation_id}}
+                <h2>Reservation #{{reservation_id}}</h2>
+                <div class="row">
+                    <div class="card col s4">
+                        <div class="card-content">
+                            <span class="card-title" id="status"><b>Informations</b></span>
+                            <span class="card-title"><small><i class="fa fa-calendar" aria-hidden="true"></i> Date</small></span>
+                            <p id="date" class="right"></p>
+                            <br><hr>
+                            <span class="card-title"><small><i class="fa fa-id-card-o" aria-hidden="true"></i> Nom complet</small></span>
+                            <p id="full_name" class="right"></p><br>
+                            <span class="card-title"><small><i class="fa fa-envelope-o" aria-hidden="true"></i> Email</small></span>
+                            <p id="email" class="right"></p><br>
+                            <span class="card-title"><small><i class="fa fa-phone" aria-hidden="true"></i> Téléphone</small></span>
+                            <p id="phone" class="right"></p>
+                            <br><hr>
+                            <span class="card-title"><small>Activité</small></span>
+                            <p id="activity" class="right"></p><br>
+                            <span class="card-title"><small>Support</small></span>
+                            <p id="support" class="right"></p><br>
+                            <span class="card-title"><small>Nombre de participants</small></span>
+                            <p id="people" class="right"></p><br>
+                            <span class="card-title"><small>Détails</small></span>
+                            <p id="details" class="right"></p>
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="card col s8">
+                        <div class="card-content">
+                            <span class="card-title"><b>Modération de la réservation</b></span>
+                            <span class="card-title">Confirmation</span>
+                            <div class="col s12">
+                                <form id="confirm_reservation_form">
+                                    <div class="input-field col s6">
+                                        <i class="fa fa-clock-o prefix" aria-hidden="true"></i>
+                                        <input id="time" name="time" type="text" class="timepicker" required onchange="check_confirm_reservation_form()">
+                                        <label for="time">Heure</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <i class="fa fa-user prefix" aria-hidden="true"></i>
+                                        <input id="monitor" name="monitor" type="text" class="validate" required onkeyup="check_confirm_reservation_form()" minlength="3">
+                                        <label for="monitor">Moniteur</label>
+                                    </div>
+                                </form>
+                                <div class="col s12 center">
+                                    <a onclick="cancel_reservation()" class="btn red waves-effect"><i class="fa fa-trash" aria-hidden="true"></i> Annuler la reservation</a>
+                                    <a id="confirm_reservation_button" onclick="confirm_reservation()" class="btn green waves-effect disabled"><i class="fa fa-check" aria-hidden="true"></i> Confirmer la reservation</a><br>
+                                </div>
+                            </div>
+                            <div class="col s12">
+                                <br><hr><br>
+                                <div class="col s6">
+                                    <span class="card-title">Contacter</span>
+                                    <form class="col s12" id="sendmail_form">
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <i class="fa fa-pencil-square-o prefix" aria-hidden="true"></i>
+                                                <textarea id="new_message" class="materialize-textarea" required minlength="10" onkeyup="check_sendmail_form()"></textarea>
+                                                <label for="textarea1">Nouveau message</label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col s6">
+                                    <span class="card-title">Messages Précédants</span>
+                                    <small id="old_message"></small>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <a id="sendmail_button" class="btn blue waves-effect disabled" onclick="sendmail()"><i class="fa fa-paper-plane" aria-hidden="true"></i> Envoyer</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -48,9 +121,30 @@
 {% block end_script %}
     <script>
         {% if (user.getStatus == "admin" or user.getStatus == "modo") %}
-            //init(parseInt("{{reservation_id}}"));
+            var reservation = null;
+            $.getJSON(API_URL + "/reservation/{{reservation_id}}", function (data) {
+                reservation = data;
+                var date = new Date(data.date);
+                document.querySelector("#date").innerHTML = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
+                    + ((data.time) ? " a " + data.time + "h" : "");
+                document.querySelector("#status").innerHTML += ((data.status == "confirm") ?
+                        "<div class='chip green right white-text'><i class='fa fa-check' aria-hidden='true'></i> Confirmé</div><br>" :
+                        "<div class='chip red right white-text'><i class='fa fa-times' aria-hidden='true'></i> Non Confirmé</div><br>"
+                );
+                document.querySelector("#full_name").innerHTML = data.full_name;
+                document.querySelector("#email").innerHTML = data.email;
+                document.querySelector("#phone").innerHTML = data.phone;
+                document.querySelector("#activity").innerHTML = data.activity;
+                document.querySelector("#support").innerHTML = data.support;
+                document.querySelector("#people").innerHTML = data.people + " personne(s)";
+                document.querySelector("#details").innerHTML      = ((data.detail  !== null) ? data.detail : "Aucun détail");
+                document.querySelector("#old_message").innerHTML = ((data.message !== null) ? data.message : "Aucun Message");
+                var form = document.querySelector("#confirm_reservation_form");
+                form.time.value = data.time;
+                form.monitor.value = data.monitor;
+
+            });
         {% else %}
-            //window.setTimeout(window.history.back(), 2000);
         {% endif %}
 
     </script>

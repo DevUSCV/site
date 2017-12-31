@@ -2,6 +2,12 @@
 <html>
     {# <!-------------------------------------------------------------------------- HEAD -->#}
     <head>
+        <meta property="og:url"           content="" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="" />
+        <meta property="og:description"   content="" />
+        <meta property="og:image"         content="" />
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
         <link rel="stylesheet" href="/assets/css/main.css">
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -12,11 +18,14 @@
         <script src='https://www.google.com/recaptcha/api.js'></script>
         <script src="/assets/js/main.js"></script>
         <script>
-            function isAdmin() {return {% if user.getStatus == "admin" %}true{% else %}false{% endif %};}
-            function isModo() {return {% if user.getStatus == "modo" or user.getStatus == "admin" %}true{% else %}false{% endif %};}
+            function isAdmin() {
+                return {% if user.getStatus == "admin" %}true{% else %}false{% endif %};
+            }
+            function isModo() {
+                return {% if user.getStatus == "modo" or user.getStatus == "admin" %}true{% else %}false{% endif %};}
         </script>
         {% if user.getStatus == "modo" or user.getStatus == "admin" %}
-        <script src="/assets/js/admin.js"></script>  
+            <script src="/assets/js/admin.js"></script>  
         {% endif %}
     {% block head %}{% endblock %}
 </head>
@@ -92,7 +101,7 @@
             <div class="col l6 s12">
                 <h5 class="white-text">Union Sportive Carmaux Voile</h5>
                 <small><p class="grey-text text-lighten-4" id="footer_article"></p></small>
-                {% if user.getStatus == "admin" %}
+                    {% if user.getStatus == "admin" %}
                     <a class="btn-floating blue right" href="{{ path_for('ArticleEditor', {'article_name': 'footer'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     {% endif %}
             </div>
@@ -100,8 +109,8 @@
                 <h5 class="white-text">
                     Nos Sponsors
                     {% if user.getStatus == "admin" %}
-                    <a onclick="add_sponsor()"><i class="fa fa-plus" aria-hidden="true"></i></a>
-                    {% endif %}
+                        <a onclick="add_sponsor()"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                        {% endif %}
                 </h5>
                 <ul id="sponsor">
                 </ul>
@@ -114,7 +123,7 @@
             <a target="_BLANK" class="grey-text text-lighten-3" href='mailto:lechopier.vincent@gmail.com'><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
             <a target="_BLANK" class="grey-text text-lighten-3" href='https://www.facebook.com/LECHOPIER.Vincent'><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
             <a target="_BLANK" class="grey-text text-lighten-3" href='https://fr.linkedin.com/in/vincent-lechopier'><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-            
+
         </div>
     </div>
 </footer>
@@ -177,6 +186,20 @@
             data-callback="sendmail">
             <i class="fa fa-paper-plane" aria-hidden="true"></i> Envoyer
         </button>
+    </div>
+</div>
+
+<div id="loader">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -21,7 +21,7 @@ class ReservationResource extends AbstractResource {
     // ------------------------------------------------------------------------- GET RESERVATION
     // -------------------------------------------------------------------------
     public function getReservationById(Request $request, Response $response, $args) {
-        $reservation_id = $args["reservation_id"];
+        $reservation_id = intval($args["reservation_id"]);
         $data = $this->getEntityManager()->getRepository(Reservation::class)->find($reservation_id);
         if ($data === null || empty($data)) {
             return $response->withStatus(404, "Reservation Not Found");
@@ -36,23 +36,23 @@ class ReservationResource extends AbstractResource {
     public function getMyReservation(Request $request, Response $response, $args) {
         $data = [];
         $data["valid"] = $this->getEntityManager()->getRepository(Reservation::class)->createQueryBuilder("r")
-                ->andWhere("r.status = :status")
-                ->andWhere("r.email = :email")
-                ->setParameter("status", "valid")
-                ->setParameter("email", $_SESSION["user"]->getEmail())
-                ->leftJoin("r.date", "rd")
-                ->orderBy("rd.date", "DESC")
-                ->setMaxResults(10)
-                ->getQuery()->getResult();
+                        ->andWhere("r.status = :status")
+                        ->andWhere("r.email = :email")
+                        ->setParameter("status", "valid")
+                        ->setParameter("email", $_SESSION["user"]->getEmail())
+                        ->leftJoin("r.date", "rd")
+                        ->orderBy("rd.date", "DESC")
+                        ->setMaxResults(10)
+                        ->getQuery()->getResult();
         $data["confirm"] = $this->getEntityManager()->getRepository(Reservation::class)->createQueryBuilder("r")
-                ->andWhere("r.status = :status")
-                ->andWhere("r.email = :email")
-                ->setParameter("status", "confirm")
-                ->setParameter("email", $_SESSION["user"]->getEmail())
-                ->leftJoin("r.date", "rd")
-                ->orderBy("rd.date", "DESC")
-                ->setMaxResults(10)
-                ->getQuery()->getResult();
+                        ->andWhere("r.status = :status")
+                        ->andWhere("r.email = :email")
+                        ->setParameter("status", "confirm")
+                        ->setParameter("email", $_SESSION["user"]->getEmail())
+                        ->leftJoin("r.date", "rd")
+                        ->orderBy("rd.date", "DESC")
+                        ->setMaxResults(10)
+                        ->getQuery()->getResult();
         return $response->write(json_encode($data));
     }
 
@@ -122,6 +122,77 @@ class ReservationResource extends AbstractResource {
             return $response->write(true);
         } else {
             return $response->write(false)->withStatus(404, "Token Not Found");
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // ------------------------------------------------------------------------- CONFIRM RESERVATION
+    // -------------------------------------------------------------------------
+    public function confirmReservation(Request $request, Response $response, $args) {
+        $reservation_id = intval($request->getParam("reservation_id"));
+        $time = new \DateTime("01/01/1970 " . $request->getParam("time"));
+        $monitor = $request->getParam("monitor");
+
+        if (
+                $reservation_id > 0 &&
+                $time instanceof \DateTime &&
+                strlen($monitor) >= 3
+        ) {
+            $reservation = $this->getEntityManager()->getRepository(Reservation::class)->find($reservation_id);
+            if ($reservation instanceof Reservation) {
+                $reservation->setTime($time);
+                $reservation->setMonitor($monitor);
+                $reservation->setMessage($reservation->getMessage() . "<b>" . $_SESSION["user"]->getFirstname() . " " . $_SESSION["user"]->getLastname() . " " . (new \DateTime("NOW"))->format("d/m/Y H:i:s") . ":</b><br> Confirmation: " . $request->getParam("time") . "h - " . $reservation->getMonitor() .  "<br>");
+                $reservation->setStatus("confirm");
+                $this->getEntityManager()->flush($reservation);
+                EmailRessource::confirmedReservation($reservation);
+                return $response->write(true);
+            } else {
+                return $response->write(false)->withStatus(404, "Token Not Found");
+            }
+        } else {
+            return $response->write(false)->withStatus(400, "Invalid Data");
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // ------------------------------------------------------------------------- SEND MAIL RESERVATION
+    // -------------------------------------------------------------------------
+    public function mailReservation(Request $request, Response $response, $args) {
+        $reservation_id = intval($request->getParam("reservation_id"));
+        $message = $request->getParam("message");
+        if($reservation_id > 0 && strlen($message) >= 10){
+            $reservation = $this->getEntityManager()->getRepository(Reservation::class)->find($reservation_id);
+            if ($reservation instanceof Reservation) {
+                $reservation->setMessage($reservation->getMessage() . "<b>" . $_SESSION["user"]->getFirstname() . " " . $_SESSION["user"]->getLastname() . " " . (new \DateTime("NOW"))->format("d/m/Y H:i:s") . ":</b><br> Message: " . strip_tags($message) .  "<br>");
+                $this->getEntityManager()->flush($reservation);
+                EmailRessource::mailReservation($reservation, $message);
+                return $response->write(true);
+            } else {
+                return $response->write(false)->withStatus(404, "Reservation Not Found");
+            }
+        }else{
+            return $response->write(false)->withStatus(400, "Invalid ID");
+        }
+    }
+    
+    // -------------------------------------------------------------------------
+    // ------------------------------------------------------------------------- DELETE RESERVATION
+    // -------------------------------------------------------------------------
+    public function deleteReservation(Request $request, Response $response, $args) {
+        $reservation_id = intval($args["reservation_id"]);
+        if($reservation_id > 0){
+            $reservation = $this->getEntityManager()->getRepository(Reservation::class)->find($reservation_id);
+            if ($reservation instanceof Reservation) {
+                EmailRessource::deletedReservation($reservation);
+                $this->getEntityManager()->remove($reservation);
+                $this->getEntityManager()->flush();
+                return $response->write(true);
+            } else {
+                return $response->write(false)->withStatus(404, "Reservation Not Found");
+            }
+        }else{
+            return $response->write(false)->withStatus(400, "Invalid ID");
         }
     }
 
