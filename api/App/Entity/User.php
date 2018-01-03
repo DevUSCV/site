@@ -98,7 +98,7 @@ class User implements JsonSerializable {
     }
 
 
-    function getPhonel() {
+    function getPhone() {
         return $this->phone;
     }
     
@@ -182,12 +182,12 @@ class User implements JsonSerializable {
             'user_id' => $this->user_id,
             'firstname' => $this->firstname,
             'lastname' => $this->lastname,
-            'birth_date' => $this->birth_date,
-            'subscribe_date' => $this->subscribe_date,
+            'birth_date' => $this->birth_date ? $this->birth_date->format('d/m/Y') : null,
+            'subscribe_date' => $this->subscribe_date->format('d/m/Y'),
             'status' => $this->status,
             'address' => $this->address,
             'phone' => $this->phone,
-            'email' => $this->email
+            'email' => $this->email,
         );
     }
 

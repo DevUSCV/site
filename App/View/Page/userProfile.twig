@@ -1,0 +1,190 @@
+{% extends "template.twig" %}
+
+{% block head %}     
+    <link rel="stylesheet" href="/assets/css/user_profil.css">
+    <script src="/assets/js/tinymce/tinymce.min.js"></script>  
+    <script src="/assets/js/admin.js"></script>  
+    <script src="/assets/js/user_profil.js"></script>  
+    <title>Profil d'un utilisateur</title>
+{% endblock %}
+
+{% block content %}
+    {% if (user.getStatus == "admin" or user.getStatus == "modo") %}
+        <div class="row content">
+            <div class='container'>
+                <h2>Profil de </h2>
+                <div class='col s12'>
+                    <div class='card col s4'>
+                        <div class='card-content'>
+                            <span class="card-title" id="status"><b>Informations</b></span>
+                            <span id="ustatus" class="chip right"></span><br>                            
+                            <span class="card-title"><small><i class="fa fa-user-o" aria-hidden="true"></i> Nom</small></span>
+                            <p id="lastname" class="right"></p><br>
+                            <span class="card-title"><small><i class="fa fa-user" aria-hidden="true"></i> Prénom</small></span>
+                            <p id="firstname" class="right"></p><br>
+                            <span class="card-title"><small><i class="fa fa-calendar" aria-hidden="true"></i> Date de naissance</small></span>
+                            <p id="birth_date" class="right"></p><br>
+                            <span class="card-title"><small><i class="fa fa-birthday-cake " aria-hidden="true"></i> age</small></span>
+                            <p id="age" class="right"></p><br><hr>
+                            <span class="card-title"><small><i class="fa fa-envelope-o" aria-hidden="true"></i> Email</small></span>
+                            <p id="email" class="right"></p><br>
+                            <span class="card-title"><small><i class="fa fa-phone" aria-hidden="true"></i> Téléphone</small></span>
+                            <p id="phone" class="right"></p><br><hr>
+                            <span class="card-title"><small><i class="fa fa-calendar" aria-hidden="true"></i> Date d'inscription</small></span>
+                            <p id="subscribe_date" class="right"></p>
+                            {% if user.getStatus == "admin" %}
+                                <span class="card-title"><small><i class="fa fa-lock" aria-hidden="true"></i> Status</small></span>
+                                <form id="edit_user_form">
+                                    <div class="input-field col s12">
+                                        {#                                        <i class="fa fa-lock prefix" aria-hidden="true"></i>#}
+                                        <select name="ustatus" id="ustatus" onchange="update_user_status({{ user_id }}, this.value)">                                        
+                                            <option value="active">Membre</option>
+                                            <option value="modo">Modérateur</option>
+                                            <option value="admin" disabled >Administrateur</option>
+                                        </select>
+                                        {#                                        <label>Status</label>#}
+                                    </div>
+                                </form>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                    <div class='col s8'>
+                        <div class='card col s12'>
+                            <div class='card-content'>
+                                <span class="card-title" id="status"><b>Ses Licences</b></span>
+                                <table id="user_licences_table" class="centered bordered">
+                                    <thead>
+                                        <tr class="grey darken-3 white-text">
+                                            <th>N° license</th>
+                                            <th>Adhérents</th>
+                                            <th>Type</th>
+                                            <th>Pratique</th>
+                                            <th>Année</th>
+                                            <th>Adresse</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class='card col s12'>
+                            <div class='card-content'>
+                                <span class="card-title" id="status"><b>Ses Réservations</b></span>
+                                <table id="user_reservations_table" class="centered bordered">
+                                    <thead>
+                                        <tr class="grey darken-3 white-text">
+                                            <th>Date</th>
+                                            <th>Heure</th>
+                                            <th>Activitée</th>
+                                            <th>Support</th>
+                                            <th>Moniteur</th>
+                                            <th>Participants</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class='card col s12'>
+                            <div class='card-content'>
+                                <span class="card-title" id="status"><b>Envoyer un mail</b></span>
+                                <form id="contact_user_form">
+                                    <form class="col s12">
+                                        <div class="row">
+                                            <div class="input-field col s8 offset-s2">
+                                                <input type="text" id="object" name="object" required minlength="10" onkeyup="check_contact_user_form()">
+                                                <label for="object">Objet</label>
+                                            </div>
+                                            <div class="input-field col s8 offset-s2">
+                                                <i class="fa fa-pencil-square-o prefix" aria-hidden="true"></i>
+                                                <textarea id="message" name="message" class="materialize-textarea" required minlength="10" onkeyup="check_contact_user_form()"></textarea>
+                                                <label for="message">Votre message</label>
+                                            </div>
+                                        </div>
+                                    </form>
+                            </div>
+                            <div class="card-action center">
+                                <a id="contact_user_button" class="btn blue waves-effect disabled" onclick="contact_user({{ user_id }})"><i class="fa fa-paper-plane prefix" aria-hidden="true"></i> Envoyer</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <div class="row content">
+            <div class='container'>
+                <h2>Acces Non Authorisé</h2>
+            </div>
+        </div>
+    {% endif %}
+
+
+    <div class="row bottom_nav">
+        <div class="col s12 black">
+            <ul class="tabs black center">
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('club') }}">Le Club</a>
+                </li>
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('activite') }}">Activités</a>
+                </li>
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('reservation') }}">Reservation</a>
+                </li>
+                <li class="tab col s3">
+                    <a target="_self" href="{{ path_for('location') }}">Location</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block end_script %}
+    <script>
+        {% if (user.getStatus == "admin" or user.getStatus == "modo") %}
+            $.getJSON(API_URL + "/user/{{ user_id }}", function (data) {
+                document.querySelector("h2").innerHTML += data.firstname + " " + data.lastname;
+                document.querySelector("#subscribe_date").innerHTML = data.subscribe_date;
+                document.querySelector("#firstname").innerHTML = data.firstname;
+                document.querySelector("#lastname").innerHTML = data.lastname;
+                document.querySelector("#birth_date").innerHTML = data.birth_date ? data.birth_date : "NC";
+                document.querySelector("#age").innerHTML = data.birth_date ? Math.floor(((new Date).getTime() - (new Date(data.birth_date.split('/').reverse().join('/'))).getTime()) / (365.24 * 24 * 3600 * 1000)) + " ans" : "NC";
+                document.querySelector("#email").innerHTML = data.email;
+                document.querySelector("#phone").innerHTML = data.phone ? data.phone : "NC";
+                document.querySelector("#status").innerHTML += ((data.status === "admin") ?
+                        "<div class='chip black right white-text'>Administrateur</div><br>" :
+                        ((data.status === "modo") ? "<div class='chip blue right white-text'>Modérateur</div><br>" :
+                                "<div class='chip green right white-text'>membre</div><br>"));
+                get_user_licenses(data.email);
+                get_user_reservations(data.email);
+            {% if user.getStatus == "admin" %}
+                    if (data.status == "admin") {
+                        $("#ustatus").attr("disabled", "disabled");
+                    }
+                    $("option[value=" + data.status + "]").attr("selected", "selected");
+                    $('select').material_select();
+            {% endif %}
+                });
+        {% else %}
+            window.setTimeout(function () {
+                window.history.back();
+            }, 2000);
+        {% endif %}
+
+    </script>
+{% endblock %}
+
+{#user.age = user.birth_date ? Math.floor(((new Date).getTime() - (new Date(user.birth_date.split('/').reverse().join('/'))).getTime()) / (365.24*24*3600*1000)) + " ans" : "NC";
+                table.innerHTML += "<tr" + (isAdmin() ? " onclick='admin_edit_user(this)' style='cursor:pointer;'" : "") + " data-full_name='" + user.firstname + " " + user.lastname + "' data-id='" + user.user_id + "' data-status='" + user.status + "'>"
+                        + "<td>" + user.lastname + "</td>"
+                        + "<td>" + user.firstname + "</td>"
+                        + "<td>" + user.age + "</td>"
+                        + "<td>" + (user.phone ? user.phone : "NC") + "</td>"
+                        + "<td>" + user.email + "</td>"
+                        + "<td>" + user.subscribe_date + "</td>"
+                        + "<td>" + ((user.status === "admin") ? "Administrateur" : ((user.status === "modo") ? "Modérateur" : "Membre")) + "</td>"
+                        + "</tr>"#}

@@ -12,14 +12,15 @@
         <div class="container">
             {% if user %}
                 <h1>Mon Profil</h1>
-
-
                 <div class="card"> 
                     <div class="card-tabs">
                         <ul class="tabs tabs-fixed-width black">
                             <li class="tab"><a class="active" href="#profil_tab">Mon Profil</a></li>
                             <li class="tab"><a href="#license_tab">Mes Licenses</a></li>
                             <li class="tab"><a href="#reservation_tab">Mes Reservations</a></li>
+                                {% if user.getStatus == "modo" or user.getStatus == "admin" %}
+                                <li class="tab red"><a href="#administration_tab"  onclick="admin_reservation()">{% if user.getStatus == "modo" %}Modération{% elseif user.getStatus == "admin" %}Administration{% endif %}</a></li>
+                                {% endif %}
                         </ul>
                     </div>
                     <div class="card-content row">
@@ -30,28 +31,28 @@
                                 Mon Profil                                
                             </span>
                             <div class="card-content">
-                                <form id="profil_form" class="container">
+                                <form id="edit_my_profile_form" class="container">
                                     <div class="col s6">
                                         <div class="input-field col s12">
                                             <i class="fa fa-user-circle prefix" aria-hidden="true"></i>
-                                            <input id="lastname" type="text" name="lastname" class="validate" required value='{{ user.getLastname }}'/>
+                                            <input id="lastname" type="text" name="lastname" class="validate" required minlength="3" value='{{ user.getLastname }}' onkeyup="check_edit_my_profile_form()"/>
                                             <label for="lastname">Nom</label>
                                         </div>
                                         <div class="input-field col s12">
                                             <i class="fa fa-user-circle-o prefix" aria-hidden="true"></i>
-                                            <input id="firstname" type="text" name="firstname" class="validate" required="" required value='{{ user.getFirstname }}'/>
+                                            <input id="firstname" type="text" name="firstname" class="validate" required minlength="3" value='{{ user.getFirstname }}'onkeyup="check_edit_my_profile_form()" />
                                             <label for="firstname">Prénom</label>
                                         </div>       
                                     </div>
                                     <div class="col s6">
                                         <div class="input-field col s12">
                                             <i class="fa fa-phone prefix" aria-hidden="true"></i>
-                                            <input id="phone" type="tel" name="lastname" class="validate" required value='{{ user.getPhone }}'/>
+                                            <input id="phone" type="tel" name="phone" class="validate" minlength="10" value='{{ user.getPhone }}'onkeyup="check_edit_my_profile_form()" />
                                             <label for="phone">Téléphone</label>
                                         </div>
                                         <div class="input-field col s12">
                                             <i class="fa fa-envelope prefix" aria-hidden="true"></i>
-                                            <input id="email" type="email" name="email" class="validate" disabled pattern="^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$" required value='{{ user.getEmail }}'/>
+                                            <input id="email" type="email" name="email" class="validate" disabled required value='{{ user.getEmail }}'/>
                                             <label for="email" data-error="Email invalide" data-success="Ok">Addresse Email</label>
                                         </div> 
                                     </div>
@@ -60,12 +61,12 @@
                                             <i class="fa fa-calendar prefix" aria-hidden="true"></i>
                                             <input id="subscribe_date" type="text" name="subscribe_date" disabled value='{{ user.getSubscribe_date }}'/>
                                             <label for="subscribe_date" >Date d'inscription</label>
-                                        </div> 
+                                        </div>
                                         <div class="input-field col s6">
                                             <i class="fa fa-birthday-cake prefix" aria-hidden="true"></i>
-                                            <input id="birth_date" type="text" name="birth_date" class="datepicker" required value='{{ user.getBirth_date }}'/>
+                                            <input id="birth_date" type="text" name="birth_date" class="datepicker" minlength="8" maxlength="10" value='{{ user.getBirth_date }}' onchange="check_edit_my_profile_form()"/>
                                             <label for="birth_date">Date de naissance</label>
-                                        </div>                                    
+                                        </div>
                                     </div>
                                     <div class="col s12">
                                         <div class="input-field col s6">
@@ -73,11 +74,14 @@
                                             <input id="status" type="text" name="status" class="datepicker" disabled 
                                                    value='{% if user.getStatus == "active" %}Membre{% elseif user.getStatus == "modo" %}Modérateur{%elseif user.getStatus == "admin" %}Administrateur{% endif %}'/>
                                             <label for="status">Status</label>
-                                        </div>                       
+                                        </div> 
+                                        <div class="input-field col s6 center">
+                                            <a class="btn blue waves-effect" onclick="user_change_password()"><i class="fa fa-wrench" aria-hidden="true"></i> Changer mon mot de passe</a>
+                                        </div> 
                                     </div>
                                 </form>
                                 <div class="center">
-                                    <button class="btn blue disabled" onclick="update_user() ">Enregistrer les moddifications</button>
+                                    <button id="edit_my_profile_button" class="btn blue disabled waves-effect " onclick="edit_my_profil()">Enregistrer les moddifications</button>
                                 </div>                                
                             </div>
 
@@ -98,7 +102,7 @@
                                             <th>Type</th>
                                             <th>Pratique</th>
                                             <th>Année</th>
-                                            <th>Date</th>
+                                            <th>Souscription</th>
                                             <th>Adresse</th>
                                         </tr>
                                     </thead>
@@ -129,42 +133,214 @@
                                 </table>
                             </div>
                             <div class="card-action center">
-                                <a href="{{ path_for('reservation') }}" class="btn blue">Nouvelle Réservation</a>
+                                <a href="{{ path_for('reservation') }}" class="btn blue waves-effect "><i class="fa fa-plus" aria-hidden="true"></i> Nouvelle Réservation</a>
                             </div>
                         </div>
-                    </div>                                
-                </div>
 
 
-            {% else %}
-                <h1>Veuillez vous connecter</h1>
-                <script>
-                    window.setTimeout(function () {
-                        history.back();
-                    }, 2000);
-                </script>
-            {% endif %}            
-        </div>
+
+                        {% if user.getStatus == "modo" or user.getStatus == "admin"%}
+
+                            <div id="administration_tab">                            
+                                {% if user.getStatus == "modo" %}Modération{% elseif user.getStatus == "admin" %}Administration{% endif %}#}#}
+
+                                <ul class="tabs tabs-fixed-width grey darken-3">
+                                    <li class="tab"><a href="#admin_reservation_tab" onclick="admin_reservation()">Les Réservations</a></li>
+                                    <li class="tab"><a href="#admin_user_tab" onclick="admin_user('')">Les Utilisateurs</a></li>
+                                    <li class="tab"><a href="#admin_license_tab" onclick="admin_license('')">Les Licences</a></li>
+                                        {% if user.getStatus == "admin" %}
+                                        <li class="tab"><a href="#admin_site_tab" onclick="admin_site()">Le Site</a></li>
+                                        {% endif %}
+                                </ul>
+
+                                <div id="admin_reservation_tab" class="col s12">                                
+                                    <div class="card-content">
+                                        <span class="card-title">
+                                            Reservations
+                                        </span>
+                                        <div class="input-field col s4">
+                                            <i class="fa fa-search prefix" aria-hidden="true"></i>
+                                            <input placeholder="Nom Complet" id="name" name="name" type="text" class="validate" onkeyup="reservation_search_by_name(this.value)">
+                                            <label for="name">Recherche par nom</label>
+                                        </div>
+                                        <table id="admin_reservations_table" class="centered bordered">
+                                            <thead>
+                                                <tr class="grey darken-3 white-text">
+                                                    <th>Date</th>
+                                                    <th>Heure</th>
+                                                    <th>Nom Complet</th>                                                
+                                                    <th>Activitée</th>
+                                                    <th>Support</th>
+                                                    <th>Moniteur</th>
+                                                    <th>Participants</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                    <div class="card-action center">
+                                        <a href="{{ path_for('reservation') }}" class="btn blue waves-effect "><i class="fa fa-plus" aria-hidden="true"></i> Nouvelle Réservation</a>
+                                    </div>
+                                </div>
+
+
+                                <div id="admin_user_tab" class="col s12">
+                                    <div class="card-content">
+                                        <span class="card-title">
+                                            Utilisateurs
+                                        </span>
+                                        <div class="input-field col s4">
+                                            <i class="fa fa-search prefix" aria-hidden="true"></i>
+                                            <input placeholder="Nom ou Prénom" id="name" name="name" type="text" class="validate" onkeyup="admin_user(this.value)">
+                                            <label for="name">Recherche par nom ou prénom</label>
+                                        </div>
+                                        <table id="admin_user_table" class="centered bordered sortable">
+                                            <thead>
+                                                <tr class="grey darken-3 white-text">
+                                                    <th>Nom</th>
+                                                    <th>Prénom</th>
+                                                    <th>Age</th>
+                                                    <th>Téléphone</th>
+                                                    <th>Email</th>
+                                                    <th>Inscription</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div id="admin_license_tab" class="col s12">                                
+                                    <div class="card-content">
+                                        <span class="card-title">
+                                            Licences
+                                        </span>
+                                        <div class="input-field col s4">
+                                            <i class="fa fa-search prefix" aria-hidden="true"></i>
+                                            <input placeholder="Nom ou Prénom" id="name" name="name" type="text" class="validate" onkeyup="admin_license(this.value)">
+                                            <label for="name">Recherche par nom ou prénom</label>
+                                        </div>
+                                        <table id="admin_licences_table" class="centered bordered sortable">
+                                            <thead>
+                                                <tr class="grey darken-3 white-text">
+                                                    <th>N° license</th>
+                                                    <th>Adhérents</th>
+                                                    <th>Type</th>
+                                                    <th>Pratique</th>
+                                                    <th>Année</th>
+                                                    <th>Souscription</th>
+                                                    <th>Adresse</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                        {% if user.getStatus == "admin" %}
+                                            <div class=" col s6">
+                                                <span class="card-title">Mise a jour des licenses</span>
+                                                <form id="upload_license_form" enctype="multipart/form-data">
+                                                    <div class="file-field input-field">
+                                                        <div class="btn blue">
+                                                            <span><i class="fa fa-file-excel-o" aria-hidden="true"></i> Licenses FFV</span>
+                                                            <input type="file" name="license" accept="application/vnd.ms-excel" required onchange="upload_license_file()">
+                                                        </div>
+                                                        <div class="file-path-wrapper">
+                                                            <input class="file-path validate" type="text">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                {% if user.getStatus == "admin" %}
+                                    <div id="admin_site_tab" class="col s12">
+                                        <div class="card-content col s4">
+                                            <span class="card-title">Information Site</span>
+                                            <form id="update_site_info_form">
+                                                <div class="input-field col s12">
+                                                    <i class="fa fa-info prefix" aria-hidden="true"></i>
+                                                    <input placeholder="" id="name" name="name" type="text" class="validate" required minlength="5" onkeyup="check_update_site_info_form()">
+                                                    <label for="name">Nom</label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    <i class="fa fa-phone prefix" aria-hidden="true"></i>
+                                                    <input placeholder="" id="phone" name="phone" type="text" class="validate" required minlength="10" onkeyup="check_update_site_info_form()">
+                                                    <label for="phone">Téléphone</label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    <i class="fa fa-envelope-o prefix" aria-hidden="true"></i>
+                                                    <textarea placeholder="" id="address_contact" name="address_contact" type="text" class="validate materialize-textarea" required minlength="10" onkeyup="check_update_site_info_form()"></textarea>
+                                                    <label for="address_contact">Adresse de Contact</label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    <i class="fa fa-facebook-official prefix" aria-hidden="true"></i>
+                                                    <input placeholder="" id="url_facebook" name="url_facebook" type="text" class="validate" required minlength="10" onkeyup="check_update_site_info_form()">
+                                                    <label for="url_facebook">Page Facebook</label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    <i class="fa fa-map prefix" aria-hidden="true"></i>
+                                                    <input placeholder="" id="url_google_map" name="url_google_map" type="text" class="validate" required minlength="10" onkeyup="check_update_site_info_form()">
+                                                    <label for="url_google_map">Google Map</label>
+                                                </div>
+                                            </form>
+                                            <div class="col s12 center">
+                                                <br><a id="update_site_info_button" class="btn blue disabled waves-effect " onclick="update_site_info()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-content col s8">
+                                            <span class="card-title">Information Serveur</span>
+                                            <iframe id="server_info"
+                                                    data-src="http://{{ server.HTTP_HOST }}:8080/phpsysinfo/index.php?disp=bootstrap" 
+                                                    class="col s12" height="500px" frameborder="0" style="border:0;"></iframe>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+
+                </div>                                
+            </div>
+
+
+        {% else %}
+            <h1>Veuillez vous connecter</h1>
+            <script>
+                window.setTimeout(function () {
+                    history.back();
+                }, 2000);
+            </script>
+        {% endif %}            
     </div>
+</div>
 
-    <div class="row bottom_nav">
-        <div class="col s12 black">
-            <ul class="tabs black center">
-                <li class="tab col s3">
-                    <a target="_self" href="{{ path_for('club') }}">Le Club</a>
-                </li>
-                <li class="tab col s3">
-                    <a target="_self" href="{{ path_for('activite') }}">Activités</a>
-                </li>
-                <li class="tab col s3">
-                    <a target="_self" href="{{ path_for('reservation') }}">Reservation</a>
-                </li>
-                <li class="tab col s3">
-                    <a target="_self" href="{{ path_for('location') }}">Location</a>
-                </li>
-            </ul>
-        </div>
+<div class="row bottom_nav">
+    <div class="col s12 black">
+        <ul class="tabs black center">
+            <li class="tab col s3">
+                <a target="_self" href="{{ path_for('club') }}">Le Club</a>
+            </li>
+            <li class="tab col s3">
+                <a target="_self" href="{{ path_for('activite') }}">Activités</a>
+            </li>
+            <li class="tab col s3">
+                <a target="_self" href="{{ path_for('reservation') }}">Reservation</a>
+            </li>
+            <li class="tab col s3">
+                <a target="_self" href="{{ path_for('location') }}">Location</a>
+            </li>
+        </ul>
     </div>
+</div>
 {% endblock %}
 
 {% block end_script %}

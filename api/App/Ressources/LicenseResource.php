@@ -60,6 +60,7 @@ class LicenseResource extends AbstractResource {
                 $platform = $connection->getDatabasePlatform();
                 $connection->executeUpdate($platform->getTruncateTableSQL('license', true));
                 $this->getEntityManager()->flush();
+                return $response->write(true);
             } catch (Exception $exc) {
                 return $response->withStatus(400, 'Error loading file: ' . $e->getMessage());
             }
@@ -73,24 +74,26 @@ class LicenseResource extends AbstractResource {
     // ------------------------------------------------------------------------- GET CURRENT USER LICENSES
     // -------------------------------------------------------------------------
     public function getMyLicense(Request $request, Response $response, $args) {
-        $data = $this->getEntityManager()->getRepository(License::class)->findBy(array("email" => $_SESSION["user"]->getEmail()));       
+        $data = $this->getEntityManager()->getRepository(License::class)->findBy(array("email" => $_SESSION["user"]->getEmail()));
         return $response->write(json_encode($data));
     }
 
     // -------------------------------------------------------------------------
-    // ------------------------------------------------------------------------- GET  LICENSES
+    // ------------------------------------------------------------------------- SEARCH  LICENSES
     // -------------------------------------------------------------------------
-    public function getLicenses(Request $request, Response $response, $args) {
-        $search = isset($args["search"]) ? $args["search"] : null;
-        if($search === null){
-            $data = $this->getEntityManager()->getRepository(License::class)->findBy(array(), array("lastname" => "ASC"), 10);
-        }else{
-            $data = $this->getEntityManager()->createQuery("SELECT l FROM " . License::class . " l WHERE l.firstname LIKE :firstname OR l.lastname LIKE :lastname") // <= DQL, not SQL
-                    ->setParameter("firstname", $search.'%')
-                    ->setParameter("lastname", $search.'%')
-                    ->setMaxResults(10)
-                    ->getResult();
-        }              
+    public function searchLicenses(Request $request, Response $response, $args) {
+        $search = isset($args["search"]) ? $args["search"] : "";
+
+        $data = $this->getEntityManager()->getRepository(License::class)->createQueryBuilder("l")
+                        ->orWhere("l.firstname LIKE :firstname")
+                        ->orWhere("l.lastname LIKE :lastname")
+                        ->orWhere("l.email = :email")
+                        ->setParameter("firstname", "%".$search."%")
+                        ->setParameter("lastname", "%".$search."%")
+                        ->setParameter("email", $search)
+                        ->orderBy("l.lastname", "ASC")
+                        ->setMaxResults(20)
+                        ->getQuery()->getResult();
         return $response->write(json_encode($data));
     }
 

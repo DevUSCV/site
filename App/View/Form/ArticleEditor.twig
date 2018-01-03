@@ -12,7 +12,7 @@
     {% if user.getStatus == "admin" %}
         <div class="row content">
             <div class='container'>
-                <h2>Edition de "{{article_name}}" <a onclick="history.back();" class="btn-floating btn-large grey darken-3 right waves-effect"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a></h2>
+                <h2>Edition de "{{article_name}}" <a onclick="history.back();" class="btn-floating btn-large grey darken-3 waves-effect"><i class="fa fa-arrow-left" aria-hidden="true"></i></a></h2>
                 <div class="card col s12">
                     <div class="card-content">
                         <form id="article_editor">
@@ -22,7 +22,7 @@
                             <input type="text" name="title">
                             <textarea name="content" id="content"></textarea><br>
                             <div class="card-button right">
-                                <a class="btn waves-effect blue" onclick="save()"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+                                <a class="btn waves-effect blue" onclick="save()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</a>
                             </div><br>
                         </form>
                     </div>

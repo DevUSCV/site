@@ -5,42 +5,45 @@
     <script src="/assets/js/club.js"></script>
     <script src="/assets/js/club_post.js"></script>
 
-    <title>Lire un Billet</title>
+    <title>Actualité</title>
 {% endblock %}
 
 {% block post %}
     <div class="comments">
         <div class="row">
-            <h1>Actualité <a href="{{ path_for('club') }}" class="btn-floating btn-large grey darken-3 right waves-effect"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a></h1>   
-
-            <div class="card col s12 l8">
-                <div class="card-content">
-                    <span class="card-title post_title"></span>                    
-                    <p class="post_content"></p>                    
-                </div>
-                <div class="card-action">
-                    <div class="fb-share-button" 
-                         data-href="" 
-                         data-layout="button_count">
+            <h1>Actualité <a href="{{ path_for('club') }}" class="btn-floating btn-large grey darken-3 waves-effect"><i class="fa fa-arrow-left" aria-hidden="true"></i></a></h1>   
+            <div class="col s12 l8">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title post_title"></span>                    
+                        <p class="post_content"></p>                    
                     </div>
-                    <div class="post_author right"></div>
+                    <div class="card-action">
+                        <div class="fb-share-button" 
+                             data-href="" 
+                             data-layout="button_count">
+                        </div>
+                        <div class="post_author right"></div>
+                    </div>
                 </div>
             </div>
-            <div class="card col s12 l4">
-                <div class="card-content">
-                    <span class="card-title">Commentaires</span>
-                    <div class="post_comment collection">
+            <div class="col s12 l4">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Commentaires</span>
+                        <div class="post_comment collection">
+                        </div>
                     </div>
-                </div>
-                <div class="card-action">
-                    {% if not user %}
-                        Connectez vous pour commenter
-                    {% else %}
-                        <form id="form_comment">                            
-                            <input id="comment" type="text" class="validate col s8 " name="comment" placeholder="Commentaire" minLength="5" maxLength="255" onkeyup="check_validity(this.value)">
-                            <a class="btn green waves-effect col s3 offset-s1 disabled" onclick="comment({{ post_id }})"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
-                        </form>
-                    {% endif %}                        
+                    <div class="card-action">
+                        {% if not user %}
+                            Connectez vous pour commenter
+                        {% else %}
+                            <form id="form_comment">                            
+                                <input id="comment" type="text" class="validate col s8 " name="comment" placeholder="Commentaire" minLength="5" maxLength="255" onkeyup="check_validity(this.value)">
+                                <a class="btn green waves-effect col s3 offset-s1 disabled" onclick="comment({{ post_id }})"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+                            </form>
+                        {% endif %}                        
+                    </div>
                 </div>
             </div>
         </div>
@@ -59,13 +62,4 @@
     </script>
 
     <div id="fb-root"></div>
-    <script>(function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id))
-                return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.11';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
 {% endblock %}

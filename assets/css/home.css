@@ -22,12 +22,15 @@ body>div.page_content{
     overflow-y: hidden;
 }
 video {
+    position: fixed;
+    z-index: 1;
   width: 100%    !important;
   height: auto   !important;
   min-height: 100%!important;
   object-fit: cover;
   object-position: center;
 }
+
 
 /*------------------------------------------------------------------------------ ONGLETS*/
 

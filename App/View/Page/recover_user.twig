@@ -1,0 +1,71 @@
+{% extends "Page/home.twig" %}
+
+
+{% block end_script %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("{{ token }}");
+            document.querySelector("#modal h4").innerHTML = "Choisir un nouveaux mot de passe";
+            document.querySelector("#modal div.modal-content div").innerHTML = "<div class='row'>"
+                    + '<p class="col s8 offset-s2"><small><i><b>Conseil:</b> Choisissez des mots de passe d’au moins 8 caractères de types différents (majuscules, minuscules, chiffres, caractères spéciaux).</i></small></p>'
+                    + "<form id='user_recover_password_form'>"
+                    + "<input type='hidden' name='token' value='{{ token }}' required>"
+                    + "<div class='input-field col s6 offset-s3'>"
+                    + "<input id='new_password' name='new_password' type='password' class='validate' required minlength='6' onkeyup='check_user_recover_password_form()' onchange='check_user_recover_password_form()'>"
+                    + "<label for='new_password'>Nouveau mot de passe</label>"
+                    + "</div>"
+                    + "<div class='input-field col s6 offset-s3'>"
+                    + "<input id='confirm_new_password' name='confirm_new_password' type='password' class='validate' required minlength='6' onkeyup='check_user_recover_password_form()' onchange='check_user_recover_password_form()'>"
+                    + "<label for='confirm_new_password'>Nouveau mot de passe</label>"
+                    + "</div>"
+                    + "</form>"
+                    + "</div>"
+                    + "<div class='card-action center'>"
+                    + "<a id='user_recover_password_button' class='btn blue waves-effect disabled' onclick='user_recover_password()'>Envoie</a>"
+                    + "</div>";
+            $('#modal').modal('open');
+        });
+
+        function check_user_recover_password_form() {
+            var form = document.querySelector("#user_recover_password_form");
+            var valid = (
+                    form.token.validity.valid &&
+                    form.new_password.validity.valid &&
+                    (form.new_password.value === form.confirm_new_password.value)
+                    );
+            if (valid) {
+                $("#user_recover_password_button").removeClass("disabled");
+            } else {
+                $("#user_recover_password_button").addClass("disabled");
+            }
+            console.log(valid);
+            return valid;
+        }
+
+        function user_recover_password() {
+            if (check_user_recover_password_form()) {
+                var form = document.querySelector("#user_recover_password_form");
+                var data = {
+                    token: form.token.value,
+                    new_password: form.new_password.value,
+                    confirm_new_password: form.confirm_new_password.value
+                };
+                $.post(API_URL + "/user/recoveredpassword", data, function (data) {
+                    document.querySelector("#modal h4").innerHTML = "<i class='fa fa-check' aria-hidden='true'></i> Votre mot de passe as été enregistrer.";
+                    document.querySelector("#modal div.modal-content div").innerHTML = 'Vous pouvez maintenant vous connecter.';
+                    $('#modal').modal('open');
+                    window.setTimeout(function () {
+                        window.location = "../";
+                    }, 5000);
+                }).fail(function (jqXHR, textStatus) {
+                    document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Une erreur est survenue.";
+                    document.querySelector("#modal div.modal-content div").innerHTML = jqXHR.statusText;
+                    $('#modal').modal('open');
+                    window.setTimeout(function () {
+                        window.location = "../";
+                    }, 5000);
+                });
+            }
+        }
+    </script>
+{% endblock %}

@@ -10,7 +10,7 @@
 {% block content %}
     <div class="row content">
         <div class="container">
-            <h1>Tarifs des Locations <a class='btn-floating blue' onclick="add_location_price()"><i class='fa fa-plus' aria-hidden='true'></i></a></h1>
+            <h1>Tarifs des Locations {% if user.getStatus == "admin" %}<a class='btn-floating blue' onclick="add_location_price()"><i class='fa fa-plus' aria-hidden='true'></i></a>{% endif %}</h1>
             <div class="row location">
             </div> 
         </div> 

@@ -16,7 +16,7 @@
                 <div class="col s12">
                     <div class="card horizontal medium" id="cours_part">
                         <div class="card-image">
-                            <img class="" src="/assets/image/slider/slider2.jpg">                            
+                            <img class="" src="/assets/image/activity/cpart.jpg">                            
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
@@ -24,10 +24,10 @@
                                 <p></p>                               
                             </div>
                             <div class="card-action">
-                                <a onclick="tarif_cours()" class="btn blue">tarifs</a>
-                                <a onclick="condition_cours()" class="btn red">Conditions d'acces</a>
+                                <a onclick="tarif_cours()" class="btn bluewaves-effect ">tarifs</a>
+                                <a onclick="condition_cours()" class="btn red waves-effect ">Conditions d'acces</a>
                                 {% if user.getStatus == "admin" %}
-                                    <a class="btn-floating blue right" href="{{ path_for('ArticleEditor', {'article_name': 'cours_particuliers'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <a class="btn-floating blue right waves-effect " href="{{ path_for('ArticleEditor', {'article_name': 'cours_particuliers'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                     {% endif %}
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                 <div class="col s12">
                     <div class="card horizontal medium" id="stages">
                         <div class="card-image">
-                            <img class="" src="/assets/image/slider/slider.jpg">                            
+                            <img class="" src="/assets/image/activity/stage.jpg">                            
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
@@ -47,10 +47,10 @@
                                 <p></p>
                             </div>
                             <div class="card-action">
-                                <a onclick="tarif_stage()" class="btn blue">tarifs</a>
-                                <a onclick="condition_stages()" class="btn red">Conditions d'acces</a>
+                                <a onclick="tarif_stage()" class="btn blue waves-effect ">tarifs</a>
+                                <a onclick="condition_stages()" class="btn red waves-effect ">Conditions d'acces</a>
                                 {% if user.getStatus == "admin" %}
-                                    <a class="btn-floating blue right" href="{{ path_for('ArticleEditor', {'article_name': 'stages'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <a class="btn-floating blue right waves-effect " href="{{ path_for('ArticleEditor', {'article_name': 'stages'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                     {% endif %}
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                 <div class="col s12">
                     <div class="card horizontal medium" id="groupe">
                         <div class="card-image">
-                            <img class="" src="/assets/image/slider/slider3.jpg">                            
+                            <img class="" src="/assets/image/activity/group.jpg">                            
                         </div>  
                         <div class="card-stacked">
                             <div class="card-content">
@@ -70,10 +70,10 @@
                                 <p></p>
                             </div>
                             <div class="card-action">
-                                <a onclick="tarif_groupe()" class="btn blue">tarifs</a>
-                                <a onclick="condition_groupes()" class="btn red">Conditions d'acces</a>
+                                <a onclick="tarif_groupe()" class="btn blue waves-effect ">tarifs</a>
+                                <a onclick="condition_groupes()" class="btn red waves-effect ">Conditions d'acces</a>
                                 {% if user.getStatus == "admin" %}
-                                    <a class="btn-floating blue right" href="{{ path_for('ArticleEditor', {'article_name': 'groupes'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <a class="btn-floating blue right waves-effect " href="{{ path_for('ArticleEditor', {'article_name': 'groupes'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                     {% endif %}
                             </div>
                         </div>

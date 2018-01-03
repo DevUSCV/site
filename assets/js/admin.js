@@ -157,7 +157,7 @@ function confirm_delete_image(photo_id) {
     });
 }
 
-function add_image(){
+function add_image() {
     $.get(SITE_ROOT + "/addimage", function (data) {
         document.querySelector("#modal h4").innerHTML = "<i class='fa fa-plus' aria-hidden='true'></i> Ajouter un fichier";
         document.querySelector("#modal div.modal-content div").innerHTML = data;
@@ -208,12 +208,12 @@ function send_image() {
     }
 }
 
-function edit_location_price(location_price_id){
+function edit_location_price(location_price_id) {
     $.get(SITE_ROOT + "/location/editor/" + location_price_id, function (data) {
         document.querySelector("#modal h4").innerHTML = "<i class='fa fa-pencil' aria-hidden='true'></i> Tarif Location";
         document.querySelector("#modal div.modal-content div").innerHTML = data;
         $('#modal').modal('open');
-        $.getJSON(API_URL + "/location/" + location_price_id, function(data){
+        $.getJSON(API_URL + "/location/" + location_price_id, function (data) {
             var form = document.querySelector("#location_form");
             form.name.value = data.name;
             form.description.value = data.description;
@@ -226,7 +226,7 @@ function edit_location_price(location_price_id){
     });
 }
 
-function add_location_price(){
+function add_location_price() {
     $.get(SITE_ROOT + "/location/editor", function (data) {
         document.querySelector("#modal h4").innerHTML = "<i class='fa fa-pencil' aria-hidden='true'></i> Tarif Location";
         document.querySelector("#modal div.modal-content div").innerHTML = data;
@@ -261,7 +261,7 @@ function send_location() {
         console.log(data);
         $.ajax({
             type: "POST",
-            url: API_URL + "/location" + (form.location_price_id.value ? "/update" : "" ),
+            url: API_URL + "/location" + (form.location_price_id.value ? "/update" : ""),
             data: data,
             processData: false,
             contentType: false,
@@ -282,7 +282,7 @@ function send_location() {
     }
 }
 
-function delete_location_price(location_price_id){
+function delete_location_price(location_price_id) {
     document.querySelector("#modal h4").innerHTML = "<i class='fa fa-question' aria-hidden='true'></i> Suppression ce tarif";
     document.querySelector("#modal div.modal-content div").innerHTML = "<div class='container'>Voulez vous supprimer ce tarif ? <br>Cette action est irreversible</div>"
             + "<div class='modal-footer'><a class='btn red' onclick='confirm_delete_location_price(" + location_price_id + ")'>Supprimer</div></div>";
@@ -297,11 +297,268 @@ function confirm_delete_location_price(location_price_id) {
         success: function (result) {
             document.querySelector("#modal h4").innerHTML = "<i class='fa fa-checked' aria-hidden='true'></i> Succes";
             document.querySelector("#modal div.modal-content div").innerHTML = "Tarif supprimé avec succes.";
-            $("#location_price_" + location_price_id).hide(300);            
+            $("#location_price_" + location_price_id).hide(300);
         },
         error: function (jqxhr, status, error) {
             document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Echec";
             document.querySelector("#modal div.modal-content div").innerHTML = error;
         }
     });
+}
+
+function admin_reservation() {
+    $.getJSON(API_URL + "/reservations/7", function (data) {
+        var table = document.querySelector("#admin_reservations_table tbody");
+        table.innerHTML = "";
+        if (Object.keys(data)) {
+            for (var day in data) {
+                if (data[day] !== null) {
+                    for (var reservation of data[day].reservation) {
+                        var date = new Date(reservation.date);
+                        table.innerHTML += "<tr onclick='view_reservation(" + reservation.reservation_id + ")' style='cursor:pointer;'>"
+                                + "<td>" + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + "</td>"
+                                + "<td>" + (reservation.time ? reservation.time + "h" : "-") + "</td>"
+                                + "<td>" + reservation.full_name + "</td>"
+                                + "<td>" + reservation.activity + "</td>"
+                                + "<td>" + reservation.support + "</td>"
+                                + "<td>" + (reservation.monitor ? reservation.monitor : "-") + "</td>"
+                                + "<td>" + reservation.people + "</td>"
+                                + (reservation.status == "confirm" ?
+                                        "<td class='green white-text'><i class='fa fa-check' aria-hidden='true'></i></td>" : "")
+                                + (reservation.status == "valid" ?
+                                        "<td class='red white-text'><i class='fa fa-times' aria-hidden='true'></i></td>" : "")
+                                + "</tr>";
+                    }
+                }
+            }
+        } else {
+            table.innerHTML = "<tr><td colspan='8'>Aucune Réservation</td></tr>"
+        }
+
+    });
+}
+
+function reservation_search_by_name(search) {
+    if (search.length > 0) {
+        $.getJSON(API_URL + "/reservation/name/" + search, function (data) {
+            var table = document.querySelector("#admin_reservations_table tbody");
+            table.innerHTML = "<tr><td colspan='8' class='grey lighten-1'>Demandes de reservations en attente de confirmation</td></tr>";
+            if (data.valid.length) {
+                for (var reservation of data.valid) {
+                    var date = new Date(reservation.date);
+                    table.innerHTML += "<tr onclick='view_reservation(" + reservation.reservation_id + ")' style='cursor:pointer;'>"
+                            + "<td>" + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + "</td>"
+                            + "<td>" + (reservation.time ? reservation.time + "h" : "-") + "</td>"
+                            + "<td>" + reservation.full_name + "</td>"
+                            + "<td>" + reservation.activity + "</td>"
+                            + "<td>" + reservation.support + "</td>"
+                            + "<td>" + (reservation.monitor ? reservation.monitor : "-") + "</td>"
+                            + "<td>" + reservation.people + "</td>"
+                            + (reservation.status === "confirm" ?
+                                    "<td class='green white-text'><i class='fa fa-check' aria-hidden='true'></i></td>" : "")
+                            + (reservation.status === "valid" ?
+                                    "<td class='red white-text'><i class='fa fa-times' aria-hidden='true'></i></td>" : "")
+                            + "</tr>";
+                }
+            } else {
+                table.innerHTML += "<tr>"
+                        + "<td colspan='8'>Aucune demande de réservation en attente.</td>"
+                        + "</tr>";
+            }
+            table.innerHTML += "<tr><td colspan='8' class='grey lighten-1'>Demandes de reservations confirmées</td></tr>";
+            if (data.confirm.length) {
+                for (var reservation of data.confirm) {
+                    var date = new Date(reservation.date);
+                    table.innerHTML += "<tr onclick='view_reservation(" + reservation.reservation_id + ")' style='cursor:pointer;'>"
+                            + "<td>" + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + "</td>"
+                            + "<td>" + (reservation.time ? reservation.time + "h" : "-") + "</td>"
+                            + "<td>" + reservation.full_name + "</td>"
+                            + "<td>" + reservation.activity + "</td>"
+                            + "<td>" + reservation.support + "</td>"
+                            + "<td>" + (reservation.monitor ? reservation.monitor : "-") + "</td>"
+                            + "<td>" + reservation.people + "</td>"
+                            + (reservation.status === "confirm" ?
+                                    "<td class='green white-text'><i class='fa fa-check' aria-hidden='true'></i></td>" : "")
+                            + (reservation.status === "valid" ?
+                                    "<td class='red white-text'><i class='fa fa-times' aria-hidden='true'></i></td>" : "")
+                            + "</tr>";
+                }
+            } else {
+                table.innerHTML += "<tr>"
+                        + "<td colspan='8'>Aucune demande de réservation confirmée.</td>"
+                        + "</tr>";
+            }
+        });
+    } else {
+        admin_reservation();
+    }
+}
+
+function admin_user(search) {
+    var table = document.querySelector("#admin_user_table tbody");
+    $.getJSON(API_URL + "/user/search/" + search, function (data) {
+        if (data.length) {
+            table.innerHTML = "";
+            for (var user of data) {
+                user.age = user.birth_date ? Math.floor(((new Date).getTime() - (new Date(user.birth_date.split('/').reverse().join('/'))).getTime()) / (365.24 * 24 * 3600 * 1000)) + " ans" : "NC";
+                table.innerHTML += "<tr onclick='admin_edit_user(this)' style='cursor:pointer;'" + " data-full_name='" + user.firstname + " " + user.lastname + "' data-id='" + user.user_id + "' data-status='" + user.status + "'>"
+                        + "<td>" + user.lastname + "</td>"
+                        + "<td>" + user.firstname + "</td>"
+                        + "<td>" + user.age + "</td>"
+                        + "<td>" + (user.phone ? user.phone : "NC") + "</td>"
+                        + "<td>" + user.email + "</td>"
+                        + "<td>" + user.subscribe_date + "</td>"
+                        + "<td class='center'>"
+                        + ((user.status === "admin") ?
+                                "<div class='chip black  white-text'>Administrateur</div>" :
+                                ((user.status === "modo") ?
+                                        "<div class='chip blue  white-text'>Modérateur</div>" :
+                                        "<div class='chip green  white-text'>Membre</div>"))
+                                
+                        + "</td>"
+                        + "</tr>"
+            }
+        } else {
+            table.innerHTML = "<tr><td colspan='5'>Aucune correspondence</td></tr>"
+        }
+    });
+}
+
+function admin_edit_user(tr_user) {
+    data = tr_user.dataset;
+    window.location = SITE_ROOT + "/profil/" + data.id;
+}
+
+function admin_license(search) {
+    var table = document.querySelector("#admin_licences_table tbody");
+    $.getJSON(API_URL + "/license/search/" + search, function (data) {
+        if (data.length) {
+            table.innerHTML = "";
+            for (var license of data) {
+                table.innerHTML += "<tr>"
+                        + "<td>" + license.number + "</td>"
+                        + "<td>" + license.lastname + " " + license.firstname + "</td>"
+                        + "<td>" + license.aptitude + " " + license.type + "</td>"
+                        + "<td>" + license.practice + "</td>"
+                        + "<td>" + license.year + "</td>"
+                        + "<td>" + license.date + "</td>"
+                        + "<td>" + license.address + "<br>" + license.zipcode + " " + license.city + "</td>"
+                        + "</tr>"
+            }
+        } else {
+            table.innerHTML = "<tr><td colspan='7'>Aucune correspondence</td></tr>"
+        }
+    });
+}
+
+function admin_site() {
+    var iframe = document.querySelector("#server_info");
+    iframe.src = iframe.dataset.src;
+    $.getJSON(API_URL + "/", function (data) {
+        var form = document.querySelector("#update_site_info_form");
+        form.name.value = data.name;
+        form.phone.value = data.phone;
+        form.address_contact.value = data.address_contact;
+        form.url_facebook.value = data.url_facebook;
+        form.url_google_map.value = data.url_google_map;
+    });
+}
+
+function upload_license_file() {
+    var form = document.querySelector("#upload_license_form");
+    if (form.license.validity.valid) {
+        document.querySelector("#modal h4").innerHTML = "<i class='fa fa-question' aria-hidden='true'></i> Mise a jour des license";
+        document.querySelector("#modal div.modal-content div").innerHTML = "<b>" + form.license.files[0].name + "</b><div class='container'>Voulez vous utiliser ce fichier de license ? <br>les licenses actuels seront écrasées</div>"
+                + "<div class='modal-footer'><a class='btn green' onclick='confirm_upload_license_file()'><i class='fa fa-upload' aria-hidden='true'></i> Envoyer</div></div>";
+        $('#modal').modal('open');
+    }
+}
+
+function confirm_upload_license_file() {
+    var form = document.querySelector("#upload_license_form");
+    if (form.license.validity.valid) {
+        $.ajax({
+            type: "POST",
+            url: API_URL + "/license",
+            data: new FormData(form),
+            processData: false,
+            contentType: false,
+            enctype: 'multipart/form-data',
+            dataType: "json",
+            success: function (data, textStatus, jqXHR) {
+                document.querySelector("#modal h4").innerHTML = "<i class='fa fa-checked' aria-hidden='true'></i> Succes";
+                document.querySelector("#modal div.modal-content div").innerHTML = "Opération effectuée.";
+                window.setTimeout(function () {
+                    window.location.reload();
+                }, 2000);
+            },
+            error: function (jqxhr, status, error) {
+                document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Echec";
+                document.querySelector("#modal div.modal-content div").innerHTML = error;
+            }
+        });
+    }
+}
+
+function update_site_info() {
+    if (check_update_site_info_form()) {
+        var form = document.querySelector("#update_site_info_form");
+        document.querySelector("#modal h4").innerHTML = "Modifier le site";
+        document.querySelector("#modal div.modal-content div").innerHTML = "<div class='container row'><table class='centered bordered col s6 offset-s3'>"
+                + "<thead><tr><th colspan='2'>Confirmer les modifications</th></tr></thead>"
+                + "<tr><td><b>Nom</b></td><td>" + form.name.value + "</td></tr>"
+                + "<tr><td><b>Téléphone</b></td><td>" + form.phone.value + "</td></tr>"
+                + "<tr><td><b>Adresse de contact</b></td><td>" + form.address_contact.value + "</td></tr>"
+                + "<tr><td><b>Page Facebook</b></td><td>" + form.url_facebook.value + "</td></tr>"
+                + "<tr><td><b>Google Map</b></td><td>" + form.url_google_map.value.substring(0, 50) + "...</td></tr>"
+                + "</table></div>"
+                + "<div class='modal-footer'><a class='btn green' onclick='confirm_update_site_info()'><i class='fa fa-check' aria-hidden='true'></i> Confirmer</div></div>";
+        $('#modal').modal('open');
+    }
+}
+function confirm_update_site_info() {
+    var form = document.querySelector("#update_site_info_form");
+    if (check_update_site_info_form()) {
+        var data = {
+            name: form.name.value,
+            phone: form.phone.value,
+            address_contact: form.address_contact.value,
+            url_facebook: form.url_facebook.value,
+            url_google_map: form.url_google_map.value
+        }
+        $.ajax({
+            type: "put",
+            url: API_URL + "/",
+            data: data,
+            dataType: "json",
+            success: function (data, textStatus, jqXHR) {
+                document.querySelector("#modal h4").innerHTML = "<i class='fa fa-checked' aria-hidden='true'></i> Succes";
+                document.querySelector("#modal div.modal-content div").innerHTML = "Opération effectuée.";
+                window.setTimeout(function () {
+                    //window.location.reload();
+                }, 2000);
+            },
+            error: function (jqxhr, status, error) {
+                document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Echec";
+                document.querySelector("#modal div.modal-content div").innerHTML = error;
+            }
+        });
+    }
+}
+
+function check_update_site_info_form() {
+    var form = document.querySelector("#update_site_info_form");
+    var valid = (
+            form.name.validity.valid &&
+            form.phone.validity.valid &&
+            form.address_contact.validity.valid &&
+            form.url_facebook.validity.valid &&
+            form.url_google_map.validity.valid
+            );
+    if (valid) {
+        $("#update_site_info_button").removeClass("disabled")
+    } else {
+        $("#update_site_info_button").addClass("disabled")
+    }
+    return valid;
 }

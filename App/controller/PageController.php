@@ -25,7 +25,8 @@ class PageController {
 //   --------------------------------------------------------------------------- PROFIL
     public function profil(Request $request, Response $response, $args) {
         $param = array(
-            "user" => $this->container["user"]
+            "user" => $this->container["user"],
+            "server" => $_SERVER
         );
         $this->container->view->render($response, "Page/profil.twig", $param);
         return $response;
@@ -221,10 +222,32 @@ class PageController {
     public function blogEditor(Request $request, Response $response, $args) {
         $param = array(
             "user" => $this->container["user"],
-            "blog_post_id" => intval($args["blog_post_id"])
+            "blog_post_id" => intval($args["blog_post_id"])            
         );
 
         $this->container->view->render($response, "Form/BlogEditor.twig", $param);
+        return $response;
+    }
+    
+//   --------------------------------------------------------------------------- USER PROFIL
+//   ---------------------------------------------------------------------------
+    public function userProfil(Request $request, Response $response, $args) {
+        $param = array(
+            "user" => $this->container["user"],
+            "user_id" => intval($args["user_id"])
+        );
+
+        $this->container->view->render($response, "Page/userProfile.twig", $param);
+        return $response;
+    }
+//   --------------------------------------------------------------------------- USER CHANGE PASSWORD
+//   ---------------------------------------------------------------------------
+    public function userChangePassword(Request $request, Response $response, $args) {
+        $param = array(
+            "user" => $this->container["user"],
+        );
+
+        $this->container->view->render($response, "Form/formUserChangePassword.twig", $param);
         return $response;
     }
 
@@ -236,6 +259,16 @@ class PageController {
             "token" => $args["token"]
         );
         $this->container->view->render($response, "Page/valid_user.twig", $param);
+        return $response;
+    }
+//   --------------------------------------------------------------------------- RECOVER USER
+//   ---------------------------------------------------------------------------
+    public function recoverUser(Request $request, Response $response, $args) {
+        $param = array(
+            "user" => $this->container["user"],
+            "token" => $args["token"]
+        );
+        $this->container->view->render($response, "Page/recover_user.twig", $param);
         return $response;
     }
 

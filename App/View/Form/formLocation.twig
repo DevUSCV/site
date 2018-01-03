@@ -16,7 +16,7 @@
 
         <div class="col s12">
             <div class="file-field input-field col s12">
-                <div class="btn blue col s4">
+                <div class="btn blue waves-effect col s4">
                     <span><i class="fa fa-picture-o " aria-hidden="true"></i> Image</span>
                     <input type="file" onchange="check_location_form()" id="image" name="image" {% if not location_price_id %}required{% endif %} >
                 </div>
@@ -60,5 +60,5 @@
 
 </div>
 <div class="card-action">
-    <button id="send_location_button" class="btn green disabled" onclick="send_location()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
+    <button id="send_location_button" class="btn waves-effect green disabled" onclick="send_location()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer</button>
 </div> 

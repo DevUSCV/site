@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
         month_days[1] = 29;
     }
 
-    html += "<div class='card s12'>"
-            + "<div class='card-tabs calendar'>"
+    html += "<div class='col s12'>"
+            + "<div class='tabs calendar'>"
             + "<ul class='tabs tabs-fixed-width grey darken-3'>";
 
 
@@ -25,9 +25,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 + "</li>"
     }
     html += "</ul>"
-            + "</div>" // card-tabs;
+            + "</div></div>"
 
-    html += "<div class='card-content col s8 white z-depth-2'>";
+    html += "<div class='col s12'><div class='col s8'><div class='card'><div class='card-content white z-depth-2'>";
     for (var month = 0; month < months.length; month++) {
         html += "<div class='' id='" + months[month] + "'>"
                 + " <table class='striped highlight centered calendar_table'>"
@@ -58,10 +58,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 + "</div>";
     }
     html += "</div>"
-            + "<div class='card-content col s4 white z-depth-2' id='reservation_article'>"
+            + "</div>"
+            + "</div>"
+            + "<div class='card'><div class='card-content col s4 white z-depth-2' id='reservation_article'>"
             + "<span class='card-title'></span>"
             + "<p></p>"
             + (isAdmin() ? "<a href='/article/editor/reservation' class='btn-floating blue'><i class='fa fa-pencil' aria-hidden='true'></i></a>" : "")
+            + "</div>"
             + "</div>"; // card
     document.querySelector("div.container div.row").innerHTML = html;
 
@@ -129,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                                 
                             }
                         } else {
-                            html += "<tr><td colspan='4'><b>Aucune reservation a cette date</b></td></tr>"
+                            html += "<tr><td colspan='6'><b>Aucune reservation a cette date</b></td></tr>"
                         }
                         html += "</table><br><h4>Nouvelle Reservation</h4>"
                         document.querySelector("#reservation_planning").innerHTML = html;

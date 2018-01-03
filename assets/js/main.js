@@ -67,7 +67,7 @@ function show_contact() {
 
 function show_map() {
     document.querySelector("#modal h4").innerHTML = "Nous Trouver";
-    document.querySelector("#modal div.modal-content div").innerHTML = '<iframe src="' + SITE.url_google_map + '"frameborder="0" style="border:0"></iframe>';
+    document.querySelector("#modal div.modal-content div").innerHTML = '<iframe src="' + SITE.url_google_map + '" frameborder="0" style="border:0"></iframe>';
     $('#modal').modal('open');
 }
 

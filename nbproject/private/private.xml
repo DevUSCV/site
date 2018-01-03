@@ -2,22 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="5">
         <file>
-            <url>assets/js/reservation.js</url>
-            <bookmark id="5">
-                <name/>
-                <line>1</line>
-                <key/>
-            </bookmark>
-        </file>
-        <file>
-            <url>index.php</url>
-            <bookmark id="3">
-                <name/>
-                <line>36</line>
-                <key/>
-            </bookmark>
-        </file>
-        <file>
             <url>App/View/Page/club.twig</url>
             <bookmark id="2">
                 <name/>
@@ -34,6 +18,22 @@
             </bookmark>
         </file>
         <file>
+            <url>assets/js/reservation.js</url>
+            <bookmark id="5">
+                <name/>
+                <line>1</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>index.php</url>
+            <bookmark id="3">
+                <name/>
+                <line>36</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
             <url>assets/css/main.css</url>
             <bookmark id="1">
                 <name/>
@@ -43,6 +43,12 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/var/www/html/assets/js/club_post.js</file>
+            <file>file:/var/www/html/App/View/Form/ArticleEditor.twig</file>
+            <file>file:/var/www/html/assets/js/profil.js</file>
+            <file>file:/var/www/html/App/View/Page/profil.twig</file>
+            <file>file:/var/www/html/App/View/Form/BlogEditor.twig</file>
+        </group>
     </open-files>
 </project-private>

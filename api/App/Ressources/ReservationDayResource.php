@@ -41,5 +41,23 @@ class ReservationDayResource extends AbstractResource {
         }else{
             return $response->withStatus(400, "Invalid Date");
         }
+    }
+    
+    // -------------------------------------------------------------------------
+    // ------------------------------------------------------------------------- GET Reservation
+    // -------------------------------------------------------------------------
+    public function getReservationDays(Request $request, Response $response, $args) {
+        $number = intval($args["number_of_days"]);
+        if($number > 0 && $number <= 20){
+            $date = new \DateTime("NOW");
+            $result_tab = [];
+            for($i=0; $i<$number; $i++){
+                $result_tab[$date->format("d/m/Y")] = $this->getEntityManager()->getRepository(ReservationDay::class)->findOneBy(array("date" => $date));
+                $date->modify("+1 day");
+            }
+            return $response->write(json_encode($result_tab));
+        }else{
+            return $response->withStatus(400, "Max 20 Day");
+        }
     }        
 }

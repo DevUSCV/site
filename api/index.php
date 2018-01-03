@@ -25,6 +25,8 @@ $container['upload_directory'] = "/uploads";
 // -----------------------------------------------------------------------------
 // GET
 $app->get("/", App\Ressources\SiteInfoResource::class . ":getSiteInfo");
+$app->put("/", App\Ressources\SiteInfoResource::class . ":updateSiteInfo")
+        ->add(new App\Middleware\Security\Admin());
 
 
 // ----------------------------------------------------------------------------- SLIDE ROUTES

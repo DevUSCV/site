@@ -119,9 +119,36 @@ class EmailRessource {
         $content_head = "<h1>" . $object . "</h1><h3>Concernant votre demande de réservation du " . (new \DateTime($reservation->getDate()))->format("d/m/Y") . "</h3>";
         $content_head_admin = "<h1>" . $object . "</h1><h3>Concernant la demande de réservation du " . (new \DateTime($reservation->getDate()))->format("d/m/Y") . "</h3>";
         $content = $message . "<br><br><a href='" . $_SERVER['HTTP_HOST'] . "' >Acceder au site</a>";        
-        $email = new Email($reservation->getEmail(), $object, $content_head.$content);
+        $email = new Email($reservation->getEmail(), $object, $content_head.$content, $_SESSION["user"]->getEmail());
         $email_admin = new Email( "modo", $object_admin, $content_head_admin.$content);
         return ($email_admin->send() && $email->send());
     }
-
+    
+    public static function contactUser(User $user, String $object, String $message){
+        $object = "Message de  " . $_SESSION["user"]->getFirstname() . " " . $_SESSION["user"]->getLastname() . " | " . $object;
+        $object_admin = "Votre message a " . $user->getFirstname() . " " . $user->getLastname();
+        $content = "<h1>" . $object . "</h1><p>" . $message . "</p>".
+                "<br>De " . $_SESSION["user"]->getFirstname() . " " . $_SESSION["user"]->getLastname() . 
+                "<br><a href='" . $_SERVER['HTTP_HOST'] . "' >Acceder au site</a>";        
+        $email = new Email($user->getEmail(), $object, $content, $_SESSION["user"]->getEmail());
+        $email_admin = new Email( $_SESSION["user"]->getEmail(), $object_admin, $content);
+        return ($email_admin->send() && $email->send());
+    }    
+    
+    public static function userRecoverPassword(User $user){
+        $object = "Récupération de compte";
+        $content = "<h1>Vous avez oublier votre mot de passe</h1>" 
+                . "<a href='" . $_SERVER['HTTP_HOST'] . "/recover/" . $user->getToken() . "' >Choisissez un nouveau mot de passe</a>";
+                "<br><a href='" . $_SERVER['HTTP_HOST'] . "' >Acceder au site</a>";        
+        $email = new Email($user->getEmail(), $object, $content);
+        return ($email->send());
+    }    
+    
+    public static function userPasswordChanged(User $user){
+        $object = "Changement de mot de passe";
+        $content = "<h1>VVotre mot de passe as été modifier</h1>" 
+                ."<br><a href='" . $_SERVER['HTTP_HOST'] . "' >Acceder au site</a>";        
+        $email = new Email($user->getEmail(), $object, $content);
+        return ($email->send());
+    }    
 }

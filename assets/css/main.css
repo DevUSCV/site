@@ -16,12 +16,11 @@
 
 body{
     font-family: sans-serif;
-    background-color: black;
+    background-color: #404040;
 }
 
 h1, h2, h3, h4, h5, h6, span.card-title{
-    //font-family: 'Caviar Dreams'!important;
-    //font-weight: bold!important;
+    font-weight: lighter!important;
 }
 
 .grecaptcha-badge{
@@ -33,6 +32,19 @@ h1, h2, h3, h4, h5, h6, span.card-title{
 }
 footer a{
     cursor: pointer;
+}
+footer {
+    position: absolute;
+    z-index: 20;
+    width: 100%;
+    overflow: hidden;
+}
+
+div.container li.tab a.active{
+    background-color: #3b96e2!important;
+}
+div.container li.tab a{
+    color: white!important;
 }
 
 /*------------------------------------------------------------------------------ BURGER BUTTON*/

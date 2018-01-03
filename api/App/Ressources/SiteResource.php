@@ -16,7 +16,7 @@ class SiteResource extends AbstractResource {
     }
 
     // -------------------------------------------------------------------------
-    // ------------------------------------------------------------------------- GET Site
+    // ------------------------------------------------------------------------- GET SITE
     // -------------------------------------------------------------------------
     public function getSite(Request $request, Response $response, $args) {
         $site_id = 1;
@@ -30,4 +30,5 @@ class SiteResource extends AbstractResource {
 
         return $response;
     }
+    
 }

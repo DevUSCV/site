@@ -35,5 +35,29 @@ class SiteInfoResource extends AbstractResource {
 
         return $response;
     }
+    
+    // -------------------------------------------------------------------------
+    // ------------------------------------------------------------------------- UPDATE SITE INFO
+    // -------------------------------------------------------------------------
+    public function updateSiteInfo(Request $request, Response $response, $args) {
+        $ignore = array("contact_mail");
+        $site_info = $request->getParsedBody();
+        if($site_info){
+            foreach ($site_info as $name => $value) {
+                $info = $this->getEntityManager()->getRepository(SiteInfo::class)->findOneBy(array("name" => $name));
+                if($info instanceof SiteInfo){
+                    $info->setValue($value);
+                }else{
+                    return $response->write(false)->withStatus(400, "Info '" . $name . "' Do Not Exist");
+                }
+            }
+            $this->getEntityManager()->flush();
+            return $response->write(true);
+        }else{
+            return $response->write(false)->withStatus(400, "Invalid Data");
+        }
+
+        
+    }
 
 }

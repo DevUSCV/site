@@ -1,0 +1,326 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=us-ascii">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 10">
+<link rel=File-List href="LicenceClub%20(1)_fichiers/filelist.xml">
+<link rel=Edit-Time-Data href="LicenceClub%20(1)_fichiers/editdata.mso">
+<link rel=OLE-Object-Data href="LicenceClub%20(1)_fichiers/oledata.mso">
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:LastAuthor>pc</o:LastAuthor>
+  <o:Created>2017-12-27T12:49:00Z</o:Created>
+  <o:LastSaved>2017-12-27T12:49:00Z</o:LastSaved>
+  <o:Version>10.6870</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:DownloadComponents/>
+  <o:LocationOfComponents HRef="file:///\\"/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\,";
+	mso-displayed-thousand-separator:" ";}
+@page
+	{margin:.98in .79in .98in .79in;
+	mso-header-margin:.49in;
+	mso-footer-margin:.49in;}
+tr
+	{mso-height-source:auto;}
+col
+	{mso-width-source:auto;}
+br
+	{mso-data-placement:same-cell;}
+.style0
+	{mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	white-space:nowrap;
+	mso-rotate:0;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	color:windowtext;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Arial;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:Normal;
+	mso-style-id:0;}
+td
+	{mso-style-parent:style0;
+	padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Arial;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	mso-protection:locked visible;
+	white-space:nowrap;
+	mso-rotate:0;}
+.xl24
+	{mso-style-parent:style0;
+	font-weight:700;
+	text-align:center;
+	vertical-align:middle;
+	white-space:normal;}
+.xl25
+	{mso-style-parent:style0;
+	white-space:normal;}
+.xl26
+	{mso-style-parent:style0;
+	mso-number-format:"Short Date";
+	white-space:normal;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <x:ExcelWorkbook>
+  <x:ExcelWorksheets>
+   <x:ExcelWorksheet>
+    <x:Name>LicenceClub (1)</x:Name>
+    <x:WorksheetOptions>
+     <x:DefaultColWidth>10</x:DefaultColWidth>
+     <x:Selected/>
+     <x:DoNotDisplayGridlines/>
+     <x:Panes>
+      <x:Pane>
+       <x:Number>3</x:Number>
+       <x:ActiveRow>12</x:ActiveRow>
+       <x:ActiveCol>4</x:ActiveCol>
+      </x:Pane>
+     </x:Panes>
+     <x:ProtectContents>False</x:ProtectContents>
+     <x:ProtectObjects>False</x:ProtectObjects>
+     <x:ProtectScenarios>False</x:ProtectScenarios>
+    </x:WorksheetOptions>
+   </x:ExcelWorksheet>
+  </x:ExcelWorksheets>
+  <x:WindowHeight>7935</x:WindowHeight>
+  <x:WindowWidth>15195</x:WindowWidth>
+  <x:WindowTopX>0</x:WindowTopX>
+  <x:WindowTopY>105</x:WindowTopY>
+  <x:ProtectStructure>False</x:ProtectStructure>
+  <x:ProtectWindows>False</x:ProtectWindows>
+ </x:ExcelWorkbook>
+</xml><![endif]-->
+</head>
+
+<body link=blue vlink=purple>
+
+<table x:str border=0 cellpadding=0 cellspacing=0 width=1521 style='border-collapse:
+ collapse;table-layout:fixed;width:1143pt'>
+ <col width=66 style='mso-width-source:userset;mso-width-alt:2413;width:50pt'>
+ <col width=94 style='mso-width-source:userset;mso-width-alt:3437;width:71pt'>
+ <col width=73 style='mso-width-source:userset;mso-width-alt:2669;width:55pt'>
+ <col width=24 style='mso-width-source:userset;mso-width-alt:877;width:18pt'>
+ <col width=71 style='mso-width-source:userset;mso-width-alt:2596;width:53pt'>
+ <col width=248 style='mso-width-source:userset;mso-width-alt:9069;width:186pt'>
+ <col width=42 style='mso-width-source:userset;mso-width-alt:1536;width:32pt'>
+ <col width=100 style='mso-width-source:userset;mso-width-alt:3657;width:75pt'>
+ <col width=175 style='mso-width-source:userset;mso-width-alt:6400;width:131pt'>
+ <col width=47 style='mso-width-source:userset;mso-width-alt:1718;width:35pt'>
+ <col width=92 style='mso-width-source:userset;mso-width-alt:3364;width:69pt'>
+ <col width=45 style='mso-width-source:userset;mso-width-alt:1645;width:34pt'>
+ <col width=145 style='mso-width-source:userset;mso-width-alt:5302;width:109pt'>
+ <col width=94 style='mso-width-source:userset;mso-width-alt:3437;width:71pt'>
+ <col width=52 style='mso-width-source:userset;mso-width-alt:1901;width:39pt'>
+ <col width=83 style='mso-width-source:userset;mso-width-alt:3035;width:62pt'>
+ <col width=70 style='mso-width-source:userset;mso-width-alt:2560;width:53pt'>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 class=xl24 width=66 style='height:12.75pt;width:50pt'>Licence</td>
+  <td class=xl24 width=94 style='width:71pt'>Nom</td>
+  <td class=xl24 width=73 style='width:55pt'>Pr&eacute;nom</td>
+  <td class=xl24 width=24 style='width:18pt'>Sx</td>
+  <td class=xl24 width=71 style='width:53pt'>Naissance</td>
+  <td class=xl24 width=248 style='width:186pt'>Adresse</td>
+  <td class=xl24 width=42 style='width:32pt'>CP</td>
+  <td class=xl24 width=100 style='width:75pt'>Ville</td>
+  <td class=xl24 width=175 style='width:131pt'>email</td>
+  <td class=xl24 width=47 style='width:35pt'>An Lic</td>
+  <td class=xl24 width=92 style='width:69pt'>Type Licence</td>
+  <td class=xl24 width=45 style='width:34pt'>Primo</td>
+  <td class=xl24 width=145 style='width:109pt'>Pratique</td>
+  <td class=xl24 width=94 style='width:71pt'>Apt.Med.</td>
+  <td class=xl24 width=52 style='width:39pt'>Club</td>
+  <td class=xl24 width=83 style='width:62pt'>COMMANDE</td>
+  <td class=xl24 width=70 style='width:53pt'>Qualif</td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 class=xl25 width=66 style='height:12.75pt;width:50pt'>1423234L</td>
+  <td class=xl25 width=94 style='width:71pt'>CANTALOUBE</td>
+  <td class=xl25 width=73 style='width:55pt'>MAGALIE</td>
+  <td class=xl25 width=24 style='width:18pt'>F</td>
+  <td class=xl26 align=right width=71 style='width:53pt' x:num="30317">01/01/1983</td>
+  <td class=xl25 width=248 style='width:186pt'>le groussayras</td>
+  <td class=xl25 align=right width=42 style='width:32pt' x:num>81130</td>
+  <td class=xl25 width=100 style='width:75pt'>villeuve sur verre</td>
+  <td class=xl25 width=175 style='width:131pt'>larroque1983@hotmail.com</td>
+  <td class=xl25 align=right width=47 style='width:35pt' x:num>2018</td>
+  <td class=xl25 width=92 style='width:69pt'>Adulte</td>
+  <td class=xl25></td>
+  <td class=xl25 width=145 style='width:109pt'>D&eacute;riveurs</td>
+  <td class=xl25 width=94 style='width:71pt'>ADHESION</td>
+  <td class=xl25 width=52 style='width:39pt'>&#2;81002</td>
+  <td class=xl26 align=right width=83 style='width:62pt' x:num="42983">05/09/2017</td>
+  <td class=xl25></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 class=xl25 width=66 style='height:12.75pt;width:50pt'>1423006Y</td>
+  <td class=xl25 width=94 style='width:71pt'>COSTON</td>
+  <td class=xl25 width=73 style='width:55pt'>GREGORY</td>
+  <td class=xl25 width=24 style='width:18pt'>M</td>
+  <td class=xl26 align=right width=71 style='width:53pt' x:num="28306">30/06/1977</td>
+  <td class=xl25 width=248 style='width:186pt'>8 PLACE DES ANCIENS COMBATTANT</td>
+  <td class=xl25 align=right width=42 style='width:32pt' x:num>81440</td>
+  <td class=xl25 width=100 style='width:75pt'>MONTDRAGON</td>
+  <td class=xl25 width=175 style='width:131pt'>gregory.coston@wanadoo.fr</td>
+  <td class=xl25 align=right width=47 style='width:35pt' x:num>2018</td>
+  <td class=xl25 width=92 style='width:69pt'>Adulte</td>
+  <td class=xl25></td>
+  <td class=xl25 width=145 style='width:109pt'>D&eacute;riveurs</td>
+  <td class=xl25 width=94 style='width:71pt'>ADHESION</td>
+  <td class=xl25 width=52 style='width:39pt'>&#2;81002</td>
+  <td class=xl26 align=right width=83 style='width:62pt' x:num="42979">01/09/2017</td>
+  <td class=xl25></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 class=xl25 width=66 style='height:12.75pt;width:50pt'>1218657K</td>
+  <td class=xl25 width=94 style='width:71pt'>FARAUD</td>
+  <td class=xl25 width=73 style='width:55pt'>FRANCK</td>
+  <td class=xl25 width=24 style='width:18pt'>M</td>
+  <td class=xl26 align=right width=71 style='width:53pt' x:num="24070">24/11/1965</td>
+  <td class=xl25 width=248 style='width:186pt'>30RUE GEORGES CUVIER</td>
+  <td class=xl25 align=right width=42 style='width:32pt' x:num>81400</td>
+  <td class=xl25 width=100 style='width:75pt'>carmaux</td>
+  <td class=xl25 width=175 style='width:131pt'>franck.faraud@sfr.fr</td>
+  <td class=xl25 align=right width=47 style='width:35pt' x:num>2018</td>
+  <td class=xl25 width=92 style='width:69pt'>Adulte</td>
+  <td class=xl25></td>
+  <td class=xl25 width=145 style='width:109pt'>D&eacute;riveurs</td>
+  <td class=xl25 width=94 style='width:71pt'>ADHESION</td>
+  <td class=xl25 width=52 style='width:39pt'>&#2;81002</td>
+  <td class=xl26 align=right width=83 style='width:62pt' x:num="42979">01/09/2017</td>
+  <td class=xl25></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 class=xl25 width=66 style='height:12.75pt;width:50pt'>1155230Q</td>
+  <td class=xl25 width=94 style='width:71pt'>LASSORT</td>
+  <td class=xl25 width=73 style='width:55pt'>MATHIEU</td>
+  <td class=xl25 width=24 style='width:18pt'>M</td>
+  <td class=xl26 align=right width=71 style='width:53pt' x:num="29433">31/07/1980</td>
+  <td class=xl25 width=248 style='width:186pt'>lieu dit barbefere</td>
+  <td class=xl25 align=right width=42 style='width:32pt' x:num>81190</td>
+  <td class=xl25 width=100 style='width:75pt'>trevien</td>
+  <td class=xl25 width=175 style='width:131pt'>matthieu.lassort@gmail.com</td>
+  <td class=xl25 align=right width=47 style='width:35pt' x:num>2018</td>
+  <td class=xl25 width=92 style='width:69pt'>Adulte</td>
+  <td class=xl25></td>
+  <td class=xl25 width=145 style='width:109pt'>?</td>
+  <td class=xl25 width=94 style='width:71pt'>ADHESION</td>
+  <td class=xl25 width=52 style='width:39pt'>&#2;81002</td>
+  <td class=xl26 align=right width=83 style='width:62pt' x:num="42979">01/09/2017</td>
+  <td class=xl25></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 class=xl25 width=66 style='height:12.75pt;width:50pt'>1423010C</td>
+  <td class=xl25 width=94 style='width:71pt'>LASSORT</td>
+  <td class=xl25 width=73 style='width:55pt'>LIAM</td>
+  <td class=xl25 width=24 style='width:18pt'>M</td>
+  <td class=xl26 align=right width=71 style='width:53pt' x:num="40925">17/01/2012</td>
+  <td class=xl25 width=248 style='width:186pt'>lieu dit barbefere</td>
+  <td class=xl25 align=right width=42 style='width:32pt' x:num>81190</td>
+  <td class=xl25 width=100 style='width:75pt'>trevien</td>
+  <td class=xl25 width=175 style='width:131pt'>matthieu.lassort@gmail.com</td>
+  <td class=xl25 align=right width=47 style='width:35pt' x:num>2018</td>
+  <td class=xl25 width=92 style='width:69pt'>Jeune</td>
+  <td class=xl25></td>
+  <td class=xl25 width=145 style='width:109pt'>D&eacute;riveurs</td>
+  <td class=xl25 width=94 style='width:71pt'>ADHESION</td>
+  <td class=xl25 width=52 style='width:39pt'>&#2;81002</td>
+  <td class=xl26 align=right width=83 style='width:62pt' x:num="42979">01/09/2017</td>
+  <td class=xl25></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 class=xl25 width=66 style='height:12.75pt;width:50pt'>1428709P</td>
+  <td class=xl25 width=94 style='width:71pt'>MIGAIROU</td>
+  <td class=xl25 width=73 style='width:55pt'>PHILIPPE</td>
+  <td class=xl25 width=24 style='width:18pt'>M</td>
+  <td class=xl26 align=right width=71 style='width:53pt' x:num="23544">16/06/1964</td>
+  <td class=xl25 width=248 style='width:186pt'>2251 route de Fauch</td>
+  <td class=xl25 align=right width=42 style='width:32pt' x:num>81990</td>
+  <td class=xl25 width=100 style='width:75pt'>Albi</td>
+  <td class=xl25 width=175 style='width:131pt'>migairouphilippe@yahoo.fr</td>
+  <td class=xl25 align=right width=47 style='width:35pt' x:num>2018</td>
+  <td class=xl25 width=92 style='width:69pt'>Adulte</td>
+  <td class=xl25></td>
+  <td class=xl25 width=145 style='width:109pt'>Habitables</td>
+  <td class=xl25 width=94 style='width:71pt'>ADHESION</td>
+  <td class=xl25 width=52 style='width:39pt'>&#2;81002</td>
+  <td class=xl26 align=right width=83 style='width:62pt' x:num="43043">04/11/2017</td>
+  <td class=xl25></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 class=xl25 width=66 style='height:12.75pt;width:50pt'>0535406Q</td>
+  <td class=xl25 width=94 style='width:71pt'>ROSSIGNOL</td>
+  <td class=xl25 width=73 style='width:55pt'>YANNICK</td>
+  <td class=xl25 width=24 style='width:18pt'>M</td>
+  <td class=xl26 align=right width=71 style='width:53pt' x:num="25291">29/03/1969</td>
+  <td class=xl25 width=248 style='width:186pt'>20 BIS RUE FRANCISCO GOYA</td>
+  <td class=xl25 align=right width=42 style='width:32pt' x:num>81000</td>
+  <td class=xl25 width=100 style='width:75pt'>ALBI</td>
+  <td class=xl25 width=175 style='width:131pt'>y.r@free.fr</td>
+  <td class=xl25 align=right width=47 style='width:35pt' x:num>2018</td>
+  <td class=xl25 width=92 style='width:69pt'>Adulte</td>
+  <td class=xl25></td>
+  <td class=xl25 width=145 style='width:109pt'>Voile Radiocommand&eacute;e</td>
+  <td class=xl25 width=94 style='width:71pt'>COMPETITION</td>
+  <td class=xl25 width=52 style='width:39pt'>&#2;81002</td>
+  <td class=xl26 align=right width=83 style='width:62pt' x:num="43086">17/12/2017</td>
+  <td class=xl25 width=70 style='width:53pt'>JYR , RES</td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=66 style='width:50pt'></td>
+  <td width=94 style='width:71pt'></td>
+  <td width=73 style='width:55pt'></td>
+  <td width=24 style='width:18pt'></td>
+  <td width=71 style='width:53pt'></td>
+  <td width=248 style='width:186pt'></td>
+  <td width=42 style='width:32pt'></td>
+  <td width=100 style='width:75pt'></td>
+  <td width=175 style='width:131pt'></td>
+  <td width=47 style='width:35pt'></td>
+  <td width=92 style='width:69pt'></td>
+  <td width=45 style='width:34pt'></td>
+  <td width=145 style='width:109pt'></td>
+  <td width=94 style='width:71pt'></td>
+  <td width=52 style='width:39pt'></td>
+  <td width=83 style='width:62pt'></td>
+  <td width=70 style='width:53pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>

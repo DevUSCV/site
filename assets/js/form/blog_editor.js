@@ -63,7 +63,10 @@ function save() {
                 },
                 success: function (data) {
                     document.querySelector("#modal h4").innerHTML = "<i class='fa fa-check' aria-hidden='true'></i> Succes";
-                    document.querySelector("#modal div.modal-content div").innerHTML = "Moddifications Enregistrées.";
+                    document.querySelector("#modal div.modal-content div").innerHTML = "Billet Enregistrées.";
+                    window.setTimeout(function(){
+                        window.history.back();
+                    }, 2000);
                 },
                 error: function (jqxhr, status, error) {
                     document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Echec";

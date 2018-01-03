@@ -1,6 +1,7 @@
 $(".login_tabs").tabs();
 $(".login_tabs").tabs('select_tab', 'login');
 $.getScript('https://www.google.com/recaptcha/api.js');
+check_login_form();
 
 function check_login_form() {
     var form = document.querySelector("#login_form");
@@ -27,7 +28,6 @@ document.querySelector("#login_form").addEventListener("submit", function (e) {
                     console.log(data);
                 })
                 .fail(function (data) {
-                    console.log(data);
                     $(".login_message").slideDown(400);
                     window.setTimeout(function () {
                         $(".login_message").slideUp(400);
@@ -74,7 +74,7 @@ function register(grecaptcha) {
                 data,
                 function (data) {
                     document.querySelector("#modal h4").innerHTML = "<i class='fa fa-check' aria-hidden='true'></i> Compte créé.";
-                    document.querySelector("#modal div.modal-content div").innerHTML = '<h3>Un email vous as été envoyé.</h3>Veuillez verifier votre addresse mail.';
+                    document.querySelector("#modal div.modal-content div").innerHTML = '<h5 class="center">Un email vous as été envoyé.</h5>Veuillez verifier votre addresse mail.>';
                     $('#modal').modal('open');
                 })
                 .fail(function (jqXHR, textStatus) {
@@ -84,4 +84,53 @@ function register(grecaptcha) {
                 });
     }
     window.grecaptcha.reset();
+}
+
+function recover_password() {
+    document.querySelector("#modal h4").innerHTML = "Mot de passe oublier";
+    document.querySelector("#modal div.modal-content div").innerHTML = "<div class='row'>"
+            + '<h5>Saisissez votre adresse mail.</h5>'
+            + "<form id='user_recover_password_form'>"
+            + "<div class='input-field col s6 offset-s3'>"
+            + "<input id='email' type='email' class='validate' required pattern='^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$' onkeyup='check_user_recover_password_form()' onchange='check_user_recover_password_form()'>"
+            + "<label for='email'>Adresse Mail</label>"
+            + "</div>"
+            + "</form>"
+            + "</div>"
+            + "<div class='card-action center'>"
+            + "<a id='user_recover_password_button' class='btn blue waves-effect disabled' onclick='confirm_recover_password()'>Envoie</a>"
+            + "</div>";
+    $('#modal').modal('open');
+}
+
+function check_user_recover_password_form() {
+    var form = document.querySelector("#user_recover_password_form");
+    var valid = form.email.validity.valid;
+    if (valid) {
+        $('#user_recover_password_button').removeClass("disabled");
+    } else {
+        $('#user_recover_password_button').addClass("disabled");
+    }
+    return valid;
+}
+
+function confirm_recover_password() {
+    if (check_user_recover_password_form()) {
+        var form = document.querySelector("#user_recover_password_form");
+        var data = {
+            email: form.email.value
+        };
+        $.post(API_URL + "/user/recoverpassword",
+                data,
+                function (data) {
+                    document.querySelector("#modal h4").innerHTML = "Succes";
+                    document.querySelector("#modal div.modal-content div").innerHTML = '<h5 class="center">Un email vous as été envoyé.</h5>';
+                    $('#modal').modal('open');
+                })
+                .fail(function (jqXHR, textStatus) {
+                    document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Une erreur est survenue.";
+                    document.querySelector("#modal div.modal-content div").innerHTML = jqXHR.statusText;
+                    $('#modal').modal('open');
+                });
+    }
 }
