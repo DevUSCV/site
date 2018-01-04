@@ -2,6 +2,18 @@
 <html>
     {# <!-------------------------------------------------------------------------- HEAD -->#}
     <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111858859-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-111858859-1');
+        </script>
+
+
         <meta property="og:url"           content="" />
         <meta property="og:type"          content="website" />
         <meta property="og:title"         content="" />
@@ -21,11 +33,12 @@
         <link rel="icon" type="image/png" href="/assets/image/favicon.png">
 
         <script>
-            function isAdmin() {
-                return {% if user.getStatus == "admin" %}true{% else %}false{% endif %};
-            }
-            function isModo() {
-                return {% if user.getStatus == "modo" or user.getStatus == "admin" %}true{% else %}false{% endif %};}
+    function isAdmin() {
+        return {% if user.getStatus == "admin" %}true{% else %}false{% endif %};
+    }
+    function isModo() {
+        return {% if user.getStatus == "modo" or user.getStatus == "admin" %}true{% else %}false{% endif %};
+    }
         </script>
         {% if user.getStatus == "modo" or user.getStatus == "admin" %}
             <script src="/assets/js/admin.js"></script>  
@@ -186,7 +199,7 @@
             class="g-recaptcha modal-action waves-effect waves-green btn green disabled modal-close"
             data-sitekey="6LeuxD0UAAAAAOAdqybck-aqFPOKN2EjWiI0S4PY"
             data-badge="bottomleft"
-            data-callback="sendmail">
+            data-callback="contact_sendmail">
             <i class="fa fa-paper-plane" aria-hidden="true"></i> Envoyer
         </button>
     </div>

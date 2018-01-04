@@ -9,9 +9,7 @@
 {% endblock %}
 
 {% block content %}
-    <a href="{{ path_for('home') }}" class="back_home btn-floating btn-large waves-effect waves-light blue">
-        <i class="fa fa-arrow-left" aria-hidden="true"></i>
-    </a>
+
     <div class="row content">
         {#       ----------------------------------------------------------------------- ACTUALITE#}
         <div id="actualites" class="col s12">
@@ -42,11 +40,11 @@
                         <object id="event_pdf" data="" type="application/pdf">
                         </object>
                         {% if user.getStatus == "admin" %}
-                            <form id="form_avis_de_course">
+                            <form id="avis_de_cours_form">
                                 <div class="file-field input-field">
                                     <div class="btn blue">
-                                        <span><i class="fa fa-cloud-upload" aria-hidden="true"></i> Avis de course</span>
-                                        <input type="file">
+                                        <span><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Avis de course</span>
+                                        <input type="file" name="avis_de_course" accept="application/pdf" required onchange="upload_avis_de_course(this)">
                                     </div>
                                     <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text">
@@ -107,7 +105,7 @@
                         <span class="card-title"></span>
                         <p></p>
                         {% if user.getStatus == "admin" %}
-                            <div class="card-action"><a class="btn-floating blue waves-effect " href="{{ path_for('ArticleEditor', {'article_name': 'entrainements'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                            <div class="card-action"><a class="btn-floating blue white-text waves-effect " href="{{ path_for('ArticleEditor', {'article_name': 'entrainements'}) }}"><i class="fa fa-pencil white-text" aria-hidden="true"></i></a></div>
                                 {% endif %}
                     </div>
                 </div>
@@ -205,8 +203,8 @@
                         <span class="card-title"></span>
                         <p></p>
                         {% if user.getStatus == "admin" %}
-                            <div class="card-action"><a class="btn-floating blue waves-effect " href="{{ path_for('ArticleEditor', {'article_name': 'apropos'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-                                {% endif %}
+                            <div class="card-action"><a class="btn-floating blue waves-effect " href="{{ path_for('ArticleEditor', {'article_name': 'apropos'}) }}"><i class="fa fa-pencil white-text" aria-hidden="true"></i></a></div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -214,6 +212,9 @@
     </div>
 
     <div class="col s12 black bottom_nav">
+        <a href="{{ path_for('home') }}" class="back_home btn-floating btn-large waves-effect waves-light blue">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
         <ul class="tabs black center">
             <li class="tab col s2">
                 <a href="#actualites" onclick="actualite()">Actualités</a>

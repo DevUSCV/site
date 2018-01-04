@@ -101,6 +101,50 @@ function send_file() {
     }
 }
 
+function upload_avis_de_course(input) {
+    if (check_upload_avis_de_course() && isAdmin()) {
+        document.querySelector("#modal h4").innerHTML = "Mise a jour de l'avis de course";
+        document.querySelector("#modal div.modal-content div").innerHTML = "<div class='container row'>"
+                + "<div class='col s8 offset-s2 center'><b>Nouveaux fichier:</b><br><i class='fa fa-file-pdf-o' aria-hidden='true'></i> "
+                + input.files[0].name
+                + "</div>"
+                + "<div class='card-action'><a class='btn blue waves-effect' onclick='confirm_upload_avis_de_course()'> <i class='fa fa-upload' aria-hidden='true'></i> Envoyer</a>"
+        $('#modal').modal('open');
+    }
+
+}
+
+function confirm_upload_avis_de_course() {
+    if (check_upload_avis_de_course() && isAdmin()) {
+        var form = document.querySelector("#avis_de_cours_form");
+        var data = new FormData(form);
+        $.ajax({
+            type: "POST",
+            url: API_URL + "/file/avisdecourse",
+            data: data,
+            processData: false,
+            contentType: false,
+            enctype: 'multipart/form-data',
+            dataType: "json",
+            success: function (data, textStatus, jqXHR) {
+                document.querySelector("#modal h4").innerHTML = "<i class='fa fa-checked' aria-hidden='true'></i> Succes";
+                document.querySelector("#modal div.modal-content div").innerHTML = "Votre fichier est enregistrer.";
+                document.querySelector("#event_pdf").data = API_URL + "/uploads/file/avis_de_course.pdf?#zoom=FitH";
+                form.reset();
+            },
+            error: function (jqxhr, status, error) {
+                document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Echec";
+                document.querySelector("#modal div.modal-content div").innerHTML = error;
+            }
+        });
+    }
+}
+
+function check_upload_avis_de_course() {
+    var form = document.querySelector("#avis_de_cours_form");
+    return form.avis_de_course.validity.valid;
+}
+
 function delete_file(file_id) {
     document.querySelector("#modal h4").innerHTML = "<i class='fa fa-question' aria-hidden='true'></i> Suppression de fichier";
     document.querySelector("#modal div.modal-content div").innerHTML = "<div class='container'>Voulez vous supprimer ce fichier ? <br>Cette action est irreversible</div>"
@@ -126,11 +170,69 @@ function confirm_delete_file(file_id) {
 }
 
 function add_sponsor() {
-    alert("TODO");
+    $.get(SITE_ROOT + "/addsponsor", function (data) {
+        document.querySelector("#modal h4").innerHTML = "<i class='fa fa-plus' aria-hidden='true'></i> Ajouter un sponsor";
+        document.querySelector("#modal div.modal-content div").innerHTML = data;
+        $('#modal').modal('open');
+    });
 }
 
-function delete_sponsor(sponsor_id) {
-    alert("TODO spondor_id = " + sponsor_id);
+function check_add_sponsor_form() {
+    var form = document.querySelector("#add_sponsor_form");
+    var valid = (
+            form.name.validity.valid &&
+            form.url.validity.valid
+            );
+    if (valid) {
+        $("#add_sponsor_button").removeClass("disabled");
+    } else {
+        $("#add_sponsor_button").addClass("disabled");
+    }
+    return valid;
+}
+
+function confirm_add_sponsor() {
+    if (check_add_sponsor_form()) {
+        var form = document.querySelector("#add_sponsor_form");
+        data = {
+            name: form.name.value,
+            url: form.url.value
+        };
+        $.post(API_URL + "/sponsor", data, function (data) {
+            document.querySelector("#modal h4").innerHTML = "<i class='fa fa-checked' aria-hidden='true'></i> Succes";
+            document.querySelector("#modal div.modal-content div").innerHTML = "Sponsor ajouté avec succes.";
+            window.setTimeout(function () {
+                window.location.reload();
+            }, 2000);
+        }).fail(function (data) {
+            document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Echec";
+            document.querySelector("#modal div.modal-content div").innerHTML = error;
+        });
+    }
+}
+
+function delete_sponsor(sponsor_id, sponsor_name) {
+    document.querySelector("#modal h4").innerHTML = "<i class='fa fa-question' aria-hidden='true'></i> Suppression de sponsor";
+    document.querySelector("#modal div.modal-content div").innerHTML = "<div class='container'>Voulez vous supprimer <b>" + sponsor_name + "</b> des sponsors ? <br>Cette action est irreversible</div>"
+            + "<div class='modal-footer'><a class='btn red' onclick='confirm_delete_sponsor(" + sponsor_id + ")'>Supprimer</div></div>";
+    $('#modal').modal('open');
+}
+
+function confirm_delete_sponsor(sponsor_id){
+    $.ajax({
+        url: API_URL + '/sponsor/' + sponsor_id,
+        type: 'DELETE',
+        dataType: 'json',
+        success: function (result) {
+            document.querySelector("#modal h4").innerHTML = "<i class='fa fa-checked' aria-hidden='true'></i> Succes";
+            document.querySelector("#modal div.modal-content div").innerHTML = "Sponsor supprimé avec succes.";
+            $("#sponsor_" + sponsor_id).hide(300);
+        },
+        error: function (jqxhr, status, error) {
+            document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Echec";
+            document.querySelector("#modal div.modal-content div").innerHTML = error;
+        }
+    });
 }
 
 function delete_image(image_id) {
@@ -414,7 +516,7 @@ function admin_user(search) {
                                 ((user.status === "modo") ?
                                         "<div class='chip blue  white-text'>Modérateur</div>" :
                                         "<div class='chip green  white-text'>Membre</div>"))
-                                
+
                         + "</td>"
                         + "</tr>"
             }

@@ -185,3 +185,61 @@ function confirm_user_change_password() {
         });
     }
 }
+
+function delete_me(){
+    document.querySelector("#modal h4").innerHTML = "<i class='fa fa-checked' aria-hidden='true'></i> Suppression de Compte";
+                document.querySelector("#modal div.modal-content div").innerHTML = "<div class='container row'>"
+                        + "<p class='col s6 offset-s3'><small>Conformément a la loi « Informatique et Libertés » du 6 janvier 1978, modifiée par la loi du 6 août 2004, vous avez la possibilité de supprimer vos informations personnels.<br><b>Cette action est irreversible.</b></small></p>"
+                        + "<form id='delete_me_form' class='col s6 offset-s3'>"
+                        + "<p>"
+                        + "<input type='checkbox' id='confirm_delete_me_check1' onclick='check_delete_me_form()' />"
+                        + "<label for='confirm_delete_me_check1'>Je veut supprimer mon compte.</label>"
+                        + "</p><br>"
+                        + "<p>"
+                        + "<input type='checkbox' id='confirm_delete_me_check2' onclick='check_delete_me_form()' />"
+                        + "<label for='confirm_delete_me_check2'>Je suis sur de moi.</label>"
+                        + "</p><br>"
+                        + "</form>"
+                        + "<div class='card-action center'>"
+                        + "<a id='delete_me_button' class='btn red waves-effect disabled' onclick='confirm_delete_me()'><i class='fa fa-trash-o' aria-hidden='true'></i> Supprimer mon compte</a>"
+                        + "</div>"
+                        + "</div>";
+                $('#modal').modal('open');
+}
+
+function check_delete_me_form(){
+    var form = document.querySelector("#delete_me_form");
+    valid = form.confirm_delete_me_check1.checked && form.confirm_delete_me_check2.checked;
+    if(valid){
+        $("#delete_me_button").removeClass("disabled");
+    }else{
+        $("#delete_me_button").addClass("disabled");
+    }
+    return valid;
+}
+
+function confirm_delete_me(){
+    if(check_delete_me_form()){
+        var form = document.querySelector("#delete_me_form");
+        $.ajax({
+            type: "DELETE",
+            url: API_URL + "/user",
+            data: {
+                confirm_delete_me_check1 : form.confirm_delete_me_check1.checked,
+                confirm_delete_me_check2: form.confirm_delete_me_check2.checked
+            },
+            dataType: "json",
+            success: function (data, textStatus, jqXHR) {
+                document.querySelector("#modal h4").innerHTML = "<i class='fa fa-checked' aria-hidden='true'></i> Succes";
+                document.querySelector("#modal div.modal-content div").innerHTML = "Votre compte as été supprimé";
+                window.setTimeout(function () {
+                    window.location = "../";
+                }, 2000);
+            },
+            error: function (jqxhr, status, error) {
+                document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Echec";
+                document.querySelector("#modal div.modal-content div").innerHTML = error;
+            }
+        });
+    }
+}

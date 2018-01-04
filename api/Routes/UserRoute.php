@@ -26,6 +26,8 @@ $app->put("/user/updatestatus", App\Ressources\UserResource::class . ":updateUse
 // DELETE
 $app->delete("/user/{user_id}", App\Ressources\UserResource::class . ":deleteUser")
         ->add(new App\Middleware\Security\Admin());
+$app->delete("/user", App\Ressources\UserResource::class . ":deleteMe")
+        ->add(new App\Middleware\Security\Logged());
 // SESSION
 $app->post("/login", App\Ressources\UserResource::class . ":login");
 $app->get("/logout", App\Ressources\UserResource::class . ":logout");

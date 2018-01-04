@@ -42,7 +42,7 @@ function evenement() {
     tl.staggerFrom($(".card"), 0.3, {alpha: 0, scale: 0.1}, 0);
     $.getJSON(API_URL + "/article/evenements", (data) => {
         document.querySelector("#event_planning p").innerHTML = data.content;
-        document.querySelector("#event_pdf").data = SITE_ROOT + "/assets/file/avis-de-course.pdf?#zoom=FitH";
+        document.querySelector("#event_pdf").data = API_URL + "/uploads/file/avis_de_course.pdf?#zoom=FitH";
     });
 }
 ;

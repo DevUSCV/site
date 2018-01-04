@@ -194,6 +194,15 @@ class PageController {
         $this->container->view->render($response, "Form/formAddFile.twig", $param);
         return $response;
     }
+//   --------------------------------------------------------------------------- FORMULAIRES AJOUT SPONSOR
+//   ---------------------------------------------------------------------------
+    public function formAddSponsor(Request $request, Response $response, $args) {
+        $param = array(
+            "user" => $this->container["user"],
+        );
+        $this->container->view->render($response, "Form/formAddSponsor.twig", $param);
+        return $response;
+    }
 
 //   --------------------------------------------------------------------------- FORMULAIRES AJOUT IMAGE
 //   ---------------------------------------------------------------------------

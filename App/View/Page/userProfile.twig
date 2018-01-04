@@ -17,8 +17,9 @@
                     <div class='card col s4'>
                         <div class='card-content'>
                             <span class="card-title" id="status"><b>Informations</b></span>
-                            <span id="ustatus" class="chip right"></span><br>                            
-                            <span class="card-title"><small><i class="fa fa-user-o" aria-hidden="true"></i> Nom</small></span>
+                            <span id="ustatus" class="chip right"></span>                           
+                            {% if user.getStatus == "admin" %}<small><a onclick="delete_user({{ user_id }})" style="cursor: pointer;color: red;"><i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer le compte</a></small> {% endif %}                           
+                            <br><span class="card-title"><small><i class="fa fa-user-o" aria-hidden="true"></i> Nom</small></span>
                             <p id="lastname" class="right"></p><br>
                             <span class="card-title"><small><i class="fa fa-user" aria-hidden="true"></i> Prénom</small></span>
                             <p id="firstname" class="right"></p><br>
@@ -31,7 +32,7 @@
                             <span class="card-title"><small><i class="fa fa-phone" aria-hidden="true"></i> Téléphone</small></span>
                             <p id="phone" class="right"></p><br><hr>
                             <span class="card-title"><small><i class="fa fa-calendar" aria-hidden="true"></i> Date d'inscription</small></span>
-                            <p id="subscribe_date" class="right"></p>
+                            <p id="subscribe_date" class="right"></p><br>
                             {% if user.getStatus == "admin" %}
                                 <span class="card-title"><small><i class="fa fa-lock" aria-hidden="true"></i> Status</small></span>
                                 <form id="edit_user_form">
@@ -45,6 +46,8 @@
                                         {#                                        <label>Status</label>#}
                                     </div>
                                 </form>
+                                {% if user.getStatus != "admin" %}<small><a class="right" onclick="delete_me()" style="cursor: pointer;color: red;"><i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer mon compte</a></small>{% endif %}
+
                             {% endif %}
 
                         </div>

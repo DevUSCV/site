@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
     $.getJSON(API_URL + "/sponsor", (data) => {
         for(var sponsor of data){
-            document.querySelector("#sponsor").innerHTML += "<li>"
-                    + (isAdmin() ? "<a class='red-text' onclick='delete_sponsor(" + sponsor.sponsor_id + ")'><i class='fa fa-trash' aria-hidden='true'></i></a> " : "")
+            document.querySelector("#sponsor").innerHTML += "<li id='sponsor_" + sponsor.sponsor_id + "'>"
+                    + (isAdmin() ? "<a class='red-text' onclick='delete_sponsor(" + sponsor.sponsor_id + ", \"" + sponsor.name + "\")'><i class='fa fa-trash' aria-hidden='true'></i></a> " : "")
                     + "<a target='_BLANK' class='grey-text text-lighten-3' href='" + sponsor.url + "'>" + sponsor.name + "</a>"
                     + "</li>";
         }        
@@ -104,7 +104,7 @@ function contact_form_check() {
     return valid;
 }
 
-function sendmail(grecaptcha) {
+function contact_sendmail(grecaptcha) {
     var form = document.querySelector("#contact_form")
     $.post(API_URL + "/contact",
             {

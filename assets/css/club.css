@@ -44,7 +44,7 @@ div#actualite_content div.card.blog_post_excerpt{
 }
 
 a.back_home{
-    position: fixed;
+    position: absolute;
     left: -5px;
     bottom: -5px;
 }

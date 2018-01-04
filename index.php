@@ -34,6 +34,8 @@ $app->get("/form/changepassword", App\Controller\PageController::class . ":userC
 $app->get("/download", App\Controller\PageController::class . ":download")->setName("download");
 $app->get("/addfile", App\Controller\PageController::class . ":formAddFile")->setName("addFile");
 
+$app->get("/addsponsor", App\Controller\PageController::class . ":formAddSponsor")->setName("formAddSponsor");
+
 // ----------------------------------------------------------------------------- LE CLUB
 $app->get("/club", App\Controller\PageController::class . ":club")->setName("club");
 $app->get("/club/actualites", App\Controller\PageController::class . ":club")->setName("club_news");

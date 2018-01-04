@@ -41,6 +41,16 @@ class EmailRessource {
         return $email->send();
     }
     
+    public static function deletedUser(User $user){
+        $object = "Suppression de compte ";
+        $content = "<h1>Votre Compte as été supprime par " . $_SESSION["user"]->getFirstname() . " " . $_SESSION["user"]->getLastname() . "</h1>";
+        $content_admin = "<h1>Le Compte de " . $user->getFirstname() . " " . $user->getLastname() . " as été supprime par " . $_SESSION["user"]->getFirstname() . " " . $_SESSION["user"]->getLastname() . "</h1>";
+        
+        $email = new Email($user->getEmail(), $object, $content);
+        $email_admin = new Email("modo", $object, $content_admin);
+        return ($email->send() && $email_admin->send());
+    }
+    
     public static function verifiedUser(User $user){
         $object = "Votre compte est maintenant Actif";
         $content = "<h1>" . $object . "</h1>"

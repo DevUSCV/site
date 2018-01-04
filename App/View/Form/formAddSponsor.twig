@@ -1,0 +1,20 @@
+<div class="row">
+    <form id="add_sponsor_form" class="container" enctype="multipart/form-data">
+        <div class="col s12">
+            <div class="input-field col s12">
+                <i class="fa fa-industry prefix" aria-hidden="true"></i>
+                <input id="name" type="text" name="name" class="validate" required onkeyup="check_add_sponsor_form()"  minlength="3" placeholder="" />
+                <label for="name">Nom</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="fa fa-link prefix" aria-hidden="true"></i>
+                <input id="url" type="text" name="url" class="validate" required onkeyup="check_add_sponsor_form()" minlength="10" placeholder="http://www.uscvoile.fr"/>
+                <label for="url">URL</label>
+            </div>
+        </div>
+    </form>  
+
+</div>
+<div class="card-action">
+    <button id="add_sponsor_button" class="btn blue waves-effect disabled" onclick="confirm_add_sponsor()"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter</button>
+</div> 

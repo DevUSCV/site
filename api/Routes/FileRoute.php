@@ -3,6 +3,8 @@
 // POST
 $app->post("/file", App\Ressources\FileResource::class . ":postFile")
         ->add(new App\Middleware\Security\Admin());
+$app->post("/file/avisdecourse", App\Ressources\FileResource::class . ":postAvisDeCourse")
+        ->add(new App\Middleware\Security\Admin());
 // PUT 
 
 // GET

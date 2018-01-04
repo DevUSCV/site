@@ -82,7 +82,8 @@
                                 </form>
                                 <div class="center">
                                     <button id="edit_my_profile_button" class="btn blue disabled waves-effect " onclick="edit_my_profil()">Enregistrer les moddifications</button>
-                                </div>                                
+                                </div>
+                                                   {% if user.getStatus != "admin" %}<small><a class="right" onclick="delete_me()" style="cursor: pointer;color: red;"><i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer mon compte</a></small>{% endif %}
                             </div>
 
                         </div>

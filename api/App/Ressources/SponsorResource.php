@@ -47,19 +47,19 @@ class SponsorResource extends AbstractResource {
     // ------------------------------------------------------------------------- DELETE SPONSOR
     // -------------------------------------------------------------------------
     public function deleteSponsor(Request $request, Response $response, $args) {
-        $sponsor_id = intval($args["blog_post_comment_id"]);
+        $sponsor_id = intval($args["sponsor_id"]);
         if($sponsor_id > 0){
             $sponsor = $this->getEntityManager()->find(Sponsor::class, $sponsor_id);
-            if($sponsor){
+            if($sponsor instanceof Sponsor){
                 $this->getEntityManager()->remove($sponsor);
                 $this->getEntityManager()->flush();
-                return $response->write(json_encode(true));
+                return $response->write(true);
             }else{
-                $response->write(json_encode(false));
+                $response->write(false);
                 return $response->withStatus(404, "Sponsor Not Found");
             }
         }else{
-            $response->write(json_encode(false));
+            $response->write(false);
             return $response->withStatus(400, "Invalid Sponsor Id");
         }
     }

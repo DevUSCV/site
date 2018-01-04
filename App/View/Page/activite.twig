@@ -24,7 +24,7 @@
                                 <p></p>                               
                             </div>
                             <div class="card-action">
-                                <a onclick="tarif_cours()" class="btn bluewaves-effect ">tarifs</a>
+                                <a onclick="tarif_cours()" class="btn blue waves-effect ">tarifs</a>
                                 <a onclick="condition_cours()" class="btn red waves-effect ">Conditions d'acces</a>
                                 {% if user.getStatus == "admin" %}
                                     <a class="btn-floating blue right waves-effect " href="{{ path_for('ArticleEditor', {'article_name': 'cours_particuliers'}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>

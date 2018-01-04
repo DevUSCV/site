@@ -41,6 +41,24 @@ class FileResource extends AbstractResource {
         }
         return $response;
     }
+    
+    // -------------------------------------------------------------------------
+    // ------------------------------------------------------------------------- POST FILE
+    // -------------------------------------------------------------------------
+    public function postAvisDeCourse(Request $request, Response $response, $args) {
+        $directory = $this->container['upload_directory'] . "/file/";
+        $uploadedFiles = $request->getUploadedFiles();
+        $uploaded_file = isset($uploadedFiles["avis_de_course"]) ? $uploadedFiles["avis_de_course"] : false;
+        if ($uploaded_file instanceof UploadedFile) {
+            $extension = pathinfo($uploaded_file->getClientFilename(), PATHINFO_EXTENSION);
+            $basename = "avis_de_course";
+            $uploaded_file->moveTo('.' . $directory . $basename . "." . $extension);
+            return $response->write(true);
+        } else {
+            return $response->withStatus(400, "Invalid Data");
+        }
+        return $response;
+    }
 
     // -------------------------------------------------------------------------
     // ------------------------------------------------------------------------- GET FILE

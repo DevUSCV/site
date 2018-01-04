@@ -238,11 +238,44 @@ class UserResource extends AbstractResource {
 // -------------------------------------------------------------------------
     public function deleteUser(Request $request, Response $response, $args) {
         $user_id = intval($args["user_id"]);
-        if ($user_id > 0) {
+        $confirm_delete_user_check1 = $request->getParam("confirm_delete_user_check1") === 'true';
+        $confirm_delete_user_check2 = $request->getParam("confirm_delete_user_check2") === 'true';
+        if (
+                $user_id > 0 &&
+                $confirm_delete_user_check1 &&
+                $confirm_delete_user_check2 
+        ) {
             $user = $this->getEntityManager()->find(User::class, $user_id);
             if ($user instanceof User) {
+                EmailRessource::deletedUser($user);
                 $this->getEntityManager()->remove($user);
                 $this->getEntityManager()->flush();
+                return $response->write(true);
+            } else {
+                return $response->write(false)->withStatus(404, "User Not Found");
+            }
+        } else {
+            return $response->write(false)->withStatus(400, "Invalid User Id");
+        }
+    }
+
+// -------------------------------------------------------------------------
+// ------------------------------------------------------------------------- DELETE CURRENT USER
+// -------------------------------------------------------------------------
+    public function deleteMe(Request $request, Response $response, $args) {
+        $confirm_delete_me_check1 = $request->getParam("confirm_delete_me_check1") === 'true';
+        $confirm_delete_me_check2 = $request->getParam("confirm_delete_me_check2") === 'true';
+        if (
+                $confirm_delete_me_check1 &&
+                $confirm_delete_me_check2 &&
+                $_SESSION["user"]->getStatus() !== "admin"
+        ) {
+            $user = $this->getEntityManager()->find(User::class ,$_SESSION['user']->getUser_id());
+            if ($user instanceof User) {
+                EmailRessource::deletedUser($user);
+                $this->getEntityManager()->remove($user);
+                $this->getEntityManager()->flush();
+                session_destroy();
                 return $response->write(true);
             } else {
                 return $response->write(false)->withStatus(404, "User Not Found");
