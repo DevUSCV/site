@@ -29,11 +29,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
                         + "<td>" + license.year + "</td>"
                         + "<td>" + license.date + "</td>"
                         + "<td><small>" + license.address + "<br>" + license.zipcode + " " + license.city + "</small></td>"
+                        + "<td>" + (license.material ? "<i class='fa fa-check' aria-hidden='true'></i>" : "<i class='fa fa-times' aria-hidden='true'></i>")  + "</td>"
                         + "</tr>";
             }
         } else {
             license_table.innerHTML += "<tr>"
-                    + "<td colspan='8'>Vous n'avez aucune license.</td>"
+                    + "<td colspan='9'>Vous n'avez aucune license.</td>"
                     + "</tr>";
         }
     });

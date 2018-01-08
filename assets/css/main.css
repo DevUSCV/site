@@ -47,6 +47,13 @@ div.container li.tab a{
     color: white!important;
 }
 
+.card-content h1 { font-size: 2em; margin: .67em 0 }
+.card-content h2 { font-size: 1.5em; margin: .75em 0 }
+.card-content h3 { font-size: 1.17em; margin: .83em 0 }
+.card-content h4 { font-size: 1.em; margin: 1em 0 }
+.card-content h5 { font-size: .83em; margin: 1.5em 0 }
+.card-content h6 { font-size: .75em; margin: 1.67em 0 }
+
 /*------------------------------------------------------------------------------ BURGER BUTTON*/
 .button-collapse{
     position: fixed;
@@ -138,5 +145,5 @@ div.card p{
 }
 
 #loader>div{
-    margin: calc(50vh - 40px) calc(50vw - 40px);    
+    margin: calc(50vh - 40px) calc(50vw - 40px);
 }

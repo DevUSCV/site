@@ -8,7 +8,7 @@ session_start();
 // -----------------------------------------------------------------------------
 $app = new Slim\App([
     'settings' => [
-        'displayErrorDetails' => true
+        'displayErrorDetails' => false
     ]
         ]);
 // ----------------------------------------------------------------------------- Set Middleware

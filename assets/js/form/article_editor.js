@@ -8,10 +8,31 @@ document.addEventListener("DOMContentLoaded", function (e) {
         force_br_newlines: true,
         force_p_newlines: false,
         forced_root_block: '',
+        fontsize_formats: '6px 7px 8px 9px 10px 11px 12px 13px 14px 18px 24px 36px',
         plugins: "link image media table wordcount textcolor preview autolink",
         toolbar: [
-            'undo redo | styleselect | bold italic | link image media | table | alignleft aligncenter alignright | forecolor backcolor | preview'
+            'undo redo | styleselect fontsizeselect | bold italic underline | link image media | table | alignleft aligncenter alignright | forecolor backcolor | preview'
         ],
+        style_formats: [
+            {
+                title: 'Image Gauche',
+                selector: 'img',
+                styles: {
+                    'float': 'left',
+                    'margin': ' 5px 10px'
+                }
+            },
+            {
+                title: 'Image Droite',
+                selector: 'img',
+                styles: {
+                    'float': 'right',
+                    'margin': ' 5px 10px'
+                }
+            }
+        ],
+        style_formats_merge: true,
+        style_formats_autohide: true
     });
 });
 
@@ -61,6 +82,9 @@ function save() {
                 success: function (data) {
                     document.querySelector("#modal h4").innerHTML = "<i class='fa fa-check' aria-hidden='true'></i> Succes";
                     document.querySelector("#modal div.modal-content div").innerHTML = "Moddifications Enregistrées.";
+                    window.setTimeout(function(){
+                        window.history.back();
+                    }, 2000);
                 },
                 error: function (jqxhr, status, error) {
                     document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Echec";

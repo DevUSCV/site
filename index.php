@@ -9,7 +9,7 @@ use Slim\Views\TwigExtension;
 
 $app = new Slim\App([
     'settings' => [
-        'displayErrorDetails' => true
+        'displayErrorDetails' => false
     ]
         ]);
 

@@ -545,6 +545,7 @@ function admin_license(search) {
                         + "<td>" + license.year + "</td>"
                         + "<td>" + license.date + "</td>"
                         + "<td>" + license.address + "<br>" + license.zipcode + " " + license.city + "</td>"
+                        + "<td>" + (license.material ? "<i class='fa fa-check' aria-hidden='true'></i>" : "<i class='fa fa-times' aria-hidden='true'></i>")  + "</td>"
                         + "</tr>"
             }
         } else {

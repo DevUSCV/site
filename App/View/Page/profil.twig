@@ -18,8 +18,10 @@
                             <li class="tab"><a class="active" href="#profil_tab">Mon Profil</a></li>
                             <li class="tab"><a href="#license_tab">Mes Licenses</a></li>
                             <li class="tab"><a href="#reservation_tab">Mes Reservations</a></li>
-                                {% if user.getStatus == "modo" or user.getStatus == "admin" %}
-                                <li class="tab red"><a href="#administration_tab"  onclick="admin_reservation()">{% if user.getStatus == "modo" %}Modération{% elseif user.getStatus == "admin" %}Administration{% endif %}</a></li>
+                                {% if user.getStatus == "modo" %}
+                                <li class="tab red"><a href="#administration_tab"  onclick="admin_reservation()">Modération</a></li>
+                                {% elseif user.getStatus == "admin" %}
+                                <li class="tab red"><a href="#administration_tab"  onclick="admin_reservation()">Administration</a></li>
                                 {% endif %}
                         </ul>
                     </div>
@@ -83,7 +85,7 @@
                                 <div class="center">
                                     <button id="edit_my_profile_button" class="btn blue disabled waves-effect " onclick="edit_my_profil()">Enregistrer les moddifications</button>
                                 </div>
-                                                   {% if user.getStatus != "admin" %}<small><a class="right" onclick="delete_me()" style="cursor: pointer;color: red;"><i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer mon compte</a></small>{% endif %}
+                                {% if user.getStatus != "admin" %}<small><a class="right" onclick="delete_me()" style="cursor: pointer;color: red;"><i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer mon compte</a></small>{% endif %}
                             </div>
 
                         </div>
@@ -105,6 +107,7 @@
                                             <th>Année</th>
                                             <th>Souscription</th>
                                             <th>Adresse</th>
+                                            <th>Materiel</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
@@ -140,17 +143,16 @@
 
 
 
-                        {% if user.getStatus == "modo" or user.getStatus == "admin"%}
+                        {% if user.getStatus == "modo" or user.getStatus == "admin" %}
 
                             <div id="administration_tab">                            
-                                {% if user.getStatus == "modo" %}Modération{% elseif user.getStatus == "admin" %}Administration{% endif %}#}#}
 
                                 <ul class="tabs tabs-fixed-width grey darken-3">
                                     <li class="tab"><a href="#admin_reservation_tab" onclick="admin_reservation()">Les Réservations</a></li>
                                     <li class="tab"><a href="#admin_user_tab" onclick="admin_user('')">Les Utilisateurs</a></li>
                                     <li class="tab"><a href="#admin_license_tab" onclick="admin_license('')">Les Licences</a></li>
                                         {% if user.getStatus == "admin" %}
-                                        <li class="tab"><a href="#admin_site_tab" onclick="admin_site()">Le Site</a></li>
+                                        <li class="tab red"><a href="#admin_site_tab" onclick="admin_site()">Le Site</a></li>
                                         {% endif %}
                                 </ul>
 
@@ -234,6 +236,7 @@
                                                     <th>Année</th>
                                                     <th>Souscription</th>
                                                     <th>Adresse</th>
+                                                    <th>Materiel</th>
                                                 </tr>
                                             </thead>
                                             <tbody></tbody>
@@ -245,7 +248,7 @@
                                                     <div class="file-field input-field">
                                                         <div class="btn blue">
                                                             <span><i class="fa fa-file-excel-o" aria-hidden="true"></i> Licenses FFV</span>
-                                                            <input type="file" name="license" accept="application/vnd.ms-excel" required onchange="upload_license_file()">
+                                                            <input type="file" name="license" accept=".xls" required onchange="upload_license_file()">
                                                         </div>
                                                         <div class="file-path-wrapper">
                                                             <input class="file-path validate" type="text">

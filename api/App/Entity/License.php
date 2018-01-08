@@ -112,6 +112,12 @@ class License implements \JsonSerializable {
      * @Column(type="string", length=255)
      */
     protected $qualification;
+    
+    /**
+     * @var string
+     * @Column(type="boolean")
+     */
+    protected $material;
 
     function getNumber() {
         return $this->number;
@@ -248,8 +254,16 @@ class License implements \JsonSerializable {
     function setQualification($qualification) {
         $this->qualification = $qualification;
     }
-
     
+    function getMaterial() {
+        return $this->material;
+    }
+
+    function setMaterial($material) {
+        $this->material = $material;
+    }
+
+        
     public function jsonSerialize() {
         return array(
             "number" => $this->number,
@@ -268,7 +282,8 @@ class License implements \JsonSerializable {
             "aptitude" => $this->aptitude,
             "club" => $this->club,
             "date" => $this->date,
-            "qualification" => $this->qualification
+            "qualification" => $this->qualification,
+            "material" => $this->material
         );
     }
 

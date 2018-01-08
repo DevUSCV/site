@@ -35,6 +35,8 @@ class LicenseResource extends AbstractResource {
                 $reader = IOFactory::createReader($inputFileType);
                 $spreadsheet = @$reader->load($license_file_path);
                 $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
+                //var_dump($sheetData);
+                //exit;
                 for ($i = 2; $i <= count($sheetData); $i++) {
                     $license = new License();
                     $license->setNumber($sheetData[$i]["A"]);
@@ -42,7 +44,7 @@ class LicenseResource extends AbstractResource {
                     $license->setFirstname(ucfirst(strtolower($sheetData[$i]["C"])));
                     $license->setSex($sheetData[$i]["D"]);
                     $license->setBirth_date($sheetData[$i]["E"]);
-                    $license->setAddress(ucfirst(strtolower($sheetData[$i]["F"])));
+                    $license->setAddress(ucwords(strtolower($sheetData[$i]["F"])));
                     $license->setZipcode($sheetData[$i]["G"]);
                     $license->setCity(ucfirst(strtolower($sheetData[$i]["H"])));
                     $license->setEmail($sheetData[$i]["I"]);
@@ -54,6 +56,7 @@ class LicenseResource extends AbstractResource {
                     $license->setClub($sheetData[$i]["O"]);
                     $license->setDate($sheetData[$i]["P"]);
                     $license->setQualification($sheetData[$i]["Q"]);
+                    $license->setMaterial(isset($sheetData[$i]["R"]) ? ($sheetData[$i]["R"] ? true : false) : false);
                     $this->getEntityManager()->persist($license);
                 }
                 $connection = $this->getEntityManager()->getConnection();

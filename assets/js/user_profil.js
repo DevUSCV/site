@@ -2,22 +2,22 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.querySelector("div.row.content").style.backgroundImage = "url(" + SITE_ROOT + "/assets/image/background.jpg)";
 });
 
-function check_contact_user_form(){
+function check_contact_user_form() {
     var form = document.querySelector("#contact_user_form");
     valid = (
             form.object.validity.valid &&
             form.message.validity.valid
             );
-    if(valid){
+    if (valid) {
         $("#contact_user_button").removeClass("disabled");
-    }else{
+    } else {
         $("#contact_user_button").addClass("disabled");
     }
     return valid;
 }
 
-function contact_user(user_id){
-    if(check_contact_user_form() && user_id > 0){
+function contact_user(user_id) {
+    if (check_contact_user_form() && user_id > 0) {
         var form = document.querySelector("#contact_user_form");
         document.querySelector("#modal h4").innerHTML = "Envoyer un email";
         document.querySelector("#modal div.modal-content div").innerHTML = "<div class='container center'><h5><b>" + form.object.value + "</b></h5><br> "
@@ -27,23 +27,24 @@ function contact_user(user_id){
         $('#modal').modal('open');
     }
 }
-function confirm_contact_user(user_id){
-    if(check_contact_user_form() && user_id > 0){
+function confirm_contact_user(user_id) {
+    if (check_contact_user_form() && user_id > 0) {
         var form = document.querySelector("#contact_user_form");
         var data = {
             user_id: user_id,
             object: form.object.value,
             message: form.message.value
         }
-        $.post(API_URL + "/user/contact", data, function(success){
+        $.post(API_URL + "/user/contact", data, function (success) {
             document.querySelector("#modal h4").innerHTML = "<i class='fa fa-checked' aria-hidden='true'></i> Succes";
-                document.querySelector("#modal div.modal-content div").innerHTML = "Message envoyé.";
-                window.setTimeout(function () {
-                    form.reset();;
-                }, 2000);
-        }).fail(function(jqxhr, status, error) {
-                document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Echec";
-                document.querySelector("#modal div.modal-content div").innerHTML = error;
+            document.querySelector("#modal div.modal-content div").innerHTML = "Message envoyé.";
+            window.setTimeout(function () {
+                form.reset();
+                ;
+            }, 2000);
+        }).fail(function (jqxhr, status, error) {
+            document.querySelector("#modal h4").innerHTML = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Echec";
+            document.querySelector("#modal div.modal-content div").innerHTML = error;
         });
     }
 }
@@ -127,6 +128,7 @@ function get_user_licenses(email) {
                         + "<td>" + license.practice + "</td>"
                         + "<td>" + license.year + "</td>"
                         + "<td>" + license.address + "<br>" + license.zipcode + " " + license.city + "</td>"
+                        + "<td>" + (license.material ? "<i class='fa fa-check' aria-hidden='true'></i>" : "<i class='fa fa-times' aria-hidden='true'></i>") + "</td>"
                         + "</tr>"
             }
         } else {
@@ -135,46 +137,46 @@ function get_user_licenses(email) {
     });
 }
 
-function delete_user(user_id){
+function delete_user(user_id) {
     document.querySelector("#modal h4").innerHTML = "<i class='fa fa-checked' aria-hidden='true'></i> Suppression de Compte";
-                document.querySelector("#modal div.modal-content div").innerHTML = "<div class='container row'>"
-                        + "<p class='col s6 offset-s3'><small>Conformément a la loi « Informatique et Libertés » du 6 janvier 1978, modifiée par la loi du 6 août 2004, l'utilisateur as la possibilité de supprimer ses informations personnels.<br><b>Cette action est irreversible.</b></small></p>"
-                        + "<form id='delete_user_form' class='col s6 offset-s3'>"
-                        + "<p>"
-                        + "<input type='checkbox' id='confirm_delete_me_check1' onclick='check_delete_user_form()' />"
-                        + "<label for='confirm_delete_me_check1'>Je veut supprimer ce compte.</label>"
-                        + "</p><br>"
-                        + "<p>"
-                        + "<input type='checkbox' id='confirm_delete_me_check2' onclick='check_delete_user_form()' />"
-                        + "<label for='confirm_delete_me_check2'>Je suis sur de moi.</label>"
-                        + "</p><br>"
-                        + "</form>"
-                        + "<div class='card-action center'>"
-                        + "<a id='delete_user_button' class='btn red waves-effect disabled' onclick='confirm_delete_user(" + user_id + ")'><i class='fa fa-trash-o' aria-hidden='true'></i> Supprimer mon compte</a>"
-                        + "</div>"
-                        + "</div>";
-                $('#modal').modal('open');
+    document.querySelector("#modal div.modal-content div").innerHTML = "<div class='container row'>"
+            + "<p class='col s6 offset-s3'><small>Conformément a la loi « Informatique et Libertés » du 6 janvier 1978, modifiée par la loi du 6 août 2004, l'utilisateur as la possibilité de supprimer ses informations personnels.<br><b>Cette action est irreversible.</b></small></p>"
+            + "<form id='delete_user_form' class='col s6 offset-s3'>"
+            + "<p>"
+            + "<input type='checkbox' id='confirm_delete_me_check1' onclick='check_delete_user_form()' />"
+            + "<label for='confirm_delete_me_check1'>Je veut supprimer ce compte.</label>"
+            + "</p><br>"
+            + "<p>"
+            + "<input type='checkbox' id='confirm_delete_me_check2' onclick='check_delete_user_form()' />"
+            + "<label for='confirm_delete_me_check2'>Je suis sur de moi.</label>"
+            + "</p><br>"
+            + "</form>"
+            + "<div class='card-action center'>"
+            + "<a id='delete_user_button' class='btn red waves-effect disabled' onclick='confirm_delete_user(" + user_id + ")'><i class='fa fa-trash-o' aria-hidden='true'></i> Supprimer mon compte</a>"
+            + "</div>"
+            + "</div>";
+    $('#modal').modal('open');
 }
 
-function check_delete_user_form(){
+function check_delete_user_form() {
     var form = document.querySelector("#delete_user_form");
     valid = form.confirm_delete_me_check1.checked && form.confirm_delete_me_check2.checked;
-    if(valid){
+    if (valid) {
         $("#delete_user_button").removeClass("disabled");
-    }else{
+    } else {
         $("#delete_user_button").addClass("disabled");
     }
     return valid;
 }
 
-function confirm_delete_user(user_id){
-    if(check_delete_user_form()){
+function confirm_delete_user(user_id) {
+    if (check_delete_user_form()) {
         var form = document.querySelector("#delete_user_form");
         $.ajax({
             type: "DELETE",
             url: API_URL + "/user/" + user_id,
             data: {
-                confirm_delete_user_check1 : form.confirm_delete_me_check1.checked,
+                confirm_delete_user_check1: form.confirm_delete_me_check1.checked,
                 confirm_delete_user_check2: form.confirm_delete_me_check2.checked
             },
             dataType: "json",

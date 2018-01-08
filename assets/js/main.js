@@ -59,9 +59,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
        loading = false; 
        $("#loader").fadeOut(300);
     });
+    window.Materialize.updateTextFields();
 });
 function show_contact() {
-
     $('#modal_contact').modal('open');
 }
 

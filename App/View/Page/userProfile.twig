@@ -18,7 +18,7 @@
                         <div class='card-content'>
                             <span class="card-title" id="status"><b>Informations</b></span>
                             <span id="ustatus" class="chip right"></span>                           
-                            {% if user.getStatus == "admin" %}<small><a onclick="delete_user({{ user_id }})" style="cursor: pointer;color: red;"><i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer le compte</a></small> {% endif %}                           
+                            {% if user.getStatus == "admin" %}<small><a id="delete_user_button" onclick="delete_user({{ user_id }})" style="cursor: pointer;color: red;"><i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer le compte</a></small> {% endif %}                           
                             <br><span class="card-title"><small><i class="fa fa-user-o" aria-hidden="true"></i> Nom</small></span>
                             <p id="lastname" class="right"></p><br>
                             <span class="card-title"><small><i class="fa fa-user" aria-hidden="true"></i> Prénom</small></span>
@@ -65,6 +65,7 @@
                                             <th>Pratique</th>
                                             <th>Année</th>
                                             <th>Adresse</th>
+                                            <th>Materiel</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
@@ -164,12 +165,13 @@
                                 "<div class='chip green right white-text'>membre</div><br>"));
                 get_user_licenses(data.email);
                 get_user_reservations(data.email);
-            {% if user.getStatus == "admin" %}
-                    if (data.status == "admin") {
-                        $("#ustatus").attr("disabled", "disabled");
-                    }
+            {% if user.getStatus == "admin" %}                    
                     $("option[value=" + data.status + "]").attr("selected", "selected");
-                    $('select').material_select();
+                    if (data.status !== "admin") {
+                        $('select').material_select();
+                    }else{
+                        $("#delete_user_button").remove();
+                    }
             {% endif %}
                 });
         {% else %}
